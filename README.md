@@ -15,17 +15,17 @@ User:
 2) User can login - s
 
 Customer:
-3) Customer can register for a checking account - l
-4) Customer can create a savings account - l
-5) Customer can apply for credit card - l
-6) Customer can check balance - m
-7) Customer can check transaction history - m
-8) Customer can make payment on credit account - l
-9) Customer can transfer funds - m
-10) Customer can deposit check - l
-11) Customer can view statements and documents - xl
-12) Customer can send message to customer service - xxl
-13) Customer will recieve notifications on changes in account - xxxl
+1) Customer can register for a checking account - l
+2) Customer can create a savings account - l
+3) Customer can apply for credit card - l
+4) Customer can check balance - m
+5) Customer can check transaction history - m
+6) Customer can make payment on credit account - l
+7) Customer can transfer funds - m
+8) Customer can deposit check - l
+9) Customer can view statements and documents - xl
+10) Customer can send message to customer service - xxl
+11) Customer will recieve notifications on changes in account - xxxl
     -account balance change
     -change in password
 
