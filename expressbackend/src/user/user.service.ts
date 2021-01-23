@@ -48,7 +48,7 @@ class UserService {
             ConditionExpression: '#username <> :username',
             ExpressionAttributeNames: {
                 '#username': 'username'
-            
+
             },
             ExpressionAttributeValues: {
                 ':username': user.username
@@ -62,7 +62,7 @@ class UserService {
             put function takes in our params, and PUTs (http method) the item in the db.
             promise function returns a promise representation of the request
         */
-        return await this.doc.put(params).promise().then((result) => {
+        return await this.doc.put(params).promise().then(() => {
             logger.info('Successfully created item');
             return true;
         }).catch((error) => {
