@@ -1,0 +1,2 @@
+-Create seperate sql file for creating tables
+-submodules tracked files: When expo-cli is installed it creates a .git repository. Git thinks this is another repository so we need to remove it.
