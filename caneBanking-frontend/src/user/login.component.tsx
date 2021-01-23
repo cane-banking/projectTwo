@@ -29,7 +29,8 @@ function LoginComponent({ navigation }: LoginProp) {
             .getLogin()
             .then((loggedUser) => {
                 dispatch(getUser(loggedUser));
-                navigation.navigate('Restaurants');
+                navigation.navigate('Accounts');
+                console.log(loggedUser)
             })
             .catch((err) => {
                 console.error(err);
@@ -40,7 +41,7 @@ function LoginComponent({ navigation }: LoginProp) {
         userService.login(user).then((user) => {
             console.log(user);
             dispatch(getUser(user));
-            navigation.navigate('Restaurants');
+            navigation.navigate('Accounts');
         });
     }
     function handle() {
