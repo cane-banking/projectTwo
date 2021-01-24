@@ -1,5 +1,5 @@
 # intsalling packages
 npm install
-npm intsall typescript dotend pg   
+npm install typescript dotenv pg   
 created .env.example file
 cp .env.example  .env
