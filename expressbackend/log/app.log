@@ -8,8 +8,29 @@
 [2021-01-23T14:10:01.532] [INFO] default - Successfully created item
 [2021-01-23T14:10:01.533] [INFO] default - Successfully created item
 [2021-01-23T14:10:01.787] [INFO] default - Successfully created item
+<<<<<<< HEAD
 [2021-01-23T20:03:07.152] [INFO] default - Successfully created item
 [2021-01-23T20:03:07.158] [INFO] default - Successfully created item
 [2021-01-23T20:03:07.170] [INFO] default - Successfully created item
 [2021-01-23T20:03:07.180] [INFO] default - Successfully created item
 [2021-01-23T20:03:07.189] [INFO] default - Successfully created item
+=======
+[2021-01-23T13:59:35.882] [DEBUG] default - {}
+[2021-01-23T13:59:46.641] [DEBUG] default - {
+  username: 'emily',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-23T13:59:46.647] [DEBUG] default - undefined pass
+[2021-01-23T14:01:41.751] [DEBUG] default - {}
+[2021-01-23T14:01:49.328] [DEBUG] default - {
+  username: 'emily',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-23T14:01:49.332] [DEBUG] default - undefined pass
+>>>>>>> 7491e709d6a1e97b02eaa0a1432a0a3870d91f9d
