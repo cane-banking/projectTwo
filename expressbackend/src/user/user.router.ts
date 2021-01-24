@@ -40,8 +40,8 @@ router.delete('/', (req, res, next) => {
 })
 
 router.post('/', function(req: any, res, next) {
-  logger.debug(req.body);
-  user.login(req.body.name, req.body.password).then((user) => {
+  logger.debug('right here',req.body);
+  user.login(req.body.username, req.body.password).then((user) => {
     if(user === null) {
       res.sendStatus(401);
     }

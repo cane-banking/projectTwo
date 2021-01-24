@@ -26,39 +26,55 @@
   lastname: ''
 }
 [2021-01-23T14:01:49.332] [DEBUG] default - undefined pass
-[2021-01-24T08:36:22.541] [DEBUG] default - {}
-[2021-01-24T08:36:42.087] [DEBUG] default - {
+[2021-01-24T10:31:18.676] [DEBUG] default - {}
+[2021-01-24T10:47:27.108] [DEBUG] default - {
+  username: 'cassandra',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T10:47:27.109] [DEBUG] default - undefined pass
+[2021-01-24T10:48:40.986] [DEBUG] default - {}
+[2021-01-24T10:48:46.223] [DEBUG] default - {
+  username: 'cassandra',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T10:48:46.224] [DEBUG] default - undefined pass
+[2021-01-24T10:51:15.854] [DEBUG] default - {}
+[2021-01-24T10:51:23.825] [DEBUG] default - {
+  username: 'cassandra',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T10:51:23.826] [DEBUG] default - undefined pass
+[2021-01-24T10:53:12.227] [DEBUG] default - {}
+[2021-01-24T10:53:22.386] [DEBUG] default - right here {
   username: 'emily',
   password: 'pass',
   role: '',
   firstname: '',
   lastname: ''
 }
-[2021-01-24T08:36:42.089] [DEBUG] default - undefined pass
-[2021-01-24T08:38:26.599] [DEBUG] default - {}
-[2021-01-24T08:38:31.439] [DEBUG] default - {
+[2021-01-24T10:53:22.388] [DEBUG] default - undefined pass
+[2021-01-24T10:55:01.726] [DEBUG] default - right here {
   username: 'emily',
   password: 'pass',
   role: '',
   firstname: '',
   lastname: ''
 }
-[2021-01-24T08:38:31.444] [DEBUG] default - undefined pass
-[2021-01-24T08:40:38.364] [DEBUG] default - {}
-[2021-01-24T08:41:02.812] [DEBUG] default - {
-  username: 'emily',
+[2021-01-24T10:55:01.728] [DEBUG] default - emily pass
+[2021-01-24T10:55:02.184] [DEBUG] default - data.Item: {"firstname":"emily","lastname":"smith","password":"pass","username":"emily","role":"employee"}
+[2021-01-24T10:55:02.343] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
   password: 'pass',
-  role: '',
-  firstname: '',
-  lastname: ''
-}
-[2021-01-24T08:41:02.814] [DEBUG] default - undefined pass
-[2021-01-24T08:48:36.779] [DEBUG] default - {}
-[2021-01-24T08:48:42.880] [DEBUG] default - {
   username: 'emily',
-  password: 'pass',
-  role: '',
-  firstname: '',
-  lastname: ''
+  role: 'employee'
 }
-[2021-01-24T08:48:42.885] [DEBUG] default - undefined pass
