@@ -26,3 +26,30 @@
   lastname: ''
 }
 [2021-01-23T14:01:49.332] [DEBUG] default - undefined pass
+[2021-01-24T08:36:22.541] [DEBUG] default - {}
+[2021-01-24T08:36:42.087] [DEBUG] default - {
+  username: 'emily',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T08:36:42.089] [DEBUG] default - undefined pass
+[2021-01-24T08:38:26.599] [DEBUG] default - {}
+[2021-01-24T08:38:31.439] [DEBUG] default - {
+  username: 'emily',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T08:38:31.444] [DEBUG] default - undefined pass
+[2021-01-24T08:40:38.364] [DEBUG] default - {}
+[2021-01-24T08:41:02.812] [DEBUG] default - {
+  username: 'emily',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T08:41:02.814] [DEBUG] default - undefined pass
