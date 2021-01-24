@@ -1,0 +1,80 @@
+[2021-01-22T20:58:53.719] [INFO] default - Successfully created item
+[2021-01-22T20:58:53.725] [INFO] default - Successfully created item
+[2021-01-22T20:58:53.790] [INFO] default - Successfully created item
+[2021-01-22T20:58:53.792] [INFO] default - Successfully created item
+[2021-01-22T20:58:53.851] [INFO] default - Successfully created item
+[2021-01-23T14:10:01.512] [INFO] default - Successfully created item
+[2021-01-23T14:10:01.532] [INFO] default - Successfully created item
+[2021-01-23T14:10:01.532] [INFO] default - Successfully created item
+[2021-01-23T14:10:01.533] [INFO] default - Successfully created item
+[2021-01-23T14:10:01.787] [INFO] default - Successfully created item
+[2021-01-23T13:59:35.882] [DEBUG] default - {}
+[2021-01-23T13:59:46.641] [DEBUG] default - {
+  username: 'emily',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-23T13:59:46.647] [DEBUG] default - undefined pass
+[2021-01-23T14:01:41.751] [DEBUG] default - {}
+[2021-01-23T14:01:49.328] [DEBUG] default - {
+  username: 'emily',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-23T14:01:49.332] [DEBUG] default - undefined pass
+[2021-01-24T10:31:18.676] [DEBUG] default - {}
+[2021-01-24T10:47:27.108] [DEBUG] default - {
+  username: 'cassandra',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T10:47:27.109] [DEBUG] default - undefined pass
+[2021-01-24T10:48:40.986] [DEBUG] default - {}
+[2021-01-24T10:48:46.223] [DEBUG] default - {
+  username: 'cassandra',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T10:48:46.224] [DEBUG] default - undefined pass
+[2021-01-24T10:51:15.854] [DEBUG] default - {}
+[2021-01-24T10:51:23.825] [DEBUG] default - {
+  username: 'cassandra',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T10:51:23.826] [DEBUG] default - undefined pass
+[2021-01-24T10:53:12.227] [DEBUG] default - {}
+[2021-01-24T10:53:22.386] [DEBUG] default - right here {
+  username: 'emily',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T10:53:22.388] [DEBUG] default - undefined pass
+[2021-01-24T10:55:01.726] [DEBUG] default - right here {
+  username: 'emily',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T10:55:01.728] [DEBUG] default - emily pass
+[2021-01-24T10:55:02.184] [DEBUG] default - data.Item: {"firstname":"emily","lastname":"smith","password":"pass","username":"emily","role":"employee"}
+[2021-01-24T10:55:02.343] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee'
+}
