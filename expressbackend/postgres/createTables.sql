@@ -1,6 +1,10 @@
 -- import dotenv from 'dotenv';
 
--- dotenv.config();
+drop table accounts ;
+drop table customer;
+drop table transactions;
+drop table applications ;
+drop table checks;
 
 CREATE TABLE customer(
 	customer_id SERIAL,
