@@ -39,7 +39,7 @@ function LoginComponent({ navigation }: LoginProp) {
 
     function submitForm() {
         userService.login(user).then((user) => {
-            console.log(user);
+            console.log('user submit form', user);
             dispatch(getUser(user));
             navigation.navigate('Accounts');
         });
