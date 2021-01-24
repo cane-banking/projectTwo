@@ -8,6 +8,13 @@
 [2021-01-23T14:10:01.532] [INFO] default - Successfully created item
 [2021-01-23T14:10:01.533] [INFO] default - Successfully created item
 [2021-01-23T14:10:01.787] [INFO] default - Successfully created item
+<<<<<<< HEAD
+[2021-01-23T20:03:07.152] [INFO] default - Successfully created item
+[2021-01-23T20:03:07.158] [INFO] default - Successfully created item
+[2021-01-23T20:03:07.170] [INFO] default - Successfully created item
+[2021-01-23T20:03:07.180] [INFO] default - Successfully created item
+[2021-01-23T20:03:07.189] [INFO] default - Successfully created item
+=======
 [2021-01-23T13:59:35.882] [DEBUG] default - {}
 [2021-01-23T13:59:46.641] [DEBUG] default - {
   username: 'emily',
@@ -26,6 +33,9 @@
   lastname: ''
 }
 [2021-01-23T14:01:49.332] [DEBUG] default - undefined pass
+<<<<<<< HEAD
+>>>>>>> 7491e709d6a1e97b02eaa0a1432a0a3870d91f9d
+=======
 [2021-01-24T10:31:18.676] [DEBUG] default - {}
 [2021-01-24T10:47:27.108] [DEBUG] default - {
   username: 'cassandra',
@@ -78,3 +88,4 @@
   username: 'emily',
   role: 'employee'
 }
+>>>>>>> 7b1bb28296a87b4468331f4e4c9fca16f5a7b676
