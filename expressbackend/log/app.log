@@ -89,3 +89,42 @@
   role: 'employee'
 }
 >>>>>>> 7b1bb28296a87b4468331f4e4c9fca16f5a7b676
+[2021-01-24T13:11:54.311] [DEBUG] default - {}
+[2021-01-24T13:12:13.658] [DEBUG] default - right here {
+  username: 'nilam',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T13:12:13.660] [DEBUG] default - nilam pass
+[2021-01-24T13:12:13.892] [DEBUG] default - data.Item: {"firstname":"nilam","lastname":"patel","password":"pass","username":"nilam","role":"customer"}
+[2021-01-24T13:12:13.942] [DEBUG] default - {
+  firstname: 'nilam',
+  lastname: 'patel',
+  password: 'pass',
+  username: 'nilam',
+  role: 'customer'
+}
+[2021-01-24T13:13:57.536] [DEBUG] default - right here {
+  username: 'manny',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T13:13:57.549] [DEBUG] default - manny pass
+[2021-01-24T13:13:57.866] [DEBUG] default - {
+  firstname: 'nilam',
+  lastname: 'patel',
+  password: 'pass',
+  username: 'nilam',
+  role: 'customer'
+}
+[2021-01-24T13:14:29.304] [DEBUG] default - {
+  firstname: 'nilam',
+  lastname: 'patel',
+  password: 'pass',
+  username: 'nilam',
+  role: 'customer'
+}

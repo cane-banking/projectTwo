@@ -1,7 +1,6 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-
 drop table accounts ;
 drop table customer;
 drop table transactions;
