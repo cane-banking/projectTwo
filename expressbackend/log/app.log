@@ -153,3 +153,67 @@
   username: 'emily',
   role: 'employee'
 }
+[2021-01-24T15:15:37.278] [DEBUG] default - {}
+[2021-01-24T15:15:45.209] [DEBUG] default - right here {
+  username: 'asad',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T15:15:45.213] [DEBUG] default - asad pass
+[2021-01-24T15:15:45.477] [DEBUG] default - data.Item: {"firstname":"asad","lastname":"nazir","password":"pass","username":"asad","role":"customer"}
+[2021-01-24T15:15:45.608] [DEBUG] default - {
+  firstname: 'asad',
+  lastname: 'nazir',
+  password: 'pass',
+  username: 'asad',
+  role: 'customer'
+}
+[2021-01-24T15:15:56.261] [DEBUG] default - right here {
+  username: 'cynthia',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T15:15:56.275] [DEBUG] default - cynthia pass
+[2021-01-24T15:15:56.544] [DEBUG] default - {
+  firstname: 'asad',
+  lastname: 'nazir',
+  password: 'pass',
+  username: 'asad',
+  role: 'customer'
+}
+[2021-01-24T15:16:20.620] [DEBUG] default - right here {
+  username: 'emily',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T15:16:20.622] [DEBUG] default - emily pass
+[2021-01-24T15:16:20.798] [DEBUG] default - data.Item: {"firstname":"emily","lastname":"smith","password":"pass","username":"emily","role":"employee"}
+[2021-01-24T15:16:20.869] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee'
+}
+[2021-01-24T15:16:34.036] [DEBUG] default - right here {
+  username: 'richard',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T15:16:34.048] [DEBUG] default - richard pass
+[2021-01-24T15:16:34.215] [DEBUG] default - data.Item: {"firstname":"richard","lastname":"orr","password":"pass","username":"richard","role":"employee"}
+[2021-01-24T15:16:34.301] [DEBUG] default - {
+  firstname: 'richard',
+  lastname: 'orr',
+  password: 'pass',
+  username: 'richard',
+  role: 'employee'
+}
