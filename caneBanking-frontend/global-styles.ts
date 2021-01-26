@@ -10,10 +10,6 @@ const designResolution = {
 const perfectSize = create(designResolution);
 
 const styles = StyleSheet.create({
-    header: {
-        width: '100%',
-        height: '100%'    
-    },
     container: {
         flex: 1,
         alignItems: 'center',
@@ -39,9 +35,6 @@ const styles = StyleSheet.create({
     row: {
         flex: 1,
         flexDirection: 'row'
-    },
-    bankdraw: {
-        width: 200
     }
 });
 

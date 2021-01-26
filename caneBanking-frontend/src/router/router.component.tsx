@@ -18,6 +18,10 @@ export type StackParams = {
 
 const Stack = createStackNavigator<StackParams>();
 const headerOptions: StackHeaderOptions = {
+    headerTintColor: '#63D4FF',
+    headerStyle: {
+        backgroundColor: '#63D4FF'
+    },
     headerTitle: () => <Text>Cane Banking</Text>,
 };
 function RouterComponent(props: any) {
