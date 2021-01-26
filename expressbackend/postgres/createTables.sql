@@ -1,5 +1,5 @@
-import dotenv from 'dotenv';
-dotenv.config();
+-- import dotenv from 'dotenv';
+-- dotenv.config();
 
 drop table accounts ;
 drop table customer;
@@ -20,7 +20,7 @@ CREATE TABLE accounts(
 	account_type text not NULL,
 	balance int,
 	customer_id int,
-	CONSTRAINT "pk_accounts" PRIMARY KEY  ("account_id")	
+	CONSTRAINT "pk_accounts" PRIMARY KEY  ("account_id")
 )
 
 
@@ -62,32 +62,21 @@ amount int
 
 ALTER TABLE "accounts" ADD CONSTRAINT "fk_cust_cust_id"
     FOREIGN KEY ("customer_id") REFERENCES "customer" ("customer_id");
-   
+
 
 ALTER TABLE "transactions" ADD CONSTRAINT "fk_accounts_account_id"
-    FOREIGN KEY ("account_id") REFERENCES "accounts" ("account_id");   
+    FOREIGN KEY ("account_id") REFERENCES "accounts" ("account_id");
 
-   
+
 ALTER TABLE "transactions" ADD CONSTRAINT "fk_cust_cust_id"
     FOREIGN KEY ("customer_id") REFERENCES "customer" ("customer_id");
 
-    
+
 ALTER TABLE applications ADD CONSTRAINT "fk_cust_cust_id"
     FOREIGN KEY ("customer_id") REFERENCES "customer" ("customer_id");
-   
+
 ALTER TABLE checks ADD CONSTRAINT "fk_cust_cust_id"
-    FOREIGN KEY ("customer_id") REFERENCES "customer" ("customer_id");   
-   
+    FOREIGN KEY ("customer_id") REFERENCES "customer" ("customer_id");
+
 ALTER TABLE checks  ADD CONSTRAINT "fk_accounts_account_id"
-    FOREIGN KEY ("account_id") REFERENCES "accounts" ("account_id");   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
+    FOREIGN KEY ("account_id") REFERENCES "accounts" ("account_id");
