@@ -6,11 +6,14 @@ import { StackHeaderOptions } from '@react-navigation/stack/lib/typescript/src/t
 import { CaneBankingState } from '../store/store';
 import { useSelector } from 'react-redux';
 import Accounts from '../accounts/accounts.component';
+import NavBarComponent from './header.component';
+import SignUpComponent from '../user/signup.component';
 
 /* Parameter list for RouteProp requires a field for the route that we're on. */
 export type StackParams = {
     Login: undefined;
     Accounts: undefined;
+    Register: undefined;
 };
 
 const Stack = createStackNavigator<StackParams>();
@@ -28,6 +31,11 @@ function RouterComponent(props: any) {
             <Stack.Screen
                 name='Accounts'
                 component={Accounts}
+                options={headerOptions}
+            />
+            <Stack.Screen
+                name='Register'
+                component={SignUpComponent}
                 options={headerOptions}
             />
 
