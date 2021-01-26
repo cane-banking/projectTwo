@@ -6,7 +6,6 @@ import { StackHeaderOptions } from '@react-navigation/stack/lib/typescript/src/t
 import { CaneBankingState } from '../store/store';
 import { useSelector } from 'react-redux';
 import Accounts from '../accounts/accounts.component';
-import NavBarComponent from './header.component';
 import SignUpComponent from '../user/signup.component';
 
 /* Parameter list for RouteProp requires a field for the route that we're on. */
@@ -18,7 +17,6 @@ export type StackParams = {
 
 const Stack = createStackNavigator<StackParams>();
 const headerOptions: StackHeaderOptions = {
-    headerTintColor: '#63D4FF',
     headerStyle: {
         backgroundColor: '#63D4FF'
     },
