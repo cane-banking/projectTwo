@@ -1,5 +1,5 @@
-import dotenv from 'dotenv';
-dotenv.config();
+-- import dotenv from 'dotenv';
+-- dotenv.config();
 
 
 drop table accounts ;
