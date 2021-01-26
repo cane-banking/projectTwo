@@ -1,0 +1,25 @@
+BACKEND
+------------
+1) .ENV: (configuration to connect to the server-side(aws) so we know which database to talk to)
+PGUSER=postgres
+PGHOST=localhost
+PGPASSWORD=password
+PGDATABASE=db
+PGPORT=5432
+
+2) CREATETABLES.SQL: (Creates tables in database)
+import .env
+create table xxx()
+
+3) POOL&CLIENT: (Query to database)
+import .env
+import { Pool, PoolClient } from 'pg';
+dotenv.config();
+
+4) LAMBDA: (request sent to endpoint will trigger a function to "handle" our request, hence why we use a handler function)
+const handler = (); (entry point to lambda function.)
+
+
+FRONTEND
+------------------
+CONNECTING TO LAMBDA FROM FRONTEND

@@ -89,3 +89,72 @@
   role: 'employee'
 }
 >>>>>>> 7b1bb28296a87b4468331f4e4c9fca16f5a7b676
+[2021-01-24T14:13:22.827] [DEBUG] default - {}
+[2021-01-24T14:13:35.281] [DEBUG] default - right here {
+  username: 'asad',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T14:13:35.288] [DEBUG] default - asad pass
+[2021-01-24T14:13:35.505] [DEBUG] default - data.Item: {"firstname":"asad","lastname":"nazir","password":"pass","username":"asad","role":"customer"}
+[2021-01-24T14:13:35.687] [DEBUG] default - {
+  firstname: 'asad',
+  lastname: 'nazir',
+  password: 'pass',
+  username: 'asad',
+  role: 'customer'
+}
+[2021-01-24T14:14:25.227] [DEBUG] default - right here {
+  username: 'cynthia',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T14:14:25.230] [DEBUG] default - cynthia pass
+[2021-01-24T14:14:25.457] [DEBUG] default - {
+  firstname: 'asad',
+  lastname: 'nazir',
+  password: 'pass',
+  username: 'asad',
+  role: 'customer'
+}
+[2021-01-24T14:14:45.927] [DEBUG] default - right here {
+  username: 'nilam',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T14:14:45.931] [DEBUG] default - nilam pass
+[2021-01-24T14:14:46.107] [DEBUG] default - data.Item: {"firstname":"nilam","lastname":"patel","password":"pass","username":"nilam","role":"customer"}
+[2021-01-24T14:14:46.173] [DEBUG] default - {
+  firstname: 'nilam',
+  lastname: 'patel',
+  password: 'pass',
+  username: 'nilam',
+  role: 'customer'
+}
+[2021-01-24T14:14:58.361] [DEBUG] default - right here {
+  username: 'emily',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T14:14:58.363] [DEBUG] default - emily pass
+[2021-01-24T14:14:58.537] [DEBUG] default - data.Item: {"firstname":"emily","lastname":"smith","password":"pass","username":"emily","role":"employee"}
+[2021-01-24T14:14:58.613] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee'
+}
+[2021-01-25T16:47:25.434] [INFO] default - Successfully created item
+[2021-01-25T16:47:25.446] [INFO] default - Successfully created item
+[2021-01-25T16:47:25.447] [INFO] default - Successfully created item
+[2021-01-25T16:47:25.448] [INFO] default - Successfully created item
+[2021-01-25T16:47:25.448] [INFO] default - Successfully created item
