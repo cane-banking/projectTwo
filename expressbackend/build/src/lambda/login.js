@@ -1,4 +1,23 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -39,9 +58,59 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateUser = exports.register = exports.login = exports.User = void 0;
+exports.User = exports.handler = void 0;
+var AWS = __importStar(require("aws-sdk"));
 var log_1 = __importDefault(require("../log"));
-var user_service_1 = __importDefault(require("./user.service"));
+var docClient = new AWS.DynamoDB.DocumentClient({
+    region: 'us-west-2',
+    endpoint: 'http://dynamodb.us-west-2.amazonaws.com'
+});
+//handler
+var handler = function (event) { return __awaiter(void 0, void 0, void 0, function () {
+    var user;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, getUserByName(event.body.username)];
+            case 1:
+                user = _a.sent();
+                if (user && user.password === event.body.password) {
+                    return [2 /*return*/, { statusCode: 200, body: JSON.stringify(user) }];
+                }
+                else {
+                    return [2 /*return*/, { statusCode: 404, body: JSON.stringify({}) }];
+                }
+                return [2 /*return*/];
+        }
+    });
+}); };
+exports.handler = handler;
+//service to talk to database
+function getUserByName(username) {
+    return __awaiter(this, void 0, void 0, function () {
+        var params;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    params = {
+                        TableName: 'users',
+                        Key: {
+                            'username': username
+                        }
+                    };
+                    return [4 /*yield*/, docClient.get(params).promise().then(function (data) {
+                            if (data && data.Item) {
+                                log_1.default.debug("data.Item: " + JSON.stringify(data.Item));
+                                return data.Item;
+                            }
+                            else {
+                                return null;
+                            }
+                        })];
+                case 1: return [2 /*return*/, _a.sent()];
+            }
+        });
+    });
+}
 var User = /** @class */ (function () {
     function User(username, firstname, lastname, password, role, email) {
         this.username = username;
@@ -58,42 +127,3 @@ var User = /** @class */ (function () {
     return User;
 }());
 exports.User = User;
-function login(username, password) {
-    return __awaiter(this, void 0, void 0, function () {
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    log_1.default.debug("" + (username + ' ' + password));
-                    return [4 /*yield*/, user_service_1.default.getUserByName(username).then(function (user) {
-                            if (user && user.password === password) {
-                                return user;
-                            }
-                            else {
-                                return null;
-                            }
-                        })];
-                case 1: return [2 /*return*/, _a.sent()];
-            }
-        });
-    });
-}
-exports.login = login;
-function register(username, firstname, lastname, password, email) {
-    user_service_1.default.addUser(new User(username, firstname, lastname, password, 'customer', email)).then(function (res) {
-        log_1.default.trace(res);
-        //callback();
-    }).catch(function (err) {
-        log_1.default.error(err);
-        console.log('Error, this probably means that the username is already taken.');
-        //callback();
-    });
-}
-exports.register = register;
-function updateUser(user) {
-    user_service_1.default.updateUser(user).then(function (success) {
-        log_1.default.info('user updated successfully');
-    }).catch(function (error) {
-        log_1.default.warn('user not updated');
-    });
-}
-exports.updateUser = updateUser;

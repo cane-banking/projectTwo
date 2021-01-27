@@ -70,8 +70,8 @@ router.delete('/', function (req, res, next) {
     res.sendStatus(204);
 });
 router.post('/', function (req, res, next) {
-    log_1.default.debug(req.body);
-    user.login(req.body.name, req.body.password).then(function (user) {
+    log_1.default.debug('right here', req.body);
+    user.login(req.body.username, req.body.password).then(function (user) {
         if (user === null) {
             res.sendStatus(401);
         }
