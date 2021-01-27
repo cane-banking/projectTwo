@@ -54,13 +54,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = exports.handler = void 0;
 var AWS = __importStar(require("aws-sdk"));
-var log_1 = __importDefault(require("../log"));
 var docClient = new AWS.DynamoDB.DocumentClient({
     region: 'us-west-2',
     endpoint: 'http://dynamodb.us-west-2.amazonaws.com'
@@ -70,11 +66,19 @@ var handler = function (event) { return __awaiter(void 0, void 0, void 0, functi
     var user;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, getUserByName(event.body.username)];
+            case 0: return [4 /*yield*/, getUserByName(event.username)];
             case 1:
                 user = _a.sent();
-                if (user && user.password === event.body.password) {
-                    return [2 /*return*/, { statusCode: 200, body: JSON.stringify(user) }];
+                console.log(event.username);
+                if (user && user.password === event.password) {
+                    return [2 /*return*/, { statusCode: 200, body: JSON.stringify(user),
+                            header: {
+                                'Content-Type': 'application/json',
+                                "Access-Control-Allow-Origin": "http://localhost:19006",
+                                "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+                                //'Access-Control-Allow-Origin': '*'
+                            }
+                        }];
                 }
                 else {
                     return [2 /*return*/, { statusCode: 404, body: JSON.stringify({}) }];
@@ -99,7 +103,7 @@ function getUserByName(username) {
                     };
                     return [4 /*yield*/, docClient.get(params).promise().then(function (data) {
                             if (data && data.Item) {
-                                log_1.default.debug("data.Item: " + JSON.stringify(data.Item));
+                                //logger.debug(`data.Item: ${JSON.stringify(data.Item)}`);
                                 return data.Item;
                             }
                             else {
@@ -119,9 +123,9 @@ var User = /** @class */ (function () {
         this.password = password;
         this.email = email;
         this.role = 'customer';
-        if (role) {
-            this.role = role;
-        }
+        // if (role) {
+        //     this.role = role;
+        // }
     }
     ;
     return User;

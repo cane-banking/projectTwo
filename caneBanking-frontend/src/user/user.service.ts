@@ -5,7 +5,7 @@ class UserService {
     private URI: string;
     constructor() {
         // URL of the express server
-        this.URI = 'https://lro815f7c2.execute-api.us-west-2.amazonaws.com/default/users';
+        this.URI = ' https://y860z16a9i.execute-api.us-west-2.amazonaws.com/Production';
     }
     getLogin(): Promise<User> {
         // withCredentials sends our cookies with the request.

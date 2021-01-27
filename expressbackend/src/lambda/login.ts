@@ -10,12 +10,16 @@ let docClient = new AWS.DynamoDB.DocumentClient({
 
 export const handler = async (event: any): Promise<any> => {
     const user = await getUserByName(event.username);
-    console.log('ive been hit yikes');
+    console.log(event.username);
     if (user && user.password === event.password) {
-        return {statusCode: 200, body: JSON.stringify(user), header: {
+        return {statusCode: 200, body: JSON.stringify(user),
+            header: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
-        }};
+            "Access-Control-Allow-Origin": "http://localhost:19006",
+            "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+            //'Access-Control-Allow-Origin': '*'
+            }
+        };
     } else {
         return {statusCode: 404, body: JSON.stringify({})};
     }
@@ -43,8 +47,8 @@ async function getUserByName(username: string): Promise<User | null> {
 export class User {
     public role: string = 'customer';
     constructor(public username: string, public firstname: string,public lastname: string,public password: string, role: string, public email: string ) {
-        if (role) {
-            this.role = role;
-        }
+        // if (role) {
+        //     this.role = role;
+        // }
     };
 }
