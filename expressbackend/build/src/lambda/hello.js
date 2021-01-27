@@ -35,65 +35,17 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateUser = exports.register = exports.login = exports.User = void 0;
-var log_1 = __importDefault(require("../log"));
-var user_service_1 = __importDefault(require("./user.service"));
-var User = /** @class */ (function () {
-    function User(username, firstname, lastname, password, role, email) {
-        this.username = username;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.password = password;
-        this.email = email;
-        this.role = 'customer';
-        if (role) {
-            this.role = role;
-        }
-    }
-    ;
-    return User;
-}());
-exports.User = User;
-function login(username, password) {
-    return __awaiter(this, void 0, void 0, function () {
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    log_1.default.debug("" + (username + ' ' + password));
-                    return [4 /*yield*/, user_service_1.default.getUserByName(username).then(function (user) {
-                            if (user && user.password === password) {
-                                return user;
-                            }
-                            else {
-                                return null;
-                            }
-                        })];
-                case 1: return [2 /*return*/, _a.sent()];
-            }
-        });
+exports.handler = void 0;
+// handler - the entry point for the lambda
+var handler = function (event) { return __awaiter(void 0, void 0, void 0, function () {
+    var res;
+    return __generator(this, function (_a) {
+        console.log('Hello World');
+        res = { money: 50 };
+        if (event.username === 'bill' && event.password === 'pass')
+            return [2 /*return*/, JSON.stringify(event)];
+        return [2 /*return*/, '401'];
     });
-}
-exports.login = login;
-function register(username, firstname, lastname, password, email) {
-    user_service_1.default.addUser(new User(username, firstname, lastname, password, 'customer', email)).then(function (res) {
-        log_1.default.trace(res);
-        //callback();
-    }).catch(function (err) {
-        log_1.default.error(err);
-        console.log('Error, this probably means that the username is already taken.');
-        //callback();
-    });
-}
-exports.register = register;
-function updateUser(user) {
-    user_service_1.default.updateUser(user).then(function (success) {
-        log_1.default.info('user updated successfully');
-    }).catch(function (error) {
-        log_1.default.warn('user not updated');
-    });
-}
-exports.updateUser = updateUser;
+}); };
+exports.handler = handler;
