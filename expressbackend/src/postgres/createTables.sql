@@ -42,7 +42,6 @@ firstName text,
 lastName text,
 accountType text,
 applcationDate timestamp,
-email text,
 address text,
 dateofBirth date,
 applicationStatus text,
@@ -56,7 +55,7 @@ account_id UUID,
 check_date date,
 firstName text,
 lastName text,
-amount int
+amount int check(amount > 0)
 
 )
 
