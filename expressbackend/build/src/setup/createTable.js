@@ -77,9 +77,9 @@ ddb.deleteTable(removeUsers, function (err, data) {
     }, 5000);
 });
 function populateUserTable() {
-    user_service_1.default.addUser({ username: 'cassandra', firstname: 'cassandra', lastname: 'terry', password: 'pass', role: 'customer' }).then(function () { });
-    user_service_1.default.addUser({ username: 'asad', firstname: 'asad', lastname: 'nazir', password: 'pass', role: 'customer' }).then(function () { });
-    user_service_1.default.addUser({ username: 'nilam', firstname: 'nilam', lastname: 'patel', password: 'pass', role: 'customer' }).then(function () { });
-    user_service_1.default.addUser({ username: 'emily', firstname: 'emily', lastname: 'smith', password: 'pass', role: 'employee' }).then(function () { });
-    user_service_1.default.addUser({ username: 'richard', firstname: 'richard', lastname: 'orr', password: 'pass', role: 'employee' }).then(function () { });
+    user_service_1.default.addUser({ username: 'cassandra', firstname: 'cassandra', lastname: 'terry', password: 'pass', role: 'customer', email: 'cterry@gmail.com' }).then(function () { });
+    user_service_1.default.addUser({ username: 'asad', firstname: 'asad', lastname: 'nazir', password: 'pass', role: 'customer', email: 'anazir@gmail.com' }).then(function () { });
+    user_service_1.default.addUser({ username: 'nilam', firstname: 'nilam', lastname: 'patel', password: 'pass', role: 'customer', email: 'npatel@gmail.com' }).then(function () { });
+    user_service_1.default.addUser({ username: 'emily', firstname: 'emily', lastname: 'smith', password: 'pass', role: 'employee', email: 'esmith@gmail.com' }).then(function () { });
+    user_service_1.default.addUser({ username: 'richard', firstname: 'richard', lastname: 'orr', password: 'pass', role: 'employee', email: 'rorr@gmail.com' }).then(function () { });
 }

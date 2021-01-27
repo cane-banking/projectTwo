@@ -1,4 +1,5 @@
-import {StyleSheet} from 'react-native';
+import {SnapshotViewIOSComponent, StyleSheet} from 'react-native';
+import { color } from 'react-native-reanimated';
 
 // Importing using require because there is no @types
 const { create } = require('react-native-pixel-perfect');
@@ -13,16 +14,18 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        borderColor: '#880022',
-        borderStyle: 'solid',
-        borderWidth: 3
+        backgroundColor: '#f5feff',
     },
     input: {
-        backgroundColor: '#fff',
-        borderRadius: 20
+        color: 'black',
+        backgroundColor: '#c4c4c4',
+        borderRadius: 20,
+        marginBottom: 20,
+        height: 30,
+        width: 200,
     },
     login: {
-        backgroundColor: '#aaa'
+        backgroundColor: '#f5feff'
     },
     logo: {
         // perfectSize is only going to call when the app is first loaded in the device.

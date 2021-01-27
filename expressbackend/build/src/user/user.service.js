@@ -109,7 +109,7 @@ var UserService = /** @class */ (function () {
                                 ':username': user.username
                             }
                         };
-                        return [4 /*yield*/, this.doc.put(params).promise().then(function (result) {
+                        return [4 /*yield*/, this.doc.put(params).promise().then(function () {
                                 log_1.default.info('Successfully created item');
                                 return true;
                             }).catch(function (error) {
