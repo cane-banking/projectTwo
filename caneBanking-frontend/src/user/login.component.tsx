@@ -20,19 +20,6 @@ function LoginComponent({ navigation }: LoginProp) {
     const user = useSelector(userSelector);
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        // Check to see if we're already logged in. Redirect if we are.
-        userService
-            .getLogin()
-            .then((loggedUser) => {
-                dispatch(getUser(loggedUser));
-                navigation.navigate('Accounts');
-                console.log(loggedUser)
-            })
-            .catch((err) => {
-                console.error(err);
-            });
-    }, []);
 
     function submitForm() {
         userService.login(user).then((user) => {
@@ -45,7 +32,7 @@ function LoginComponent({ navigation }: LoginProp) {
     function createAccount() {
             navigation.navigate('Register');
     }
-  
+
     return (
         <View style={[style.container, style.login]}>
             <TextInput
@@ -68,7 +55,7 @@ function LoginComponent({ navigation }: LoginProp) {
             <Button onPress={submitForm} title='Login' color='#63D4FF' />
             <Text>Don't have an account?</Text>
             <Button onPress={createAccount} title='Create Account' color='#63D4FF' />
-           
+
         </View>
     );
 }
