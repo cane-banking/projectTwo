@@ -4,13 +4,10 @@ import { UserState } from '../store/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser, loginAction } from '../store/actions';
 import {
-    Platform,
     Button,
     TextInput,
     Text,
     View,
-    TouchableNativeFeedback,
-    TouchableHighlight,
 } from 'react-native';
 import style from '../../global-styles';
 
@@ -44,24 +41,23 @@ function LoginComponent({ navigation }: LoginProp) {
             navigation.navigate('Accounts');
         });
     }
-    function handle() {
-        alert('why?');
+
+    function createAccount() {
+            navigation.navigate('Register');
     }
-    function longHandle(){
-        alert('long press');
-    }
+  
     return (
         <View style={[style.container, style.login]}>
-            <Text>Username: </Text>
             <TextInput
+                placeholder='username'
                 style={style.input}
                 onChangeText={(value) =>
                     dispatch(loginAction({ ...user, username: value }))
                 }
                 value={user.username}
             />
-            <Text>Password: </Text>
             <TextInput
+                placeholder='password'
                 secureTextEntry={true}
                 style={style.input}
                 onChangeText={(value) =>
@@ -69,32 +65,12 @@ function LoginComponent({ navigation }: LoginProp) {
                 }
                 value={user.password}
             />
-            <Button onPress={submitForm} title='Login' color='#880022' />
-            <Text>{Platform.OS}</Text>
-            {Platform.OS === 'android' ? (
-                <TouchableNativeFeedback
-                    background={TouchableNativeFeedback.SelectableBackground()}
-                >
-                    <View>
-                        <Text>OnlyAndroid</Text>
-                    </View>
-                </TouchableNativeFeedback>
-            ) : (
-                <TouchableHighlight onPress={handle} underlayColor='white'>
-                    <View>
-                        <Text>Everyone Else</Text>
-                    </View>
-                </TouchableHighlight>
-            )}
-            <TouchableHighlight onLongPress={longHandle} underlayColor='white'>
-                <View>
-                    <Text>Everyone Else</Text>
-                </View>
-            </TouchableHighlight>
+            <Button onPress={submitForm} title='Login' color='#63D4FF' />
+            <Text>Don't have an account?</Text>
+            <Button onPress={createAccount} title='Create Account' color='#63D4FF' />
+           
         </View>
     );
-    // TouchableNativeFeedback - Android specific api
-    // TouchableHighlight - less specific version
 }
 
 export default LoginComponent;
