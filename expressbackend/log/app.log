@@ -206,3 +206,330 @@
 [2021-01-26T12:34:00.143] [DEBUG] default - {}
 [2021-01-26T12:35:04.191] [DEBUG] default - {}
 [2021-01-26T12:37:36.902] [DEBUG] default - {}
+[2021-01-26T12:56:58.372] [DEBUG] default - {}
+[2021-01-26T12:57:01.505] [DEBUG] default - {}
+[2021-01-26T12:57:35.300] [DEBUG] default - {}
+[2021-01-26T12:57:45.568] [DEBUG] default - {}
+[2021-01-26T12:57:48.187] [DEBUG] default - {}
+[2021-01-26T13:13:35.282] [DEBUG] default - {}
+[2021-01-26T13:14:13.764] [DEBUG] default - {}
+[2021-01-26T13:14:15.030] [DEBUG] default - {}
+[2021-01-26T13:14:34.972] [DEBUG] default - {}
+[2021-01-26T13:15:24.956] [DEBUG] default - {}
+[2021-01-26T13:15:29.863] [DEBUG] default - {}
+[2021-01-26T13:24:59.216] [DEBUG] default - {}
+[2021-01-26T13:25:30.735] [DEBUG] default - {}
+[2021-01-26T13:38:07.789] [DEBUG] default - right here {
+  username: 'emily',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-26T13:38:07.812] [DEBUG] default - emily pass
+[2021-01-26T13:38:08.262] [DEBUG] default - data.Item: {"firstname":"emily","lastname":"smith","password":"pass","username":"emily","role":"employee","email":"esmith@gmail.com"}
+[2021-01-26T13:38:08.337] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T14:27:44.373] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T16:29:05.709] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:13:36.341] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:14:25.582] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:14:27.526] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:15:02.170] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:16:21.220] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:16:24.134] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:16:30.536] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:16:34.219] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:17:08.061] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:17:10.475] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:17:15.804] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:17:17.334] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:18:26.538] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:18:33.742] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:18:53.108] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:26:56.237] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:27:02.399] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:27:19.269] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:27:28.077] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:27:38.276] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:27:49.240] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:27:51.948] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:28:01.591] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:28:07.393] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:28:16.363] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:28:25.037] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:29:18.991] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:29:38.434] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:29:47.907] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:29:50.452] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:30:22.456] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-26T20:30:56.179] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-27T12:18:37.119] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee',
+  email: 'esmith@gmail.com'
+}
+[2021-01-27T12:18:49.127] [DEBUG] default - right here {
+  username: 'asad',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-27T12:18:49.129] [DEBUG] default - asad pass
+[2021-01-27T12:18:49.352] [DEBUG] default - data.Item: {"firstname":"asad","lastname":"nazir","password":"pass","username":"asad","role":"customer","email":"anazir@gmail.com"}
+[2021-01-27T12:18:49.428] [DEBUG] default - {
+  firstname: 'asad',
+  lastname: 'nazir',
+  password: 'pass',
+  username: 'asad',
+  role: 'customer',
+  email: 'anazir@gmail.com'
+}
