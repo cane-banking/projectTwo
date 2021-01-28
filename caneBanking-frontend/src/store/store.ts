@@ -1,6 +1,7 @@
 import { applyMiddleware, createStore, Store } from "redux";
 import thunk from "redux-thunk";
 import { Check } from "../check/check";
+import { Account } from '../accounts/account';
 import { User } from "../user/user";
 import { AppAction } from "./actions";
 import reducer from "./reducer";
@@ -11,6 +12,7 @@ export interface UserState {
     locale?: string;
     checks: Check[];
     check: Check;
+    account: Account;
 }
 export interface CaneBankingState extends UserState { }
 // <> is generics: Generic arguments allow us to define the type of a thing at runtime instead of when we write it,
