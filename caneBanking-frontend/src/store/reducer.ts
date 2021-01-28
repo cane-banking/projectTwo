@@ -27,6 +27,9 @@ const reducer = (state: CaneBankingState = initialState, action: Actions.AppActi
         case Actions.UserActions.ChangeLocale:
             newState.locale = action.payload as string;
             return newState;
+        case Actions.UserActions.ChangeUser:
+            newState.user = action.payload as User;
+            return newState;
         default:
             return state;
     }

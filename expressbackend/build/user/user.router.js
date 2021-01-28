@@ -10,33 +10,14 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
-var user = __importStar(require("./user"));
 var log_1 = __importDefault(require("../log"));
 var constant_1 = __importDefault(require("../constant"));
+var user_service_1 = __importDefault(require("./user.service"));
 var router = express_1.default.Router();
 /* GET users listing. */
 router.get('/login', function (req, res, next) {
@@ -70,13 +51,22 @@ router.delete('/', function (req, res, next) {
     res.sendStatus(204);
 });
 router.post('/', function (req, res, next) {
-    log_1.default.debug('right here', req.body);
-    user.login(req.body.username, req.body.password).then(function (user) {
-        if (user === null) {
-            res.sendStatus(401);
-        }
-        req.session.user = user;
-        res.send(JSON.stringify(user));
+    log_1.default.debug(req.body);
+    user_service_1.default.addUser(req.body).then(function (data) {
+        log_1.default.debug(data);
+        res.send(201);
+    }).catch(function (err) {
+        res.sendStatus(500);
     });
 });
+/* router.post('/', function(req: any, res, next) {
+  logger.debug('right here',req.body);
+  user.login(req.body.username, req.body.password).then((user) => {
+    if(user === null) {
+      res.sendStatus(401);
+    }
+    req.session.user = user;
+    res.send(JSON.stringify(user))
+  });
+}); */
 exports.default = router;
