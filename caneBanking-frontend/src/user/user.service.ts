@@ -11,17 +11,18 @@ class UserService {
     }
     getLogin(): Promise<User> {
         // withCredentials sends our cookies with the request.
-        return axios.get(this.URI, {withCredentials: true}).then(result=>{
+        return axios.get(this.URI).then(result=>{
             console.log(result);
             return result.data
         });
     }
 
     login(user: User): Promise<User> {
-        return axios.post(this.URI, user, {withCredentials: true}).then(result => result.data).catch(err => err);
+        console.log(user);
+        return axios.post(this.URI, user).then(result => result.data).catch(err => err);
     }
     logout(): Promise<null> {
-        return axios.delete(this.URI, {withCredentials: true}).then(result => null);
+        return axios.delete(this.URI).then(result => null);
     }
 
     addUser(u: User): Promise<User> {
