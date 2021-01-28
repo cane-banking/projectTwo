@@ -6,7 +6,7 @@ import { addCheck, changeCheck } from '../store/actions';
 import { CaneBankingState } from '../store/store';
 import { Check } from './check';
 import checkService from './check.service';
-import  Picker  from '@react-native-picker/picker';
+import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 
 interface Deposit {
     navigation: any;

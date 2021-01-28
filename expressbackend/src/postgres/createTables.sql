@@ -9,7 +9,7 @@ drop table applications ;
 drop table checks;
 
 CREATE TABLE customer(
-	customer_id SERIAL,
+	customer_id text,
 	firstName text UNIQUE NOT NULL,
 	lastName text NOT null,
 	CONSTRAINT "pk_customer" PRIMARY KEY  ("customer_id")
