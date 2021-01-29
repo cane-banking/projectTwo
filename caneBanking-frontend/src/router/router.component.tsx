@@ -7,23 +7,17 @@ import { CaneBankingState } from '../store/store';
 import { useSelector } from 'react-redux';
 import Accounts from '../accounts/accounts.component';
 import SignUpComponent from '../user/signup.component';
-<<<<<<< HEAD
-import CreateAccount from '../accounts/account-component';
-=======
 import DepositCheck from '../check/DepositCheck.component';
 import NavBarComponent from './navbar.component';
->>>>>>> ab1f6707fc1d20018f91fb7eb6b304404d272a55
+import CreateAccount from '../accounts/account-component';
 
 /* Parameter list for RouteProp requires a field for the route that we're on. */
 export type StackParams = {
     Login: undefined;
     Accounts: undefined;
     Register: undefined;
-<<<<<<< HEAD
-    CreateAccount: undefined;
-=======
     DepositCheck: undefined;
->>>>>>> ab1f6707fc1d20018f91fb7eb6b304404d272a55
+    CreateAccount: undefined;
 };
 
 const Stack = createStackNavigator<StackParams>();
