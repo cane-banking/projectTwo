@@ -11,11 +11,13 @@ const perfectSize = create(designResolution);
 
 const styles = StyleSheet.create({
     boldText: {
+        color: '#756262',
         fontFamily: 'Helvetica',
         fontSize: 18,
         fontWeight: 'bold'
     },
     regularText: {
+        color: '#756262',
         fontFamily: 'Helvetica',
         fontSize: 14
     },
@@ -31,10 +33,10 @@ const styles = StyleSheet.create({
         color: 'black',
         backgroundColor: '#c4c4c4',
         borderRadius: 20,
-        marginTop: 10,
-        marginBottom: 10,
-        height: 30,
-        width: 200,
+        marginTop: 12,
+        marginBottom: 12,
+        height: 35,
+        width: 250,
     },
     login: {
         backgroundColor: '#f5feff'
@@ -47,6 +49,13 @@ const styles = StyleSheet.create({
     row: {
         flex: 1,
         flexDirection: 'row'
+    },
+    create: {
+        margin: 20,
+        alignSelf: 'stretch'
+    },
+    heading: {
+        marginBottom: 10
     }
 });
 

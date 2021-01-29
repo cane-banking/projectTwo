@@ -1,5 +1,4 @@
 import * as AWS from 'aws-sdk';
-import {Client} from 'pg';
 
 let docClient = new AWS.DynamoDB.DocumentClient({
     region: 'us-west-2',
@@ -12,11 +11,7 @@ interface MyEvent {
 
 export const handler = async (event: MyEvent): Promise<any> => {
     let user: User = JSON.parse(event.body) as User;
-    console.log('before dynamo');
     let resp = await addUser(user);
-    console.log('after dynamo');
-    addCustomerPg(user)
-    console.log('after pg');
     if (resp) {
         return {statusCode: 204, headers: {
             "Access-Control-Allow-Headers" : "Content-Type",
@@ -28,30 +23,6 @@ export const handler = async (event: MyEvent): Promise<any> => {
         return {statusCode: 400};
     }
 }
-
- async function addCustomerPg(customer: any){
-    const client = new Client();
-    client.connect();
-    const query = `insert into checks (
-                                   customer_id,
-                                   firstname,
-                                   lastname) values ($1, $2, $3)`;
-    const values = [
-                    customer.customer_id,
-                    customer.firstname,
-                    customer.lastname ];
-    let response;
-    try{
-        response = await client.query(query, values);
-    } catch (error) {
-        console.log(error);
-    }
-    console.log(response);
-    client.end();
-    return response;
-
-} 
-
 
 
     async function addUser(user: User): Promise<boolean> {
