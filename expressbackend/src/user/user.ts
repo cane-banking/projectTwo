@@ -23,13 +23,8 @@ export async function login(username: string, password: string): Promise<User|nu
     })
 }
 
-<<<<<<< HEAD
-export function register(customer_id: string, username: string, firstname: string,lastname: string,password:string, email: string) {
-    userService.addUser(new User(customer_id,username,firstname,lastname, password, 'customer', email)).then((res) => {
-=======
 /* export function register(username: string, firstname: string,lastname: string,password:string, email: string) {
     userService.addUser(new User(customer_id, username,firstname,lastname, password, 'customer', email)).then((res) => {
->>>>>>> dcfdc75d16b8a25991ce87be76a642e7c1e4bd46
         logger.trace(res);
         //callback();
     }).catch((err) => {

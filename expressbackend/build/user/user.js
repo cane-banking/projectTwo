@@ -39,7 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateUser = exports.register = exports.login = exports.User = void 0;
+exports.updateUser = exports.login = exports.User = void 0;
 var log_1 = __importDefault(require("../log"));
 var user_service_1 = __importDefault(require("./user.service"));
 var User = /** @class */ (function () {
@@ -79,18 +79,16 @@ function login(username, password) {
     });
 }
 exports.login = login;
-function register(customer_id, username, firstname, lastname, password, email) {
-    user_service_1.default.addUser(new User(customer_id, username, firstname, lastname, password, 'customer', email)).then(function (res) {
-        log_1.default.trace(res);
+/* export function register(username: string, firstname: string,lastname: string,password:string, email: string) {
+    userService.addUser(new User(customer_id, username,firstname,lastname, password, 'customer', email)).then((res) => {
+        logger.trace(res);
         //callback();
-    }).catch(function (err) {
-        log_1.default.error(err);
-        console.log('Error, this probably means that the username is already taken.');
+    }).catch((err) => {
+        logger.error(err);
+        console.log('Error, this probably means that the username is already taken.')
         //callback();
     });
-}
-exports.register = register;
- * /;
+} */
 function updateUser(user) {
     user_service_1.default.updateUser(user).then(function (success) {
         log_1.default.info('user updated successfully');
