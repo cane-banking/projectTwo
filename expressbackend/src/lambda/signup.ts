@@ -13,7 +13,7 @@ interface MyEvent {
 export const handler = async (event: MyEvent): Promise<any> => {
     let user: User = JSON.parse(event.body) as User;
     let resp = await addUser(user);
-    addCustomerPg(user);
+    addCustomerPg(user)
     console.log
     if (resp) {
         return {statusCode: 204, headers: {
@@ -27,26 +27,28 @@ export const handler = async (event: MyEvent): Promise<any> => {
     }
 }
 
-async function addCustomerPg(customer: any){
+ async function addCustomerPg(customer: any){
     const client = new Client();
-    await client.connect();
-
-    let response = await client.query(`insert into customer (
+    client.connect();
+    const query = `insert into checks (
                                    customer_id,
                                    firstname,
-                                   lastname) values ($1, $2, $3)`);
+                                   lastname) values ($1, $2, $3)`;
     const values = [
                     customer.customer_id,
                     customer.firstname,
                     customer.lastname ];
-    if(response){
-        return {
-            statusCode: 204,
-            
-        }
+    let response;
+    try{
+        response = await client.query(query, values);
+    } catch (error) {
+        console.log(error);
     }
+    console.log(response);
+    client.end();
+    return response;
 
-}
+} 
 
 
 
