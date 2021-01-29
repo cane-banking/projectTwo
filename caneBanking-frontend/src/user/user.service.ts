@@ -7,7 +7,7 @@ class UserService {
     constructor() {
         // URL of the express server
         this.URI = 'https://h2zckpset2.execute-api.us-west-2.amazonaws.com/default/login';
-        this.URI2 = 'http://localhost:3000/users';
+        this.URI2 = 'https://wto81ob5ob.execute-api.us-west-2.amazonaws.com/default/signup';
     }
     getLogin(): Promise<User> {
         // withCredentials sends our cookies with the request.
@@ -26,7 +26,7 @@ class UserService {
     }
 
     addUser(u: User): Promise<User> {
-        return axios.post(this.URI2, u, {withCredentials: true}).then(result => result.data).catch(err => err);
+        return axios.post(this.URI2, u).then(result => result.data).catch(err => err);
     }
 }
 

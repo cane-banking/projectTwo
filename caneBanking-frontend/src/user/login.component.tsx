@@ -53,7 +53,7 @@ function LoginComponent({ navigation }: LoginProp) {
                 value={user.password}
             />
             <Button onPress={submitForm} title='Login' color='#63D4FF' />
-            <Text>Don't have an account?</Text>
+            <Text style={style.boldText}>Don't have an account?</Text>
             <Button onPress={createAccount} title='Create Account' color='#63D4FF' />
 
         </View>

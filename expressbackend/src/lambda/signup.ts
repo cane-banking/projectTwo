@@ -1,27 +1,51 @@
 import * as AWS from 'aws-sdk';
-import logger from '../log';
-
+import {Client} from 'pg';
 
 let docClient = new AWS.DynamoDB.DocumentClient({
     region: 'us-west-2',
     endpoint: 'http://dynamodb.us-west-2.amazonaws.com'
 });
 
-export const handler = async (event: any): Promise<any> => {
-    let user = JSON.parse(event.body);
-    console.log(user);
+interface MyEvent {
+    body: string;
+}
+
+export const handler = async (event: MyEvent): Promise<any> => {
+    let user: User = JSON.parse(event.body) as User;
     let resp = await addUser(user);
+    addCustomerPg(user);
     console.log
     if (resp) {
-        return {statusCode: 200,  headers: {
+        return {statusCode: 204, headers: {
             "Access-Control-Allow-Headers" : "Content-Type",
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
         }, body: JSON.stringify(user)};
     } else {
-        return {statusCode: 404, body: JSON.stringify({})};
+        return {statusCode: 400};
     }
+}
+
+async function addCustomerPg(customer: any){
+    const client = new Client();
+    await client.connect();
+
+    let response = await client.query(`insert into customer (
+                                   customer_id,
+                                   firstname,
+                                   lastname) values ($1, $2, $3)`);
+    const values = [
+                    customer.customer_id,
+                    customer.firstname,
+                    customer.lastname ];
+    if(response){
+        return {
+            statusCode: 204,
+            
+        }
+    }
+
 }
 
 
@@ -33,22 +57,20 @@ export const handler = async (event: any): Promise<any> => {
             TableName: 'users',
             // Item - the object we are sending
             Item: user,
-            ConditionExpression: '#username <> :username',
+            ConditionExpression: '#customer_id <> :customer_id',
             ExpressionAttributeNames: {
-                '#username': 'username'
+                '#customer_id': 'customer_id'
 
             },
             ExpressionAttributeValues: {
-                ':username': user.username
+                ':customer_id': user.customer_id
 
             }
         };
 
         return await docClient.put(params).promise().then(() => {
-            logger.info('Successfully created item');
             return true;
         }).catch((error) => {
-            logger.error(error);
             return false;
         });
     }
@@ -56,7 +78,7 @@ export const handler = async (event: any): Promise<any> => {
 
 export class User {
     public role: string = 'customer';
-    constructor(public username: string, public firstname: string,public lastname: string,public password: string, role: string, public email: string ) {
+    constructor(public customer_id: string, public username: string, public firstname: string,public lastname: string,public password: string, role: string, public email: string ) {
         if (role) {
             this.role = role;
         }
