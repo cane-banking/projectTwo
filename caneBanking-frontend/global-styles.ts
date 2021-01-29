@@ -1,5 +1,5 @@
 import {SnapshotViewIOSComponent, StyleSheet} from 'react-native';
-import { color } from 'react-native-reanimated';
+import { color } from './src/helpers/colorScheme';
 
 // Importing using require because there is no @types
 const { create } = require('react-native-pixel-perfect');
@@ -23,13 +23,17 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+<<<<<<< HEAD
         backgroundColor: '#f5feff',
         fontSize: '18px',
         fontFamily: 'poppins'
+=======
+        backgroundColor: color.background,
+>>>>>>> ab1f6707fc1d20018f91fb7eb6b304404d272a55
     },
     input: {
-        color: 'black',
-        backgroundColor: '#c4c4c4',
+        color: color.black,
+        backgroundColor: color.inputBackground,
         borderRadius: 20,
         marginTop: 10,
         marginBottom: 10,
@@ -37,7 +41,7 @@ const styles = StyleSheet.create({
         width: 200,
     },
     login: {
-        backgroundColor: '#f5feff'
+        backgroundColor: color.background
     },
     logo: {
         // perfectSize is only going to call when the app is first loaded in the device.
@@ -47,6 +51,34 @@ const styles = StyleSheet.create({
     row: {
         flex: 1,
         flexDirection: 'row'
+    },
+    checkPhoto: {
+        marginBottom: 30,
+        width: 100,
+        height: 100,
+        alignItems: 'center',
+        backgroundColor: color.white,
+        borderWidth: 2,
+        borderColor: color.lightGray,
+        borderRadius: 10
+    },
+    checkPhotoText: {
+        textAlign: 'center',
+        padding: 20,
+        color: color.lightGray
+    },
+    label: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: color.darkGray
+    },
+    screenHeader: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        color: color.lightBlue
+    },
+    screen: {
+        padding: 15
     }
 });
 
