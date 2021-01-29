@@ -1,7 +1,7 @@
-import  React  from 'react';
+import  React, { useEffect }  from 'react';
 import { View, TextInput, Button, Text, TouchableHighlight, Image } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import style from '../../global-styles';
+import style, {color} from '../../global-styles';
 import { addCheck, changeCheck } from '../store/actions';
 import { CaneBankingState } from '../store/store';
 import { Check } from './check';
@@ -10,23 +10,29 @@ import {getDate} from '../helpers/date';
 import { v4 as uuidv4 } from 'uuid';
 //uuidv4(); // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
-import { color } from '../helpers/colorScheme';
+
 
 interface Deposit {
     navigation: any;
 }
 
+// useEffect(()=> {
+
+// })
+
 function DepositCheck({navigation}: Deposit) {
     const check = useSelector((state: CaneBankingState) => state.check);
     const dispatch = useDispatch();
 
+
     function submitCheckDeposit() {
         check.check_id = uuidv4();
-        //check.check_date = new Date(); //change to string in table
-        check.account_id = '' //account.account_id
-       // check.customer_id = '' //customer.customer_id change to string in table
-        check.firstname = ''//customer.firstname
-        check.lastname = ''//customer.lastname
+        check.check_date = getDate();
+        check.account_id = '12456'; //account.account_id
+        check.customer_id = '123'; //customer.customer_id
+        check.firstname = 'Bobby';//customer.firstname
+        check.lastname = 'Terry';//customer.lastname
+        check.amount = 123;
         checkService.addCheck(check).then(() => {
             dispatch(changeCheck(new Check()));
             navigation.navigate('Accounts');
@@ -49,9 +55,9 @@ function DepositCheck({navigation}: Deposit) {
                 style={{fontSize: 55, color:color.lightBlue, borderBottomWidth: 1, borderBottomColor: color.darkGray, padding: 10}}
                 keyboardType = 'numeric'
                 onChangeText={(value) =>
-                    dispatch(changeCheck({ ...check, amount: value}))
+                    dispatch(changeCheck({ ...check, amount: Number(value)}))
                 }
-                value={check.amount}
+                value={check.amount.toString()}
                 >
             </TextInput>
             <Text style={style.label}>Take Photos</Text>

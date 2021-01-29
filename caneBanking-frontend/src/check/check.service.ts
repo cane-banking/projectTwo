@@ -4,7 +4,7 @@ import { Check } from './check';
 class CheckService {
     private URI: string;
     constructor() {
-        this.URI = 'https://localhost:3000/checks';
+        this.URI = 'https://bt264b7vn5.execute-api.us-west-2.amazonaws.com/default/check';
     }
     getCheck(): Promise<Check> {
         return axios.get(this.URI, {withCredentials: true}).then(result=>{
@@ -13,7 +13,7 @@ class CheckService {
         });
     }
     addCheck(check: Check): Promise<Check> {
-        return axios.post(this.URI, check, {withCredentials: true}).then(result => result.data).catch(err => err);
+        return axios.post(this.URI, check).then(result => result.data).catch(err => err);
     }
 }
 
