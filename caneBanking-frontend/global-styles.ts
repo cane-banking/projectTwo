@@ -20,17 +20,29 @@ export const color = {
 }
 
 const styles = StyleSheet.create({
+    boldText: {
+        fontFamily: 'Helvetica',
+        fontSize: 18,
+        fontWeight: 'bold'
+    },
+    regularText: {
+        fontFamily: 'Helvetica',
+        fontSize: 14
+    },
     container: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: color.background,
+        fontSize: '18px',
+        fontFamily: 'poppins'
     },
     input: {
         color: color.black,
         backgroundColor: color.inputBackground,
         borderRadius: 20,
-        marginBottom: 20,
+        marginTop: 10,
+        marginBottom: 10,
         height: 30,
         width: 200,
     },

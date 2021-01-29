@@ -2,6 +2,7 @@ import express from 'express';
 import * as user from './user';
 import logger from '../log';
 import publicDir from '../constant';
+import userService from './user.service';
 
 const router = express.Router();
 
@@ -40,6 +41,16 @@ router.delete('/', (req, res, next) => {
 })
 
 router.post('/', function(req: any, res, next) {
+  logger.debug(req.body);
+  userService.addUser(req.body).then((data) => {
+    logger.debug(data);
+    res.send(201);
+  }).catch((err) => {
+    res.sendStatus(500);
+  })
+});
+
+/* router.post('/', function(req: any, res, next) {
   logger.debug('right here',req.body);
   user.login(req.body.username, req.body.password).then((user) => {
     if(user === null) {
@@ -48,6 +59,6 @@ router.post('/', function(req: any, res, next) {
     req.session.user = user;
     res.send(JSON.stringify(user))
   });
-});
+}); */
 
 export default router;

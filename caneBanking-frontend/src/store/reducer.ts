@@ -2,6 +2,7 @@ import * as Actions from './actions';
 import { User } from './../user/user';
 import { CaneBankingState } from './store';
 import { Check } from '../check/check';
+import { Account } from '../accounts/account';
 
 // We need to define the initial state of the application and that
 // state should include everything that the application might keep track of.
@@ -10,7 +11,8 @@ export const initialState: CaneBankingState = {
     user: new User(),
     loginUser: new User(),
     checks: [],
-    check: new Check()
+    check: new Check(),
+    account: new Account()
 }
 
 // Make sure that the reducer has a default argument of the inital state or it will not work.
@@ -30,11 +32,16 @@ const reducer = (state: CaneBankingState = initialState, action: Actions.AppActi
         case Actions.UserActions.ChangeLocale:
             newState.locale = action.payload as string;
             return newState;
+        case Actions.UserActions.ChangeUser:
+            newState.user = action.payload as User;
         case Actions.CheckActions.AddCheck:
             newState.checks = [...newState.checks, action.payload] as Check[];
             return newState;
         case Actions.CheckActions.ChangeCheck:
             newState.check = action.payload as Check;
+            return newState;
+        case Actions.AccountActions.ChangeAccount:
+            newState.account = action.payload as Account;
             return newState;
         default:
             return state;

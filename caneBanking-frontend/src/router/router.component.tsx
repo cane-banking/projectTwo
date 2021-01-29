@@ -9,6 +9,7 @@ import Accounts from '../accounts/accounts.component';
 import SignUpComponent from '../user/signup.component';
 import DepositCheck from '../check/DepositCheck.component';
 import NavBarComponent from './navbar.component';
+import CreateAccount from '../accounts/account-component';
 
 /* Parameter list for RouteProp requires a field for the route that we're on. */
 export type StackParams = {
@@ -16,6 +17,7 @@ export type StackParams = {
     Accounts: undefined;
     Register: undefined;
     DepositCheck: undefined;
+    CreateAccount: undefined;
 };
 
 const Stack = createStackNavigator<StackParams>();
@@ -37,6 +39,11 @@ function RouterComponent(props: any) {
             <Stack.Screen
                 name='Accounts'
                 component={Accounts}
+                options={headerOptions}
+            />
+            <Stack.Screen
+                name='CreateAccount'
+                component={CreateAccount}
                 options={headerOptions}
             />
             <Stack.Screen

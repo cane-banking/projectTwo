@@ -1,1 +1,299 @@
+<<<<<<< HEAD
+[2021-01-22T20:58:53.719] [INFO] default - Successfully created item
+[2021-01-22T20:58:53.725] [INFO] default - Successfully created item
+[2021-01-22T20:58:53.790] [INFO] default - Successfully created item
+[2021-01-22T20:58:53.792] [INFO] default - Successfully created item
+[2021-01-22T20:58:53.851] [INFO] default - Successfully created item
+[2021-01-23T14:10:01.512] [INFO] default - Successfully created item
+[2021-01-23T14:10:01.532] [INFO] default - Successfully created item
+[2021-01-23T14:10:01.532] [INFO] default - Successfully created item
+[2021-01-23T14:10:01.533] [INFO] default - Successfully created item
+[2021-01-23T14:10:01.787] [INFO] default - Successfully created item
+<<<<<<< HEAD
+[2021-01-23T20:03:07.152] [INFO] default - Successfully created item
+[2021-01-23T20:03:07.158] [INFO] default - Successfully created item
+[2021-01-23T20:03:07.170] [INFO] default - Successfully created item
+[2021-01-23T20:03:07.180] [INFO] default - Successfully created item
+[2021-01-23T20:03:07.189] [INFO] default - Successfully created item
+=======
+[2021-01-23T13:59:35.882] [DEBUG] default - {}
+[2021-01-23T13:59:46.641] [DEBUG] default - {
+  username: 'emily',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-23T13:59:46.647] [DEBUG] default - undefined pass
+[2021-01-23T14:01:41.751] [DEBUG] default - {}
+[2021-01-23T14:01:49.328] [DEBUG] default - {
+  username: 'emily',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-23T14:01:49.332] [DEBUG] default - undefined pass
+<<<<<<< HEAD
+>>>>>>> 7491e709d6a1e97b02eaa0a1432a0a3870d91f9d
+=======
+[2021-01-24T10:31:18.676] [DEBUG] default - {}
+[2021-01-24T10:47:27.108] [DEBUG] default - {
+  username: 'cassandra',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T10:47:27.109] [DEBUG] default - undefined pass
+[2021-01-24T10:48:40.986] [DEBUG] default - {}
+[2021-01-24T10:48:46.223] [DEBUG] default - {
+  username: 'cassandra',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T10:48:46.224] [DEBUG] default - undefined pass
+[2021-01-24T10:51:15.854] [DEBUG] default - {}
+[2021-01-24T10:51:23.825] [DEBUG] default - {
+  username: 'cassandra',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T10:51:23.826] [DEBUG] default - undefined pass
+[2021-01-24T10:53:12.227] [DEBUG] default - {}
+[2021-01-24T10:53:22.386] [DEBUG] default - right here {
+  username: 'emily',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T10:53:22.388] [DEBUG] default - undefined pass
+[2021-01-24T10:55:01.726] [DEBUG] default - right here {
+  username: 'emily',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T10:55:01.728] [DEBUG] default - emily pass
+[2021-01-24T10:55:02.184] [DEBUG] default - data.Item: {"firstname":"emily","lastname":"smith","password":"pass","username":"emily","role":"employee"}
+[2021-01-24T10:55:02.343] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee'
+}
+>>>>>>> 7b1bb28296a87b4468331f4e4c9fca16f5a7b676
+<<<<<<< HEAD
+[2021-01-24T14:13:22.827] [DEBUG] default - {}
+[2021-01-24T14:13:35.281] [DEBUG] default - right here {
+  username: 'asad',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T14:13:35.288] [DEBUG] default - asad pass
+[2021-01-24T14:13:35.505] [DEBUG] default - data.Item: {"firstname":"asad","lastname":"nazir","password":"pass","username":"asad","role":"customer"}
+[2021-01-24T14:13:35.687] [DEBUG] default - {
+  firstname: 'asad',
+  lastname: 'nazir',
+  password: 'pass',
+  username: 'asad',
+  role: 'customer'
+}
+[2021-01-24T14:14:25.227] [DEBUG] default - right here {
+  username: 'cynthia',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T14:14:25.230] [DEBUG] default - cynthia pass
+[2021-01-24T14:14:25.457] [DEBUG] default - {
+  firstname: 'asad',
+  lastname: 'nazir',
+  password: 'pass',
+  username: 'asad',
+  role: 'customer'
+}
+[2021-01-24T14:14:45.927] [DEBUG] default - right here {
+=======
+[2021-01-24T13:11:54.311] [DEBUG] default - {}
+[2021-01-24T13:12:13.658] [DEBUG] default - right here {
+>>>>>>> 0bd89286c671279393b198772923055f3f2f9f75
+  username: 'nilam',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+<<<<<<< HEAD
+[2021-01-24T14:14:45.931] [DEBUG] default - nilam pass
+[2021-01-24T14:14:46.107] [DEBUG] default - data.Item: {"firstname":"nilam","lastname":"patel","password":"pass","username":"nilam","role":"customer"}
+[2021-01-24T14:14:46.173] [DEBUG] default - {
+=======
+[2021-01-24T13:12:13.660] [DEBUG] default - nilam pass
+[2021-01-24T13:12:13.892] [DEBUG] default - data.Item: {"firstname":"nilam","lastname":"patel","password":"pass","username":"nilam","role":"customer"}
+[2021-01-24T13:12:13.942] [DEBUG] default - {
+>>>>>>> 0bd89286c671279393b198772923055f3f2f9f75
+  firstname: 'nilam',
+  lastname: 'patel',
+  password: 'pass',
+  username: 'nilam',
+  role: 'customer'
+}
+<<<<<<< HEAD
+[2021-01-24T14:14:58.361] [DEBUG] default - right here {
+  username: 'emily',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T14:14:58.363] [DEBUG] default - emily pass
+[2021-01-24T14:14:58.537] [DEBUG] default - data.Item: {"firstname":"emily","lastname":"smith","password":"pass","username":"emily","role":"employee"}
+[2021-01-24T14:14:58.613] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee'
+}
+<<<<<<< HEAD
+[2021-01-24T15:15:37.278] [DEBUG] default - {}
+[2021-01-24T15:15:45.209] [DEBUG] default - right here {
+  username: 'asad',
+=======
+[2021-01-24T13:13:57.536] [DEBUG] default - right here {
+  username: 'manny',
+>>>>>>> 0bd89286c671279393b198772923055f3f2f9f75
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+<<<<<<< HEAD
+[2021-01-24T15:15:45.213] [DEBUG] default - asad pass
+[2021-01-24T15:15:45.477] [DEBUG] default - data.Item: {"firstname":"asad","lastname":"nazir","password":"pass","username":"asad","role":"customer"}
+[2021-01-24T15:15:45.608] [DEBUG] default - {
+  firstname: 'asad',
+  lastname: 'nazir',
+  password: 'pass',
+  username: 'asad',
+  role: 'customer'
+}
+[2021-01-24T15:15:56.261] [DEBUG] default - right here {
+  username: 'cynthia',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T15:15:56.275] [DEBUG] default - cynthia pass
+[2021-01-24T15:15:56.544] [DEBUG] default - {
+  firstname: 'asad',
+  lastname: 'nazir',
+  password: 'pass',
+  username: 'asad',
+  role: 'customer'
+}
+[2021-01-24T15:16:20.620] [DEBUG] default - right here {
+  username: 'emily',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T15:16:20.622] [DEBUG] default - emily pass
+[2021-01-24T15:16:20.798] [DEBUG] default - data.Item: {"firstname":"emily","lastname":"smith","password":"pass","username":"emily","role":"employee"}
+[2021-01-24T15:16:20.869] [DEBUG] default - {
+  firstname: 'emily',
+  lastname: 'smith',
+  password: 'pass',
+  username: 'emily',
+  role: 'employee'
+}
+[2021-01-24T15:16:34.036] [DEBUG] default - right here {
+  username: 'richard',
+  password: 'pass',
+  role: '',
+  firstname: '',
+  lastname: ''
+}
+[2021-01-24T15:16:34.048] [DEBUG] default - richard pass
+[2021-01-24T15:16:34.215] [DEBUG] default - data.Item: {"firstname":"richard","lastname":"orr","password":"pass","username":"richard","role":"employee"}
+[2021-01-24T15:16:34.301] [DEBUG] default - {
+  firstname: 'richard',
+  lastname: 'orr',
+  password: 'pass',
+  username: 'richard',
+  role: 'employee'
+}
+=======
+[2021-01-24T13:13:57.549] [DEBUG] default - manny pass
+[2021-01-24T13:13:57.866] [DEBUG] default - {
+  firstname: 'nilam',
+  lastname: 'patel',
+  password: 'pass',
+  username: 'nilam',
+  role: 'customer'
+}
+[2021-01-24T13:14:29.304] [DEBUG] default - {
+  firstname: 'nilam',
+  lastname: 'patel',
+  password: 'pass',
+  username: 'nilam',
+  role: 'customer'
+}
+>>>>>>> 0bd89286c671279393b198772923055f3f2f9f75
+=======
+[2021-01-25T16:47:25.434] [INFO] default - Successfully created item
+[2021-01-25T16:47:25.446] [INFO] default - Successfully created item
+[2021-01-25T16:47:25.447] [INFO] default - Successfully created item
+[2021-01-25T16:47:25.448] [INFO] default - Successfully created item
+[2021-01-25T16:47:25.448] [INFO] default - Successfully created item
+>>>>>>> 4060aa4f1111f1d100efdac9578c7dd24619b35b
+=======
 
+<<<<<<< HEAD
+>>>>>>> 7c9fc9f7715bb6ab0764fee5ea9a5ea0f6132b7c
+[2021-01-26T23:08:44.324] [INFO] default - Successfully created item
+[2021-01-26T23:08:44.334] [INFO] default - Successfully created item
+[2021-01-26T23:08:44.345] [INFO] default - Successfully created item
+[2021-01-26T23:08:44.347] [INFO] default - Successfully created item
+[2021-01-26T23:08:44.349] [INFO] default - Successfully created item
+=======
+[2021-01-27T18:38:08.945] [DEBUG] default - {}
+[2021-01-27T18:41:20.335] [DEBUG] default - {
+  username: 'pandabear29',
+  email: 'email@gmail.com',
+  password: '1234',
+  role: 'customer',
+  firstname: 'Lis',
+  lastname: 'Jacobs'
+}
+[2021-01-27T18:41:20.891] [INFO] default - Successfully created item
+[2021-01-27T18:41:20.893] [DEBUG] default - true
+[2021-01-28T15:59:50.996] [INFO] default - Successfully created item
+[2021-01-28T15:59:51.000] [INFO] default - Successfully created item
+[2021-01-28T15:59:51.009] [INFO] default - Successfully created item
+[2021-01-28T15:59:51.017] [INFO] default - Successfully created item
+[2021-01-28T15:59:51.024] [INFO] default - Successfully created item
+[2021-01-28T16:15:10.654] [INFO] default - Successfully created item
+[2021-01-28T16:15:10.660] [INFO] default - Successfully created item
+[2021-01-28T16:15:10.670] [INFO] default - Successfully created item
+[2021-01-28T16:15:10.673] [INFO] default - Successfully created item
+[2021-01-28T16:15:10.674] [INFO] default - Successfully created item
+[2021-01-28T22:53:22.651] [INFO] default - Successfully created item
+[2021-01-28T22:53:22.657] [INFO] default - Successfully created item
+[2021-01-28T22:53:22.661] [INFO] default - Successfully created item
+[2021-01-28T22:53:22.670] [INFO] default - Successfully created item
+[2021-01-28T22:53:22.673] [INFO] default - Successfully created item
+>>>>>>> dcfdc75d16b8a25991ce87be76a642e7c1e4bd46

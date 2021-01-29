@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/cane-banking/projectTwo/issues"
   },
-  "homepage": "https://github.com/cane-banking/projectTwo#readme"
+  "homepage": "https://github.com/cane-banking/projectTwo#readme",
+  "dependencies": {}
 }
