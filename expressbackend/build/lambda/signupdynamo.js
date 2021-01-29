@@ -99,7 +99,7 @@ function addCustomerPg(customer) {
                 case 0:
                     client = new pg_1.Client();
                     client.connect();
-                    query = "insert into customer (\n                                   customer_id,\n                                   firstname,\n                                   lastname) values ($1, $2, $3)";
+                    query = "insert into checks (\n                                   customer_id,\n                                   firstname,\n                                   lastname) values ($1, $2, $3)";
                     values = [
                         customer.customer_id,
                         customer.firstname,

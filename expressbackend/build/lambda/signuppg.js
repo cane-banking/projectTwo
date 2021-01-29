@@ -35,67 +35,41 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateUser = exports.register = exports.login = exports.User = void 0;
-var log_1 = __importDefault(require("../log"));
-var user_service_1 = __importDefault(require("./user.service"));
-var User = /** @class */ (function () {
-    function User(customer_id, username, firstname, lastname, password, role, email) {
-        this.customer_id = customer_id;
-        this.username = username;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.password = password;
-        this.email = email;
-        this.role = 'customer';
-        if (role) {
-            this.role = role;
+exports.handler = void 0;
+var pg_1 = require("pg");
+var handler = function (event) { return __awaiter(void 0, void 0, void 0, function () {
+    var customer, client, query, values, response, error_1;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                customer = JSON.parse(event.body);
+                client = new pg_1.Client();
+                return [4 /*yield*/, client.connect()];
+            case 1:
+                _a.sent();
+                query = "insert into customer (\n                                   customer_id,\n                                   firstname,\n                                   lastname) values ($1, $2, $3)";
+                values = [
+                    customer.customer_id,
+                    customer.firstname,
+                    customer.lastname
+                ];
+                _a.label = 2;
+            case 2:
+                _a.trys.push([2, 4, , 5]);
+                return [4 /*yield*/, client.query(query, values)];
+            case 3:
+                response = _a.sent();
+                return [3 /*break*/, 5];
+            case 4:
+                error_1 = _a.sent();
+                console.log(error_1);
+                return [3 /*break*/, 5];
+            case 5:
+                console.log(response);
+                client.end();
+                return [2 /*return*/, response];
         }
-    }
-    ;
-    return User;
-}());
-exports.User = User;
-function login(username, password) {
-    return __awaiter(this, void 0, void 0, function () {
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    log_1.default.debug("" + (username + ' ' + password));
-                    return [4 /*yield*/, user_service_1.default.getUserByName(username).then(function (user) {
-                            if (user && user.password === password) {
-                                return user;
-                            }
-                            else {
-                                return null;
-                            }
-                        })];
-                case 1: return [2 /*return*/, _a.sent()];
-            }
-        });
     });
-}
-exports.login = login;
-function register(customer_id, username, firstname, lastname, password, email) {
-    user_service_1.default.addUser(new User(customer_id, username, firstname, lastname, password, 'customer', email)).then(function (res) {
-        log_1.default.trace(res);
-        //callback();
-    }).catch(function (err) {
-        log_1.default.error(err);
-        console.log('Error, this probably means that the username is already taken.');
-        //callback();
-    });
-}
-exports.register = register;
- * /;
-function updateUser(user) {
-    user_service_1.default.updateUser(user).then(function (success) {
-        log_1.default.info('user updated successfully');
-    }).catch(function (error) {
-        log_1.default.warn('user not updated');
-    });
-}
-exports.updateUser = updateUser;
+}); };
+exports.handler = handler;
