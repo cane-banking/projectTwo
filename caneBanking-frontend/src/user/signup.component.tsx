@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { SyntheticEvent, useState } from 'react';
 import { View, Text, TextInput, Button } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import style from '../../global-styles';
@@ -17,25 +17,22 @@ export default function SignUpComponent({ navigation }: SignupProp) {
     const user = useSelector(userSelector);
     const dispatch = useDispatch();
 
-    /* const [isError, setIsError] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const checkValidation = () => {
-        setConfirmPassword(e.target.value)
-        if(password !== confirmPassword){
-            setIsError("passwords don't match")
-        } else {
-            setIsError("");
-        }
-    } */
+   
 
     function createAccount(){
-        user.customer_id= uuid4();
+        if(password !== confirmPassword){
+            alert("Passwords don't match");
+        } else{
+        user.customer_id = uuid4();
+        user.password = password;
         user.role='customer';
         signupService.addUser(user).then(() => {
             dispatch(getUser(new User()));
             navigation.navigate('Login');
         });
+        }
     }
 
     return (
@@ -73,20 +70,11 @@ export default function SignUpComponent({ navigation }: SignupProp) {
                     }
                     value={user.lastname}
                 />
-            <TextInput
+              <TextInput
                     secureTextEntry={true}
                     placeholder='password'
                     style={style.input}
-                    onChangeText={(value) =>
-                        dispatch(getUser({ ...user, password: value }))
-                    }
-                    value={user.password}
-                />
-             {/* <TextInput
-                    secureTextEntry={true}
-                    placeholder='password'
-                    style={style.input}
-                    onChangeText={(e: any) => setPassword(e.target.value)}
+                    onChangeText={(value) => setPassword(value)}
                     value={password}
                 />
             <Text style={style.regularText}>confirm password</Text>
@@ -94,10 +82,9 @@ export default function SignUpComponent({ navigation }: SignupProp) {
                     secureTextEntry={true}
                     placeholder='confirm password'
                     style={style.input}
-                    onChangeText={(e: any) => checkValidation(e)}
+                    onChangeText={(value) => setConfirmPassword(value)}
                     value={confirmPassword}
                 />
-            <Text style={style.regularText}>{isError}</Text> */}
                 <Button onPress={createAccount} title='Create Account' color='#63D4FF' />
        </View>
     )
