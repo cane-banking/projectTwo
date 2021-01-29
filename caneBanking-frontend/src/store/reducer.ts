@@ -32,6 +32,8 @@ const reducer = (state: CaneBankingState = initialState, action: Actions.AppActi
         case Actions.UserActions.ChangeLocale:
             newState.locale = action.payload as string;
             return newState;
+        case Actions.UserActions.ChangeUser:
+            newState.user = action.payload as User;
         case Actions.CheckActions.AddCheck:
             newState.checks = [...newState.checks, action.payload] as Check[];
             return newState;

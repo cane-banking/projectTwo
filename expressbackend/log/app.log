@@ -262,9 +262,38 @@
 >>>>>>> 4060aa4f1111f1d100efdac9578c7dd24619b35b
 =======
 
+<<<<<<< HEAD
 >>>>>>> 7c9fc9f7715bb6ab0764fee5ea9a5ea0f6132b7c
 [2021-01-26T23:08:44.324] [INFO] default - Successfully created item
 [2021-01-26T23:08:44.334] [INFO] default - Successfully created item
 [2021-01-26T23:08:44.345] [INFO] default - Successfully created item
 [2021-01-26T23:08:44.347] [INFO] default - Successfully created item
 [2021-01-26T23:08:44.349] [INFO] default - Successfully created item
+=======
+[2021-01-27T18:38:08.945] [DEBUG] default - {}
+[2021-01-27T18:41:20.335] [DEBUG] default - {
+  username: 'pandabear29',
+  email: 'email@gmail.com',
+  password: '1234',
+  role: 'customer',
+  firstname: 'Lis',
+  lastname: 'Jacobs'
+}
+[2021-01-27T18:41:20.891] [INFO] default - Successfully created item
+[2021-01-27T18:41:20.893] [DEBUG] default - true
+[2021-01-28T15:59:50.996] [INFO] default - Successfully created item
+[2021-01-28T15:59:51.000] [INFO] default - Successfully created item
+[2021-01-28T15:59:51.009] [INFO] default - Successfully created item
+[2021-01-28T15:59:51.017] [INFO] default - Successfully created item
+[2021-01-28T15:59:51.024] [INFO] default - Successfully created item
+[2021-01-28T16:15:10.654] [INFO] default - Successfully created item
+[2021-01-28T16:15:10.660] [INFO] default - Successfully created item
+[2021-01-28T16:15:10.670] [INFO] default - Successfully created item
+[2021-01-28T16:15:10.673] [INFO] default - Successfully created item
+[2021-01-28T16:15:10.674] [INFO] default - Successfully created item
+[2021-01-28T22:53:22.651] [INFO] default - Successfully created item
+[2021-01-28T22:53:22.657] [INFO] default - Successfully created item
+[2021-01-28T22:53:22.661] [INFO] default - Successfully created item
+[2021-01-28T22:53:22.670] [INFO] default - Successfully created item
+[2021-01-28T22:53:22.673] [INFO] default - Successfully created item
+>>>>>>> dcfdc75d16b8a25991ce87be76a642e7c1e4bd46

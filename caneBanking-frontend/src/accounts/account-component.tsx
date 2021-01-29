@@ -35,7 +35,7 @@ function CreateAccount({navigation}: AccountType) {
     }];
 
     return (
-        <View style={styles.container}>
+        <View>
             <Dropdown
                 label='Create Account'
                 data = {data}

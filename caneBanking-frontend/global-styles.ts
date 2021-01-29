@@ -10,17 +10,29 @@ const designResolution = {
 const perfectSize = create(designResolution);
 
 const styles = StyleSheet.create({
+    boldText: {
+        fontFamily: 'Helvetica',
+        fontSize: 18,
+        fontWeight: 'bold'
+    },
+    regularText: {
+        fontFamily: 'Helvetica',
+        fontSize: 14
+    },
     container: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#f5feff',
+        fontSize: '18px',
+        fontFamily: 'poppins'
     },
     input: {
         color: 'black',
         backgroundColor: '#c4c4c4',
         borderRadius: 20,
-        marginBottom: 20,
+        marginTop: 10,
+        marginBottom: 10,
         height: 30,
         width: 200,
     },
