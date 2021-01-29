@@ -32,7 +32,7 @@ export const handler = async (event: MyEvent): Promise<any> => {
  async function addCustomerPg(customer: any){
     const client = new Client();
     client.connect();
-    const query = `insert into customer (
+    const query = `insert into checks (
                                    customer_id,
                                    firstname,
                                    lastname) values ($1, $2, $3)`;
