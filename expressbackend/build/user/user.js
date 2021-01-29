@@ -43,7 +43,8 @@ exports.updateUser = exports.register = exports.login = exports.User = void 0;
 var log_1 = __importDefault(require("../log"));
 var user_service_1 = __importDefault(require("./user.service"));
 var User = /** @class */ (function () {
-    function User(username, firstname, lastname, password, role, email) {
+    function User(customer_id, username, firstname, lastname, password, role, email) {
+        this.customer_id = customer_id;
         this.username = username;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -78,8 +79,8 @@ function login(username, password) {
     });
 }
 exports.login = login;
-function register(username, firstname, lastname, password, email) {
-    user_service_1.default.addUser(new User(username, firstname, lastname, password, 'customer', email)).then(function (res) {
+function register(customer_id, username, firstname, lastname, password, email) {
+    user_service_1.default.addUser(new User(customer_id, username, firstname, lastname, password, 'customer', email)).then(function (res) {
         log_1.default.trace(res);
         //callback();
     }).catch(function (err) {
