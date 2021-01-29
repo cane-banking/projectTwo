@@ -1,5 +1,5 @@
 export class User {
-    customer_id='';
+    customer_id = '';
     username = '';
     email = '';
     password = '';
