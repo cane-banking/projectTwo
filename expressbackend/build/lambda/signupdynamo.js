@@ -57,7 +57,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = exports.handler = void 0;
 var AWS = __importStar(require("aws-sdk"));
-var pg_1 = require("pg");
 var docClient = new AWS.DynamoDB.DocumentClient({
     region: 'us-west-2',
     endpoint: 'http://dynamodb.us-west-2.amazonaws.com'
@@ -68,13 +67,9 @@ var handler = function (event) { return __awaiter(void 0, void 0, void 0, functi
         switch (_a.label) {
             case 0:
                 user = JSON.parse(event.body);
-                console.log('before dynamo');
                 return [4 /*yield*/, addUser(user)];
             case 1:
                 resp = _a.sent();
-                console.log('after dynamo');
-                addCustomerPg(user);
-                console.log('after pg');
                 if (resp) {
                     return [2 /*return*/, { statusCode: 204, headers: {
                                 "Access-Control-Allow-Headers": "Content-Type",
@@ -91,39 +86,6 @@ var handler = function (event) { return __awaiter(void 0, void 0, void 0, functi
     });
 }); };
 exports.handler = handler;
-function addCustomerPg(customer) {
-    return __awaiter(this, void 0, void 0, function () {
-        var client, query, values, response, error_1;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    client = new pg_1.Client();
-                    client.connect();
-                    query = "insert into checks (\n                                   customer_id,\n                                   firstname,\n                                   lastname) values ($1, $2, $3)";
-                    values = [
-                        customer.customer_id,
-                        customer.firstname,
-                        customer.lastname
-                    ];
-                    _a.label = 1;
-                case 1:
-                    _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, client.query(query, values)];
-                case 2:
-                    response = _a.sent();
-                    return [3 /*break*/, 4];
-                case 3:
-                    error_1 = _a.sent();
-                    console.log(error_1);
-                    return [3 /*break*/, 4];
-                case 4:
-                    console.log(response);
-                    client.end();
-                    return [2 /*return*/, response];
-            }
-        });
-    });
-}
 function addUser(user) {
     return __awaiter(this, void 0, void 0, function () {
         var params;

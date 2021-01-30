@@ -50,34 +50,6 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row'
     },
-    checkPhoto: {
-        marginBottom: 30,
-        width: 100,
-        height: 100,
-        alignItems: 'center',
-        backgroundColor: color.white,
-        borderWidth: 2,
-        borderColor: color.lightGray,
-        borderRadius: 10
-    },
-    checkPhotoText: {
-        textAlign: 'center',
-        padding: 20,
-        color: color.lightGray
-    },
-    label: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: color.darkGray
-    },
-    screenHeader: {
-        fontSize: 30,
-        fontWeight: 'bold',
-        color: color.lightBlue
-    },
-    screen: {
-        padding: 15
-    },
     create: {
         margin: 20,
         alignSelf: 'stretch'
