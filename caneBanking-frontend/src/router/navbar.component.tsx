@@ -39,6 +39,14 @@ function NavBarComponent() {
                 }}
                 title='Deposit A Check'
             />
+            
+            <Button
+                onPress={() => {
+                    nav.navigate('CreateAccount');
+                }}
+                title='Create An Account'
+            />
+
         </View>
     );
 }
