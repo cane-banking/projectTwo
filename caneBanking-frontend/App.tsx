@@ -8,8 +8,7 @@ import store from './src/store/store';
 
 export default function App() {
   return (
-
-
+    
     <Provider store={store}>
             <NavigationContainer>
                 <RouterComponent></RouterComponent>

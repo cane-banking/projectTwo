@@ -66,19 +66,17 @@ var handler = function (event) { return __awaiter(void 0, void 0, void 0, functi
     var user;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, getUserByName(event.username)];
+            case 0: return [4 /*yield*/, getUserByName(event.body.username)];
             case 1:
                 user = _a.sent();
-                console.log(event.username);
-                if (user && user.password === event.password) {
-                    return [2 /*return*/, { statusCode: 200, body: JSON.stringify(user),
-                            header: {
-                                'Content-Type': 'application/json',
-                                "Access-Control-Allow-Origin": "http://localhost:19006",
+                console.log('ive been hit yikes');
+                if (user && user.password === event.body.password) {
+                    return [2 /*return*/, { statusCode: 200, headers: {
+                                "Access-Control-Allow-Headers": "Content-Type",
+                                "Content-Type": "application/json",
+                                "Access-Control-Allow-Origin": "*",
                                 "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
-                                //'Access-Control-Allow-Origin': '*'
-                            }
-                        }];
+                            }, body: JSON.stringify(user) }];
                 }
                 else {
                     return [2 /*return*/, { statusCode: 404, body: JSON.stringify({}) }];
@@ -123,9 +121,9 @@ var User = /** @class */ (function () {
         this.password = password;
         this.email = email;
         this.role = 'customer';
-        // if (role) {
-        //     this.role = role;
-        // }
+        if (role) {
+            this.role = role;
+        }
     }
     ;
     return User;

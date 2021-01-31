@@ -1,12 +1,15 @@
 import React from 'react';
 import { Text } from 'react-native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
-import LoginComponent from '../user/login.component';
 import { StackHeaderOptions } from '@react-navigation/stack/lib/typescript/src/types';
+import DrawerNavigatorComponent from './DrawerNavigation.component';
 import { CaneBankingState } from '../store/store';
 import { useSelector } from 'react-redux';
-import Accounts from '../accounts/accounts.component';
 import SignUpComponent from '../user/signup.component';
+import BottomTabNavigatorComponent from './TabNavigator.component';
+import MainStackNavigatorComponent from './MainStackNavigator.component';
+
 
 /* Parameter list for RouteProp requires a field for the route that we're on. */
 export type StackParams = {
@@ -15,34 +18,20 @@ export type StackParams = {
     Register: undefined;
 };
 
+
+const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator<StackParams>();
 const headerOptions: StackHeaderOptions = {
     headerStyle: {
         backgroundColor: '#63D4FF'
     },
     headerTitle: () => <Text>Cane Banking</Text>,
+    headerTitleStyle: {fontWeight: 'bold', alignContent: 'center'}
 };
 function RouterComponent(props: any) {
     return (
-        <Stack.Navigator initialRouteName='Login'>
-            <Stack.Screen
-                name='Login'
-                component={LoginComponent}
-                options={headerOptions}
-            />
-            <Stack.Screen
-                name='Accounts'
-                component={Accounts}
-                options={headerOptions}
-            />
-            <Stack.Screen
-                name='Register'
-                component={SignUpComponent}
-                options={headerOptions}
-            />
-
-        </Stack.Navigator>
-        
+        <DrawerNavigatorComponent />  
+       
     );
 }
 

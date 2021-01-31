@@ -9,6 +9,7 @@ const designResolution = {
 } // what we're designing for
 const perfectSize = create(designResolution);
 
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
