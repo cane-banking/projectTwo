@@ -56,27 +56,31 @@ const styles = StyleSheet.create({
     },
     row: {
         flex: 1,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        justifyContent: 'space-evenly'
     },
     checkPhoto: {
         marginBottom: 30,
-        width: 100,
-        height: 100,
+        width: 170,
+        height: 130,
         alignItems: 'center',
         backgroundColor: color.white,
-        borderWidth: 2,
+        borderWidth: 1,
         borderColor: color.lightGray,
         borderRadius: 10
+
     },
     checkPhotoText: {
         textAlign: 'center',
-        padding: 20,
-        color: color.lightGray
+        padding: 10,
+        color: color.darkGray,
+        textDecorationLine: 'underline'
     },
     label: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: color.darkGray
+        color: color.darkGray,
+        padding: 15
     },
     screenHeader: {
         fontSize: 30,

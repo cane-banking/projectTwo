@@ -1,6 +1,6 @@
 import { Check } from '../check/check';
 import {User} from './../user/user';
-import { Account } from '../accounts/account';
+import { Account } from '../accounts1/account';
 
 export enum UserActions {
     GetUser = 'GET_USER',
@@ -15,7 +15,8 @@ export enum CheckActions {
 }
 
 export enum AccountActions {
-    ChangeAccount = 'CHANGE_ACCOUNT'
+    ChangeAccount = 'CHANGE_ACCOUNT',
+    GetAccounts = 'GET_ACCOUNTS'
 }
 
 export interface AppAction {
@@ -86,10 +87,18 @@ export function changeCheck(check: Check) : CheckAction<Check> {
     return action;
 }
 
-export function changeAccount(account: Account) : AccountAction<Account> {
-    const action: AccountAction<Account> = {
+export function changeAccount(account_id: string) : AccountAction<string> {
+    const action: AccountAction<string> = {
         type: AccountActions.ChangeAccount,
-        payload: account
+        payload: account_id
+    }
+    return action;
+}
+
+export function getAccounts(accounts: Account[]) : AccountAction<Account[]> {
+    const action: AccountAction<Account[]> = {
+        type: AccountActions.GetAccounts,
+        payload: accounts
     }
     return action;
 }

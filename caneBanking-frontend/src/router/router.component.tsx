@@ -9,7 +9,7 @@ import Accounts from '../accounts/accounts.component';
 import SignUpComponent from '../user/signup.component';
 import DepositCheck from '../check/DepositCheck.component';
 import NavBarComponent from './navbar.component';
-import CreateAccount from '../accounts/account-component';
+// import CreateAccount from '../accounts/account-component';
 
 /* Parameter list for RouteProp requires a field for the route that we're on. */
 export type StackParams = {
@@ -41,11 +41,11 @@ function RouterComponent(props: any) {
                 component={Accounts}
                 options={headerOptions}
             />
-            <Stack.Screen
+            {/* <Stack.Screen
                 name='CreateAccount'
                 component={CreateAccount}
                 options={headerOptions}
-            />
+            /> */}
             <Stack.Screen
                 name='Register'
                 component={SignUpComponent}
