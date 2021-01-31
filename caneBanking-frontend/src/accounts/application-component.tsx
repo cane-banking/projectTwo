@@ -6,7 +6,7 @@ import { CaneBankingState, UserState } from '../store/store';
 import  {Application} from './application';
 import applicationService from './application.service';
 import styles from '../../global-styles';
-import {v4 as uuidv4} from 'uuid';
+import {v4 as uuid4} from 'uuid';
 import RNPickerSelect from 'react-native-picker-select';
 import { color } from '../helpers/colorScheme';
 //import { format } from "date-fns";
@@ -19,7 +19,7 @@ interface ApplicationProp {
 //        choosenIndex: 0  
 //    };  
 //}
-function CreateApplication(this: any, {navigation}: ApplicationProp) {
+export function CreateApplication(this: any, {navigation}: ApplicationProp) {
     const application = useSelector((state: CaneBankingState) => state.application);
     const dispatch = useDispatch();
     const userSelector = (state: UserState) => state.user;
@@ -27,7 +27,7 @@ function CreateApplication(this: any, {navigation}: ApplicationProp) {
     //const dispatch = useDispatch();
 
     function submitCreateApplication() {
-        application.application_id = uuidv4();
+        application.application_id = uuid4();
         application.firstname = user.firstname;
         application.lastname = user.lastname;
         var date = new Date();
@@ -56,9 +56,9 @@ function CreateApplication(this: any, {navigation}: ApplicationProp) {
                 placeholder='Checking/Saving/CreditCard'
                 style={styles.input}
                 onChangeText={(value) =>
-                    dispatch(ChangeApplication({ ...application, applicationtype: value}))
+                    dispatch(ChangeApplication({ ...application, accounttype: value}))
                 }
-                value={application.applicationtype}
+                value={application.accounttype}
                 />
             
    
