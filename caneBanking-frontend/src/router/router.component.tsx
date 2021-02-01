@@ -7,12 +7,14 @@ import { CaneBankingState } from '../store/store';
 import { useSelector } from 'react-redux';
 import Accounts from '../accounts/accounts.component';
 import SignUpComponent from '../user/signup.component';
+import Admin from '../employee/admin';
 
 /* Parameter list for RouteProp requires a field for the route that we're on. */
 export type StackParams = {
     Login: undefined;
     Accounts: undefined;
     Register: undefined;
+    Admin: undefined;
 };
 
 const Stack = createStackNavigator<StackParams>();
@@ -38,6 +40,11 @@ function RouterComponent(props: any) {
             <Stack.Screen
                 name='Register'
                 component={SignUpComponent}
+                options={headerOptions}
+            />
+            <Stack.Screen
+                name='Admin'
+                component={Admin}
                 options={headerOptions}
             />
 

@@ -55,7 +55,15 @@ const styles = StyleSheet.create({
         alignSelf: 'stretch'
     },
     heading: {
-        marginBottom: 10
+        marginBottom: 10,
+        marginTop: 10
+    },
+    appitem: {
+        fontFamily: 'Helvetica',
+        marginBottom: 24,
+        padding: 30,
+        backgroundColor: '#63D4FF',
+        fontSize: 12
     }
 });
 

@@ -25,7 +25,11 @@ function LoginComponent({ navigation }: LoginProp) {
         userService.login(user).then((user) => {
             console.log('user submit form', user);
             dispatch(getUser(user));
+            if(user.role === 'customer'){
             navigation.navigate('Accounts');
+            } else {
+                navigation.navigate('Admin');
+            }
         });
     }
 
