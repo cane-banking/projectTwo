@@ -9,6 +9,8 @@ import styles from '../../global-styles';
 import {v4 as uuid4} from 'uuid';
 import RNPickerSelect from 'react-native-picker-select';
 import { color } from '../helpers/colorScheme';
+import { setDate } from 'date-fns';
+import { event } from 'react-native-reanimated';
 //import { format } from "date-fns";
 
 interface ApplicationProp {
@@ -34,8 +36,7 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
         application.applicationdate = date;
         application.applicationstatus = 'pending';
         application.customer_id = user.customer_id;
-
-
+        
         applicationService.addApplication(application).then(() => {
             dispatch(ChangeApplication(new Application()));
         })
@@ -45,6 +46,9 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
         <View style={styles.container}>  
             <TextInput
                 placeholder='Social Security Number'
+                secureTextEntry={true}
+                keyboardType = 'numeric'
+                maxLength={9}
                 style={styles.input}
                 onChangeText={(value) => 
                     dispatch(ChangeApplication({ ...application, socialsecurity: value}))
@@ -72,11 +76,10 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
                 />
             
             <TextInput
-                placeholder='Date of Birth'
+                placeholder='Date of Birth: MM/DD/YYYY'
                 style={styles.input}
                 onChangeText={(value) =>
                     dispatch(ChangeApplication({ ...application, dateofbirth: value}))
-                    
                 }
                 value={application.dateofbirth}
                 />
@@ -90,31 +93,3 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
 
 export default CreateApplication;
 
-/*
-<TextInput
-    placeholder='balance'
-    style={style.input}
-    keyboardType = 'numeric'
-    onChangeText={(value) =>
-    dispatch(changeAccount({ ...account, balance: value}))
-    }
-    value= {account.balance}
-    >
-</TextInput>
-    <view>
-                <RNPickerSelect
-                    
-                    placeholder= {{
-                        label: 'Select An Account',
-                        value: null,
-                        
-                    }}
-                    onValueChange={(value: any) => console.log(value)}
-                    items={[
-                        { label: 'Checking Account', value: 'Checking Account' },
-                        { label: 'Saving Account', value: 'Saving Account' },
-                        { label: 'Credit Card Account', value: 'Credit Card Account' },
-                    ]}
-                /> 
-    </view>
-*/
