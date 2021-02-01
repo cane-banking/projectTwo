@@ -1,5 +1,5 @@
 import {SnapshotViewIOSComponent, StyleSheet} from 'react-native';
-import { color } from 'react-native-reanimated';
+import { color } from './src/helpers/colorScheme';
 
 // Importing using require because there is no @types
 const { create } = require('react-native-pixel-perfect');
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: '#f5feff',
         fontSize: '18px',
-        fontFamily: 'poppins'
+        fontFamily: 'poppins',
     },
     input: {
         color: 'black',
