@@ -5,11 +5,12 @@ import LoginComponent from '../user/login.component';
 import { StackHeaderOptions } from '@react-navigation/stack/lib/typescript/src/types';
 import { CaneBankingState } from '../store/store';
 import { useSelector } from 'react-redux';
-import Accounts from '../accounts/accounts.component';
 import SignUpComponent from '../user/signup.component';
 import DepositCheck from '../check/DepositCheck.component';
 import NavBarComponent from './navbar.component';
-// import CreateAccount from '../accounts/account-component';
+import CreateApplication from '../application/application-component';
+import Accounts from '../account/accounts.component';
+
 
 /* Parameter list for RouteProp requires a field for the route that we're on. */
 export type StackParams = {
@@ -17,7 +18,7 @@ export type StackParams = {
     Accounts: undefined;
     Register: undefined;
     DepositCheck: undefined;
-    CreateAccount: undefined;
+    CreateApplication: undefined;
 };
 
 const Stack = createStackNavigator<StackParams>();
@@ -41,11 +42,11 @@ function RouterComponent(props: any) {
                 component={Accounts}
                 options={headerOptions}
             />
-            {/* <Stack.Screen
-                name='CreateAccount'
-                component={CreateAccount}
+            <Stack.Screen
+                name='CreateApplication'
+                component={CreateApplication}
                 options={headerOptions}
-            /> */}
+            />
             <Stack.Screen
                 name='Register'
                 component={SignUpComponent}

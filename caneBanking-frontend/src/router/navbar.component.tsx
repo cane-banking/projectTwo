@@ -11,6 +11,7 @@ function NavBarComponent() {
     const nav = useNavigation();
     const user = useSelector((state: CaneBankingState) => state.user);
     const locale = useSelector((state: CaneBankingState) => state.locale);
+    const application = useSelector((state: CaneBankingState) => state.application);
     const dispatch = useDispatch();
 
     // dispatch(changeLocale('en')); // infinite re-render
@@ -39,6 +40,14 @@ function NavBarComponent() {
                 }}
                 title='Deposit A Check'
             />
+            
+            <Button
+                onPress={() => {
+                    nav.navigate('CreateApplication');
+                }}
+                title='Create An Application'
+            />
+
         </View>
     );
 }

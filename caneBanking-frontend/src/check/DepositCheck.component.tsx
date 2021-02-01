@@ -8,7 +8,7 @@ import { Check } from './check';
 import checkService from './check.service';
 import {getDate} from '../helpers/date';
 import { v4 as uuidv4 } from 'uuid';
-import  AccountService  from '../accounts1/account.service';
+import  AccountService  from '../account/account.service';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import { Picker } from '@react-native-picker/picker';
 

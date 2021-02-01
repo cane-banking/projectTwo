@@ -21,11 +21,13 @@ export const color = {
 
 const styles = StyleSheet.create({
     boldText: {
+        color: '#756262',
         fontFamily: 'Helvetica',
         fontSize: 18,
         fontWeight: 'bold'
     },
     regularText: {
+        color: '#756262',
         fontFamily: 'Helvetica',
         fontSize: 14
     },
@@ -37,17 +39,20 @@ const styles = StyleSheet.create({
         fontSize: '18px',
         fontFamily: 'poppins'
     },
+    screen: {
+        padding: 15
+    },
     input: {
-        color: color.black,
-        backgroundColor: color.inputBackground,
+        color: 'black',
+        backgroundColor: '#c4c4c4',
         borderRadius: 20,
-        marginTop: 10,
-        marginBottom: 10,
-        height: 30,
-        width: 200,
+        marginTop: 12,
+        marginBottom: 12,
+        height: 35,
+        width: 250,
     },
     login: {
-        backgroundColor: color.background
+        backgroundColor: '#f5feff'
     },
     logo: {
         // perfectSize is only going to call when the app is first loaded in the device.
@@ -87,8 +92,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: color.lightBlue
     },
-    screen: {
-        padding: 15
+    create: {
+        margin: 20,
+        alignSelf: 'stretch'
+    },
+    heading: {
+        marginBottom: 10
     }
 });
 

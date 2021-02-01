@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { User } from './user';
 
-class SignUpService {
+class SignUpDynamoService {
     private URI: string;
     constructor() {
         // URL of the express server
-        this.URI = 'https://blpj920ejg.execute-api.us-west-2.amazonaws.com/default/signup';
+        this.URI = ' https://4th6fev0eh.execute-api.us-west-2.amazonaws.com/default/signupdynamo';
     }
 
 
@@ -14,4 +14,4 @@ class SignUpService {
     }
 }
 
-export default new SignUpService();
+export default new SignUpDynamoService();
