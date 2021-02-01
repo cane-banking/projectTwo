@@ -57,21 +57,24 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = exports.handler = void 0;
 var AWS = __importStar(require("aws-sdk"));
+var pg_1 = require("pg");
 var docClient = new AWS.DynamoDB.DocumentClient({
     region: 'us-west-2',
     endpoint: 'http://dynamodb.us-west-2.amazonaws.com'
 });
-//handler
 var handler = function (event) { return __awaiter(void 0, void 0, void 0, function () {
-    var user;
+    var user, resp;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, getUserByName(event.body.username)];
+            case 0:
+                user = JSON.parse(event.body);
+                return [4 /*yield*/, addUser(user)];
             case 1:
-                user = _a.sent();
-                console.log('ive been hit yikes');
-                if (user && user.password === event.body.password) {
-                    return [2 /*return*/, { statusCode: 200, headers: {
+                resp = _a.sent();
+                addCustomerPg(user);
+                console.log;
+                if (resp) {
+                    return [2 /*return*/, { statusCode: 204, headers: {
                                 "Access-Control-Allow-Headers": "Content-Type",
                                 "Content-Type": "application/json",
                                 "Access-Control-Allow-Origin": "*",
@@ -79,34 +82,69 @@ var handler = function (event) { return __awaiter(void 0, void 0, void 0, functi
                             }, body: JSON.stringify(user) }];
                 }
                 else {
-                    return [2 /*return*/, { statusCode: 404, body: JSON.stringify({}) }];
+                    return [2 /*return*/, { statusCode: 400 }];
                 }
                 return [2 /*return*/];
         }
     });
 }); };
 exports.handler = handler;
-//service to talk to database
-function getUserByName(username) {
+function addCustomerPg(customer) {
+    return __awaiter(this, void 0, void 0, function () {
+        var client, query, values, response, error_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    client = new pg_1.Client();
+                    client.connect();
+                    query = "insert into checks (\n                                   customer_id,\n                                   firstname,\n                                   lastname) values ($1, $2, $3)";
+                    values = [
+                        customer.customer_id,
+                        customer.firstname,
+                        customer.lastname
+                    ];
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, client.query(query, values)];
+                case 2:
+                    response = _a.sent();
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_1 = _a.sent();
+                    console.log(error_1);
+                    return [3 /*break*/, 4];
+                case 4:
+                    console.log(response);
+                    client.end();
+                    return [2 /*return*/, response];
+            }
+        });
+    });
+}
+function addUser(user) {
     return __awaiter(this, void 0, void 0, function () {
         var params;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     params = {
+                        // TableName - the name of the table we are sending it to
                         TableName: 'users',
-                        Key: {
-                            'username': username
+                        // Item - the object we are sending
+                        Item: user,
+                        ConditionExpression: '#customer_id <> :customer_id',
+                        ExpressionAttributeNames: {
+                            '#customer_id': 'customer_id'
+                        },
+                        ExpressionAttributeValues: {
+                            ':customer_id': user.customer_id
                         }
                     };
-                    return [4 /*yield*/, docClient.get(params).promise().then(function (data) {
-                            if (data && data.Item) {
-                                //logger.debug(`data.Item: ${JSON.stringify(data.Item)}`);
-                                return data.Item;
-                            }
-                            else {
-                                return null;
-                            }
+                    return [4 /*yield*/, docClient.put(params).promise().then(function () {
+                            return true;
+                        }).catch(function (error) {
+                            return false;
                         })];
                 case 1: return [2 /*return*/, _a.sent()];
             }
@@ -114,7 +152,8 @@ function getUserByName(username) {
     });
 }
 var User = /** @class */ (function () {
-    function User(username, firstname, lastname, password, role, email) {
+    function User(customer_id, username, firstname, lastname, password, role, email) {
+        this.customer_id = customer_id;
         this.username = username;
         this.firstname = firstname;
         this.lastname = lastname;

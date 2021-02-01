@@ -1,1 +1,27 @@
 
+[2021-01-27T18:38:08.945] [DEBUG] default - {}
+[2021-01-27T18:41:20.335] [DEBUG] default - {
+  username: 'pandabear29',
+  email: 'email@gmail.com',
+  password: '1234',
+  role: 'customer',
+  firstname: 'Lis',
+  lastname: 'Jacobs'
+}
+[2021-01-27T18:41:20.891] [INFO] default - Successfully created item
+[2021-01-27T18:41:20.893] [DEBUG] default - true
+[2021-01-28T15:59:50.996] [INFO] default - Successfully created item
+[2021-01-28T15:59:51.000] [INFO] default - Successfully created item
+[2021-01-28T15:59:51.009] [INFO] default - Successfully created item
+[2021-01-28T15:59:51.017] [INFO] default - Successfully created item
+[2021-01-28T15:59:51.024] [INFO] default - Successfully created item
+[2021-01-28T16:15:10.654] [INFO] default - Successfully created item
+[2021-01-28T16:15:10.660] [INFO] default - Successfully created item
+[2021-01-28T16:15:10.670] [INFO] default - Successfully created item
+[2021-01-28T16:15:10.673] [INFO] default - Successfully created item
+[2021-01-28T16:15:10.674] [INFO] default - Successfully created item
+[2021-01-28T22:53:22.651] [INFO] default - Successfully created item
+[2021-01-28T22:53:22.657] [INFO] default - Successfully created item
+[2021-01-28T22:53:22.661] [INFO] default - Successfully created item
+[2021-01-28T22:53:22.670] [INFO] default - Successfully created item
+[2021-01-28T22:53:22.673] [INFO] default - Successfully created item

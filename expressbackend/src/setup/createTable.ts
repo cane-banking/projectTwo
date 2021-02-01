@@ -60,11 +60,11 @@ ddb.deleteTable(removeUsers, function (err, data) {
 });
 
 function populateUserTable() {
-    userService.addUser({username: 'cassandra', firstname:'cassandra',lastname: 'terry',password: 'pass',role: 'customer', email: 'cterry@gmail.com'}).then(()=>{});
-    userService.addUser({username: 'asad', firstname:'asad',lastname: 'nazir',password: 'pass',role: 'customer', email: 'anazir@gmail.com'}).then(()=>{});
-    userService.addUser({username: 'nilam', firstname:'nilam',lastname: 'patel',password: 'pass',role: 'customer', email: 'npatel@gmail.com'}).then(()=>{});
-    userService.addUser({username: 'emily', firstname:'emily',lastname: 'smith',password: 'pass',role: 'employee', email: 'esmith@gmail.com'}).then(()=>{});
-    userService.addUser({username: 'richard', firstname:'richard',lastname: 'orr',password: 'pass',role: 'employee', email: 'rorr@gmail.com'}).then(()=>{});
+    userService.addUser({customer_id: '1234', username: 'cassandra', firstname:'cassandra',lastname: 'terry',password: 'pass',role: 'customer', email: 'cterry@gmail.com'}).then(()=>{});
+    userService.addUser({customer_id: '5678', username: 'asad', firstname:'asad',lastname: 'nazir',password: 'pass',role: 'customer', email: 'anazir@gmail.com'}).then(()=>{});
+    userService.addUser({customer_id: '9012', username: 'nilam', firstname:'nilam',lastname: 'patel',password: 'pass',role: 'customer', email: 'npatel@gmail.com'}).then(()=>{});
+    userService.addUser({customer_id: '3456', username: 'emily', firstname:'emily',lastname: 'smith',password: 'pass',role: 'employee', email: 'esmith@gmail.com'}).then(()=>{});
+    userService.addUser({customer_id: '7890', username: 'richard', firstname:'richard',lastname: 'orr',password: 'pass',role: 'employee', email: 'rorr@gmail.com'}).then(()=>{});
 }
 
 

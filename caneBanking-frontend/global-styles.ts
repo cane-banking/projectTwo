@@ -10,19 +10,33 @@ const designResolution = {
 const perfectSize = create(designResolution);
 
 const styles = StyleSheet.create({
+    boldText: {
+        color: '#756262',
+        fontFamily: 'Helvetica',
+        fontSize: 18,
+        fontWeight: 'bold'
+    },
+    regularText: {
+        color: '#756262',
+        fontFamily: 'Helvetica',
+        fontSize: 14
+    },
     container: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#f5feff',
+        fontSize: '18px',
+        fontFamily: 'poppins'
     },
     input: {
         color: 'black',
         backgroundColor: '#c4c4c4',
         borderRadius: 20,
-        marginBottom: 20,
-        height: 30,
-        width: 200,
+        marginTop: 12,
+        marginBottom: 12,
+        height: 35,
+        width: 250,
     },
     login: {
         backgroundColor: '#f5feff'
@@ -35,6 +49,13 @@ const styles = StyleSheet.create({
     row: {
         flex: 1,
         flexDirection: 'row'
+    },
+    create: {
+        margin: 20,
+        alignSelf: 'stretch'
+    },
+    heading: {
+        marginBottom: 10
     }
 });
 
