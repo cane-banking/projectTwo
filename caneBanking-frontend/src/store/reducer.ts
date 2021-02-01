@@ -3,6 +3,7 @@ import { User } from './../user/user';
 import { CaneBankingState } from './store';
 import { Check } from '../check/check';
 import { Application } from '../accounts/application';
+import { Apps } from '../employee/app';
 
 // We need to define the initial state of the application and that
 // state should include everything that the application might keep track of.

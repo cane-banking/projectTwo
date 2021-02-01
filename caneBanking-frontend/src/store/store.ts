@@ -5,6 +5,7 @@ import { Application } from '../accounts/application';
 import { User } from "../user/user";
 import { AppAction } from "./actions";
 import reducer from "./reducer";
+import { Apps } from "../employee/app";
 
 export interface UserState {
     user: User;

@@ -1,11 +1,12 @@
 import {CaneBankingState} from './store';
-import {AppAction} from './actions';
+import {AppAction, getApplications} from './actions';
 import {ThunkAction} from 'redux-thunk';
+import adminService from '../employee/admin.service';
 
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, CaneBankingState, unknown, AppAction>;
 
-// export const thunkGetRestaurants = (): AppThunk => async dispatch => {
-//     const asyncResp = await restaurantService.getRestaurants();
-//     console.log('before thunk dispatch');
-//     dispatch(getRestaurants(asyncResp));
-// }
+export const thunkGetApps = (): AppThunk => async dispatch => {
+    const asyncResp = await adminService.getApplications();
+    console.log('before thunk dispatch');
+    dispatch(getApplications(asyncResp));
+    }

@@ -1,6 +1,7 @@
 import { Check } from '../check/check';
 import {User} from './../user/user';
 import { Application } from '../accounts/application';
+import { Apps } from '../employee/app';
 
 export enum UserActions {
     GetUser = 'GET_USER',
@@ -87,10 +88,10 @@ export function changeCheck(check: Check) : CheckAction<Check> {
     return action;
 }
 
-export function getApplications(apps: Application[]): ApplicationAction{
+export function getApplications(applications: Application[]): ApplicationAction{
     const action: ApplicationAction = {
         type: ApplicationActions.GetApplications,
-        payload: apps
+        payload: applications
     }
     return action;
 }
