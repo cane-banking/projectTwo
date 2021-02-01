@@ -16,6 +16,7 @@ export interface CheckState {
     check: Check;
 }
 export interface ApplicationState {
+    applications: Application[];
     application: Application;
 }
 

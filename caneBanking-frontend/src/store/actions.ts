@@ -15,7 +15,8 @@ export enum CheckActions {
 }
 
 export enum ApplicationActions {
-    ChangeApplication = 'CHANGE_APPLICATION'
+    ChangeApplication = 'CHANGE_APPLICATION',
+    GetApplications = 'GET_APPLICATIONS'
 }
 
 export interface AppAction {
@@ -33,9 +34,9 @@ export interface CheckAction<C> extends AppAction {
     payload: C;
 }
 
-export interface ApplicationAction<A> extends AppAction {
+export interface ApplicationAction extends AppAction {
     type: ApplicationActions;
-    payload: A;
+    payload: Application | Application[];
 }
 
 export function getUser(user: User): UserAction<User> {
@@ -86,8 +87,17 @@ export function changeCheck(check: Check) : CheckAction<Check> {
     return action;
 }
 
-export function ChangeApplication(application: Application) : ApplicationAction<Application> {
-    const action: ApplicationAction<Application> = {
+export function getApplications(apps: Application[]): ApplicationAction{
+    const action: ApplicationAction = {
+        type: ApplicationActions.GetApplications,
+        payload: apps
+    }
+    return action;
+}
+
+
+export function ChangeApplication(application: Application) : ApplicationAction {
+    const action: ApplicationAction = {
         type: ApplicationActions.ChangeApplication,
         payload: application
     }

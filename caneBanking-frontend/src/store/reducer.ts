@@ -12,7 +12,8 @@ export const initialState: CaneBankingState = {
     loginUser: new User(),
     checks: [],
     check: new Check(),
-    application: new Application()
+    application: Application,
+    applications: []
 }
 
 // Make sure that the reducer has a default argument of the inital state or it will not work.
@@ -43,6 +44,10 @@ const reducer = (state: CaneBankingState = initialState, action: Actions.AppActi
         case Actions.ApplicationActions.ChangeApplication:
             newState.application = action.payload as Application;
             return newState;
+        case Actions.ApplicationActions.GetApplications:
+            newState.applications = action.payload as Application[];
+            return newState;
+    
         default:
             return state;
     }

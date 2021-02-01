@@ -1,29 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, ScrollView, Button, FlatList } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, Text, Button, FlatList } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from '../../global-styles';
-import { getUser } from '../store/actions';
-import { UserState } from '../store/store';
-import userService from '../user/user.service';
+import { getApplications} from '../store/actions';
+import { ApplicationState, UserState } from '../store/store';
+import adminService from './admin.service';
 
 
 export default function Admin() {
     const userSelector = (state: UserState) => state.user;
     const user = useSelector(userSelector);
 
-    const [applications, setApplications] = useState([
-        { firstname: 'Johnnie', lastname: 'Irving', application_id: 'c5a6d8c8-6414-11eb-ae93-0242ac130002'},
-        { firstname: 'Fatima', lastname: 'Micles', application_id: 'c5a6db0c-6414-11eb-ae93-0242ac130002'},
-        { firstname: 'Cythia', lastname: 'Cipriano', application_id: 'c5a6dbfc-6414-11eb-ae93-0242ac130002'},
-        { firstname: 'Benton', lastname: 'Saul', application_id: 'c5a6dcc4-6414-11eb-ae93-0242ac130002'},
-        { firstname: 'Denese', lastname: 'Eicher', application_id: 'c5a6dd78-6414-11eb-ae93-0242ac130002'},
-        { firstname: 'Irene', lastname: 'Gershman', application_id: 'fb5c3a26-6414-11eb-ae93-0242ac130002'},
-        { firstname: 'Karen', lastname: 'Copple', application_id: 'fb5c3c88-6414-11eb-ae93-0242ac130002'},
-        { firstname: 'Hope', lastname: 'Baynard', application_id: 'fb5c3d6e-6414-11eb-ae93-0242ac130002'},
-        { firstname: 'Janay', lastname: 'Cosper', application_id: 'fb5c3e2c-6414-11eb-ae93-0242ac130002'},
-    ]);
+    const selectApplication = (state: ApplicationState) => state.applications;
+    const applications = useSelector(selectApplication);
 
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        adminService.getApplications().then((data) => {
+            dispatch(getApplications(data));
+        })
+    }, [dispatch]);
 
     function approveApp(){
 
