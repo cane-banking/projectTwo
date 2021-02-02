@@ -7,26 +7,18 @@ import  {Application} from './application';
 import applicationService from './application.service';
 import styles from '../../global-styles';
 import {v4 as uuid4} from 'uuid';
-import RNPickerSelect from 'react-native-picker-select';
 import { color } from '../helpers/colorScheme';
-import { setDate } from 'date-fns';
-import { event } from 'react-native-reanimated';
-//import { format } from "date-fns";
+
 
 interface ApplicationProp {
     navigation: any;
 }
-//export class SwitchExample extends Component <any, any>{  
-//    state = {  
-//        choosenIndex: 0  
-//    };  
-//}
+
 export function CreateApplication(this: any, {navigation}: ApplicationProp) {
     const application = useSelector((state: CaneBankingState) => state.application);
     const dispatch = useDispatch();
     const userSelector = (state: UserState) => state.user;
     const user = useSelector(userSelector);
-    //const dispatch = useDispatch();
 
     function submitCreateApplication() {
         application.application_id = uuid4();
