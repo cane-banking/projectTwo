@@ -24,7 +24,7 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
     const dispatch = useDispatch();
     const userSelector = (state: UserState) => state.user;
     const user = useSelector(userSelector);
-    //const dispatch = useDispatch();
+    
 
     function submitCreateApplication() {
         application.application_id = uuid4();

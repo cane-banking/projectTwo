@@ -19,7 +19,7 @@ export default function BalanceComponent({ navigation }: BalanceProp) {
     function Balance() {
         accounts.customer_id = user.customer_id
         BalanceService.chkBalance(accounts).then(() => {
-            dispatch(checkBalance(accounts));
+            dispatch(checkBalance(accounts.customer_id));
         })
     }
 
