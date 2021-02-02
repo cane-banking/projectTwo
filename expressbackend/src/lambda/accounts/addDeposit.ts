@@ -3,11 +3,11 @@ import { Client } from 'pg';
 export async function handler(event: any) {
     const client = new Client();
     console.log('event', event);
-    const customerId = event.queryStringParameters.customerId;
-    console.log('customerID', customerId);
+    const account = event.queryStringParameters.account;
+    console.log('account', account);
     client.connect();
-    const query = `select * from accounts where customer_id = $1`;
-    const values = [customerId];
+    const query = `update accounts set account_balance = $1 where account_id = $2`;
+    const values = [account.balance, account.account_id];
     let response = await client.query(query, values);
     console.log('the response', response.rows);
         if (response) {
@@ -17,9 +17,8 @@ export async function handler(event: any) {
             headers: {
                 "Access-Control-Allow-Headers" : "Content-Type",
                 "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
-            },
-            body: JSON.stringify(response.rows)
+                "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
+            }
         };
     }
     console.log(response);

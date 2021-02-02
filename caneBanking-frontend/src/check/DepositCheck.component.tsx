@@ -2,15 +2,15 @@ import  React, { SyntheticEvent, useEffect }  from 'react';
 import { View, TextInput, Button, Text, TouchableHighlight, Image } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import style, {color} from '../../global-styles';
-import { addCheck, changeAccount, changeCheck, getAccounts, getUser } from '../store/actions';
+import { changeAccount, changeCheck, getAccounts, getUser } from '../store/actions';
 import { CaneBankingState } from '../store/store';
 import { Check } from './check';
 import checkService from './check.service';
 import {getDate} from '../helpers/date';
 import { v4 as uuidv4 } from 'uuid';
 import  AccountService  from '../account/account.service';
-import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import { Picker } from '@react-native-picker/picker';
+import { Account } from '../account/account';
 
 
 interface Deposit {
@@ -27,7 +27,9 @@ function DepositCheck({navigation}: Deposit) {
     useEffect(()=> {
         console.log('hey! user', user);
         AccountService.getAccountsByCustomer(user.customer_id).then((accounts) => {
+            console.log('accounts', accounts);
             dispatch(getAccounts(accounts));
+            dispatch(changeAccount(accounts[0].account_id))
         })
     }, [user])
 
@@ -43,8 +45,13 @@ function DepositCheck({navigation}: Deposit) {
             dispatch(changeCheck(new Check()));
             navigation.navigate('Accounts');
         })
+        account.balance = account.balance + check.amount;
+        AccountService.addDeposit(account).then(() => {
+            dispatch(changeAccount(''))
+        })
+        navigation.navigate('Accounts');
     }
-
+    console.log('accounts after', accounts);
     return (
         <View style={[style.login, style.screen]}>
             <Image source={require('../check/cameraIcon.png')}/>
@@ -53,11 +60,12 @@ function DepositCheck({navigation}: Deposit) {
                 <Text style={style.label}>Deposit to</Text>
                 <Picker style={{width:'100%', padding: 10}}
                         selectedValue={account.account_id}
-                        onValueChange={() => {dispatch(changeAccount(account.account_id))}}>
-                {accounts ? accounts.map(account => {
-                        <Picker.Item label={`${account.account_type}...
+                        onValueChange={(itemValue, itemIndex) => {dispatch(changeAccount(itemValue.toString()))}}>
+                {accounts ? accounts.map((account, index) => {
+                    console.log('acct',account);
+                       return <Picker.Item key={index} label={`${account.account_type}...
                                     ${account.account_id.substring(account.account_id.length - 5)}
-                                    $(${account.balance})`} value={account.account_type}/>
+                                    $(${account.balance})`} value={account.account_id}/>
                 }): <Picker.Item label='You have no accounts registered.'></Picker.Item>}
                  </Picker>
             </View>
@@ -80,14 +88,14 @@ function DepositCheck({navigation}: Deposit) {
 
             <TouchableHighlight onPress={()=> ''} underlayColor={color.white} >
                 <View style={style.checkPhoto}>
-                <Image source={{uri: 'https://lh3.googleusercontent.com/proxy/0FTUMzf9xLrG607NlB-CWcnBpRgw4qPgLqGNC7Owhq9nWFFJs0fEwVMyNHg5UCZe2n_YuHMZCUJQFR7MqOoroDQB55Dvo8TPcL3smJ_DV5MrOHetXOGPYq75tlqMseGNDdQ2mqfp5FkoKFOGn6BWc6aWJdtiPKkJSG6Wgx4hLw2rPYwd6LSVs8_FKFBCZ-OczMSatA'}}
+                <Image source={{uri: 'https://cdn.iconscout.com/icon/free/png-512/camera-1721-433501.png'}}
        style={{width: 50, height: 50, marginTop: 20}} />
                     <Text style={style.checkPhotoText}>Front of check</Text>
                 </View>
             </TouchableHighlight>
             <TouchableHighlight onPress={()=> ''} underlayColor={color.white} >
                 <View style={style.checkPhoto}>
-                <Image source={{uri: 'https://lh3.googleusercontent.com/proxy/0FTUMzf9xLrG607NlB-CWcnBpRgw4qPgLqGNC7Owhq9nWFFJs0fEwVMyNHg5UCZe2n_YuHMZCUJQFR7MqOoroDQB55Dvo8TPcL3smJ_DV5MrOHetXOGPYq75tlqMseGNDdQ2mqfp5FkoKFOGn6BWc6aWJdtiPKkJSG6Wgx4hLw2rPYwd6LSVs8_FKFBCZ-OczMSatA'}}
+                <Image source={{uri: 'https://cdn.iconscout.com/icon/free/png-512/camera-1721-433501.png'}}
        style={{width: 50, height: 50, marginTop: 20}} />
                     <Text style={style.checkPhotoText}>Back of check</Text>
                 </View>

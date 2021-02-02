@@ -2,7 +2,7 @@ import { Client } from 'pg';
 
 export async function handler(event: any) {
     const client = new Client();
-    const check = JSON.parse(event.body);
+    const check = event.queryStringParameters.check;
     client.connect();
     const query = `insert into checks (check_id,
                                    customer_id,
@@ -18,12 +18,18 @@ export async function handler(event: any) {
                     check.firstname,
                     check.lastname,
                     check.amount ];
-    let response;
-    try{
-        response = await client.query(query, values);
-    } catch (error) {
-        console.log(error);
-    }
+    let response = await client.query(query, values);
+    if (response) {
+
+        return {
+        statusCode: 200,
+        headers: {
+            "Access-Control-Allow-Headers" : "Content-Type",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
+        }
+    };
+}
     console.log(response);
     client.end();
     return response;
