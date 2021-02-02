@@ -2,28 +2,39 @@ import { Client } from 'pg';
 
 export async function handler(event: any) {
     const client = new Client();
-    const accounts = JSON.parse(event.body);
+    const user = JSON.parse(event.body);
     client.connect()
-    const query =`select balance from accounts where account_id = $1::accounts.account_id and account_type =$2::accounts.account_type`
-    const values =[ accounts.account_id, accounts.account_type]
+    const query ='select balance from accounts where customer_id = $1;'
+    const values =[user.customer_id]
+
+    // let res = await client.query(query,values);
+    // console.log(res.rows)
+    //     if(res) {
+    //         return {statusCode: 200, headers:{
+    //             "Access-Control-Allow-Headers" : "Content-Type",
+    //             "Content-Type": "application/json",
+    //             "Access-Control-Allow-Origin": "*",
+    //             "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+    //         }, body: JSON.stringify(res.rows)}
+
+    //         }else {
+    //             return {statusCode: 404, body: JSON.stringify({})};
+    //     }
+       
+
+
 
     let response;
     try{
         response=await client.query(query, values);
+        console.log(response.rows);
     }catch(error){
         console.log(error);
     }
     console.log(response);
     client.end;
-    return response;
+    return response?.rows;
 }
 
-
-
-// .then(() => console.log ('Connected to pg'))
-//     .then(()=> client.query ("select balance from accounts where account_id =$1" , ['9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb8c']) )
-//     .then((result => console.table(result.rows)))
-//     .catch(e => console.log(e))
-//     .finally(()=>client.end())
     
     

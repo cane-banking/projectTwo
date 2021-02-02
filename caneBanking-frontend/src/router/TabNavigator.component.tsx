@@ -1,26 +1,29 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import LoginComponent from '../user/login.component';
-import SignUpComponent from '../user/signup.component';
-import { UserState } from '../store/store';
-import { useDispatch, useSelector } from 'react-redux';
-import { getUser, loginAction } from '../store/actions';
+import  {loginStackNavigator,registerAccountStack,LogoutStack}  from "./MainStackNavigator.component";
+import { enableScreens } from 'react-native-screens';
 
-import  MainStackNavigatorComponent  from "./MainStackNavigator.component";
+enableScreens();
+
 
 const Tab = createBottomTabNavigator();
 
-const BottomTabNavigatorComponent = () => {
+const HomeTabNavigatorComponent = () => {
   return (
     <Tab.Navigator> 
-      <Tab.Screen name="Login" component={MainStackNavigatorComponent} />
-      <Tab.Screen name="Register" component={SignUpComponent} />
-      {/* <Tab.Screen name="Logout" component={MainStackNavigatorComponent} /> */}
-      
-
-      {/* <Tab.Screen name="Contact" component={ContactStackNavigator} /> */}
+      <Tab.Screen name="Login" component={loginStackNavigator} />
+      <Tab.Screen name="Register" component={registerAccountStack} />
     </Tab.Navigator>
   );
 };
 
-export default BottomTabNavigatorComponent;
+const AccountTabNavigatorComponent = () => {
+  return (
+    <Tab.Navigator> 
+      <Tab.Screen name="Logout" component={LogoutStack} />
+      <Tab.Screen name="Register" component={registerAccountStack} />
+    </Tab.Navigator>
+  );
+};
+
+export {HomeTabNavigatorComponent,AccountTabNavigatorComponent};
