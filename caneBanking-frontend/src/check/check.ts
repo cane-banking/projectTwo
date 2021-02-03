@@ -1,9 +1,9 @@
 export class Check {
     check_id = '';
-    amount = '';
+    amount = 0;
     lastname = '';
     firstname = '';
     check_date = '';
     account_id = '';
-    customer_id = 0;
+    customer_id = '';
 }

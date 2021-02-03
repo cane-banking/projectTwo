@@ -1,11 +1,13 @@
 import { applyMiddleware, createStore, Store } from "redux";
 import thunk from "redux-thunk";
 import { Check } from "../check/check";
-import { Application } from '../accounts/application';
+import { Account } from '../account/account';
+import { Application } from '../application/application';
 import { User } from "../user/user";
 import { AppAction } from "./actions";
 import reducer from "./reducer";
 import { Transaction } from "../transaction/transaction";
+
 
 export interface UserState {
     user: User;
@@ -15,6 +17,8 @@ export interface UserState {
 export interface CheckState {
     checks: Check[];
     check: Check;
+    account: Account;
+    accounts: Account[];
 }
 export interface ApplicationState {
     application: Application;
