@@ -21,7 +21,7 @@ export interface CheckState {
     accounts: Account[];
 }
 export interface ApplicationState {
-    application: Application;
+    application: Application | any;
 }
 
 export interface TransactionState {

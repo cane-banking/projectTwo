@@ -45,7 +45,7 @@ function handler(event) {
             switch (_a.label) {
                 case 0:
                     client = new pg_1.Client();
-                    check = event.body;
+                    check = JSON.parse(event.body);
                     console.log('event', event);
                     client.connect();
                     query = "insert into checks (check_id,\n                                   customer_id,\n                                   account_id,\n                                   check_date,\n                                   firstname,\n                                   lastname,\n                                   amount) values ($1, $2, $3, $4, $5, $6, $7)";
@@ -59,7 +59,9 @@ function handler(event) {
                     return [4 /*yield*/, client.query(query, values)];
                 case 1:
                     response = _a.sent();
+                    console.log('addCheck response query', response);
                     if (response) {
+                        client.end();
                         return [2 /*return*/, {
                                 statusCode: 200,
                                 headers: {
@@ -69,9 +71,18 @@ function handler(event) {
                                 }
                             }];
                     }
-                    console.log('response', response);
-                    client.end();
-                    return [2 /*return*/, response];
+                    else {
+                        client.end();
+                        return [2 /*return*/, {
+                                statusCode: 400,
+                                headers: {
+                                    "Access-Control-Allow-Headers": "Content-Type",
+                                    "Access-Control-Allow-Origin": "*",
+                                    "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
+                                }
+                            }];
+                    }
+                    return [2 /*return*/];
             }
         });
     });

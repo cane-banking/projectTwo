@@ -30,14 +30,35 @@ export const handler = async (event: MyEvent) => {
                     application.dateofbirth,
                     application.applicationstatus,
                     application.customer_id ];
-    let response;
-    try{
-        response = await client.query(query, values);
-    } catch (error) {
-        console.log(error);
+    let response = await client.query(query, values);
+    //try{
+    //    response = await client.query(query, values);
+    //} catch (error) {
+    //    console.log(error);
+    //}
+    //console.log(response);
+    //client.end();
+    //return response;
+    if (response) {
+        client.end();
+        return {
+            statusCode: 200,
+            headers: {
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
+            }
+        };
+    } else {
+        client.end();
+        return {
+            statusCode: 400,
+            headers: {
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
+            }
+        };
     }
-    console.log(response);
-    client.end();
-    return response;
 
 } 

@@ -39,7 +39,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.handler = void 0;
 var pg_1 = require("pg");
 var handler = function (event) { return __awaiter(void 0, void 0, void 0, function () {
-    var application, client, query, values, response, error_1;
+    var application, client, query, values, response;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -61,21 +61,40 @@ var handler = function (event) { return __awaiter(void 0, void 0, void 0, functi
                     application.applicationstatus,
                     application.customer_id
                 ];
-                _a.label = 2;
-            case 2:
-                _a.trys.push([2, 4, , 5]);
                 return [4 /*yield*/, client.query(query, values)];
-            case 3:
+            case 2:
                 response = _a.sent();
-                return [3 /*break*/, 5];
-            case 4:
-                error_1 = _a.sent();
-                console.log(error_1);
-                return [3 /*break*/, 5];
-            case 5:
-                console.log(response);
-                client.end();
-                return [2 /*return*/, response];
+                //try{
+                //    response = await client.query(query, values);
+                //} catch (error) {
+                //    console.log(error);
+                //}
+                //console.log(response);
+                //client.end();
+                //return response;
+                if (response) {
+                    client.end();
+                    return [2 /*return*/, {
+                            statusCode: 200,
+                            headers: {
+                                "Access-Control-Allow-Headers": "Content-Type",
+                                "Access-Control-Allow-Origin": "*",
+                                "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
+                            }
+                        }];
+                }
+                else {
+                    client.end();
+                    return [2 /*return*/, {
+                            statusCode: 400,
+                            headers: {
+                                "Access-Control-Allow-Headers": "Content-Type",
+                                "Access-Control-Allow-Origin": "*",
+                                "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
+                            }
+                        }];
+                }
+                return [2 /*return*/];
         }
     });
 }); };
