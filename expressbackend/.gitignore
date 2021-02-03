@@ -1,4 +1,7 @@
 **/node_modules/
+<<<<<<< HEAD
 **/.env/
+=======
+>>>>>>> 21b1589cbfaf2858405b08bd0a071bb99e960fc8
 **/log/
 **/*.js/

@@ -1,10 +1,10 @@
 import { applyMiddleware, createStore, Store } from "redux";
 import thunk from "redux-thunk";
 import { Check } from "../check/check";
-import { Application } from '../accounts/application';
+import { Account } from '../account/account';
+import { Application } from '../application/application';
 import { User } from "../user/user";
 import { AppAction } from "./actions";
-import {Accounts} from "../accounts/Balance/account";
 import reducer from "./reducer";
 
 
@@ -16,17 +16,14 @@ export interface UserState {
 export interface CheckState {
     checks: Check[];
     check: Check;
+    account: Account;
+    accounts: Account[];
 }
 export interface ApplicationState {
     application: Application;
 }
 
-export interface AccountState {
-    accounts:Accounts
-}
-
-export interface CaneBankingState extends UserState, CheckState, ApplicationState,AccountState {
-    accounts: any;
+export interface CaneBankingState extends UserState, CheckState, ApplicationState {
     application: any;
 }
 // <> is generics: Generic arguments allow us to define the type of a thing at runtime instead of when we write it,

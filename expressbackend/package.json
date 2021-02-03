@@ -8,6 +8,7 @@
     "setup": "npx tsc && node ./build/setup/createTable.js"
   },
   "dependencies": {
+    "@types/pg": "^7.14.9",
     "aws": "0.0.3-2",
     "aws-sdk": "^2.831.0",
     "cors": "^2.8.5",

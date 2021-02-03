@@ -1,12 +1,12 @@
 import React from "react";
 import Icon from 'react-native-vector-icons/Ionicons';
 import { createStackNavigator } from "@react-navigation/stack";
-import Accounts from '../accounts/accounts.component';
+import Accounts from '../account/accounts.component';
 import LoginComponent from '../user/login.component';
 import SignUpComponent from '../user/signup.component';
-import BalanceComponent from '../accounts/Balance/Balance.component';
+// import BalanceComponent from '../accounts/Balance/Balance.component';
 import { enableScreens } from 'react-native-screens';
-import CreateApplication from "../accounts/application-component";
+import CreateApplication from "../application/application-component";
 import DepositCheck from "../check/DepositCheck.component";
 
 
@@ -107,26 +107,26 @@ const LogoutStack=({navigation}:MenuProp) =>{
   )
 }
 
-const BalanceStack=({navigation}:MenuProp) =>{
-  return(
-    <Stack.Navigator>
-      <Stack.Screen name="Balance" component={BalanceComponent} 
-        options={{title:'Cane Banking',
-        headerStyle: {
-          backgroundColor: '#63D4FF',
-        },
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
-        headerTitleAlign:'center',
-        headerRight:() => (
-          <Icon.Button name ='ios-menu' size={25}
-          backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
-        }}/>
+// const BalanceStack=({navigation}:MenuProp) =>{
+//   return(
+//     <Stack.Navigator>
+//       <Stack.Screen name="Balance" component={BalanceComponent} 
+//         options={{title:'Cane Banking',
+//         headerStyle: {
+//           backgroundColor: '#63D4FF',
+//         },
+//         headerTitleStyle: {
+//           fontWeight: 'bold',
+//         },
+//         headerTitleAlign:'center',
+//         headerRight:() => (
+//           <Icon.Button name ='ios-menu' size={25}
+//           backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
+//         }}/>
 
-    </Stack.Navigator>
-  )
-}
+//     </Stack.Navigator>
+//   )
+// }
 
 const ApplicationStack=({navigation}:MenuProp) =>{
   return(
@@ -171,4 +171,4 @@ const DepositCheckStack=({navigation}:MenuProp) =>{
 }
 
 
-export {loginStackNavigator,registerAccountStack,LogoutStack,BalanceStack,ApplicationStack,DepositCheckStack} ;
+export {loginStackNavigator,registerAccountStack,LogoutStack,ApplicationStack,DepositCheckStack} ;

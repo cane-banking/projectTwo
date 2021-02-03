@@ -8,7 +8,7 @@ drop table applications ;
 drop table checks;
 
 CREATE TABLE customer(
-	customer_id SERIAL,
+	customer_id text,
 	firstName text UNIQUE NOT NULL,
 	lastName text NOT null,
 	CONSTRAINT "pk_customer" PRIMARY KEY  ("customer_id")
@@ -33,7 +33,7 @@ CREATE TABLE transactions(
 	customer_id int
 )
 
-
+--firstName and lastName should be not null
 create table applications(
 application_id UUID ,
 socialSecurity int not null,
@@ -46,7 +46,7 @@ dateofBirth date,
 applicationStatus text,
 customer_id int
 )
-
+--firstName and lastName should be not null
 create table checks (
 check_id uuid,
 customer_id int,

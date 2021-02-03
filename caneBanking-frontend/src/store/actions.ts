@@ -1,8 +1,7 @@
 import { Check } from '../check/check';
 import {User} from './../user/user';
-import { Application } from '../accounts/application';
-import {Accounts} from "../accounts/Balance/account";
-import Balance from '../accounts/Balance/Balance.component';
+import { Account } from '../account/account';
+import { Application } from '../application/application';
 
 export enum UserActions {
     GetUser = 'GET_USER',
@@ -16,8 +15,9 @@ export enum CheckActions {
     ChangeCheck = 'CHANGE_CHECK'
 }
 
-export enum BalanceActions {
-    checkBalance = 'CHECK_BALANCE'
+export enum AccountActions {
+    ChangeAccount = 'CHANGE_ACCOUNT',
+    GetAccounts = 'GET_ACCOUNTS'
 }
 
 export enum ApplicationActions {
@@ -39,22 +39,14 @@ export interface CheckAction<C> extends AppAction {
     payload: C;
 }
 
-export interface ApplicationAction<A> extends AppAction {
-    type: ApplicationActions;
+export interface AccountAction<A> extends AppAction {
+    type: AccountActions;
     payload: A;
 }
 
-export interface BalanceAction<T> extends AppAction{
-    type: string;
-    payload:T;
-}
-
-export function checkBalance(accounts:Accounts):BalanceAction<Accounts>{
-    const action : BalanceAction<Accounts>={
-        type: BalanceActions.checkBalance,
-        payload: accounts
-    }
-    return action;
+export interface ApplicationAction<A> extends AppAction {
+    type: ApplicationActions;
+    payload: A;
 }
 
 export function getUser(user: User): UserAction<User> {
@@ -105,6 +97,23 @@ export function changeCheck(check: Check) : CheckAction<Check> {
     return action;
 }
 
+export function changeAccount(account_id: string) : AccountAction<string> {
+    console.log('action', account_id);
+    const action: AccountAction<string> = {
+        type: AccountActions.ChangeAccount,
+        payload: account_id
+    }
+    return action;
+}
+
+export function getAccounts(accounts: Account[]) : AccountAction<Account[]> {
+    const action: AccountAction<Account[]> = {
+        type: AccountActions.GetAccounts,
+        payload: accounts
+    }
+    return action;
+}
+
 export function ChangeApplication(application: Application) : ApplicationAction<Application> {
     const action: ApplicationAction<Application> = {
         type: ApplicationActions.ChangeApplication,
@@ -112,4 +121,3 @@ export function ChangeApplication(application: Application) : ApplicationAction<
     }
     return action;
 }
-

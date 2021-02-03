@@ -14,6 +14,8 @@ export type StackParams = {
     Login: undefined;
     Accounts: undefined;
     Register: undefined;
+    DepositCheck: undefined;
+    CreateApplication: undefined;
 };
 
 

@@ -35,65 +35,37 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateUser = exports.login = exports.User = void 0;
-var log_1 = __importDefault(require("../log"));
-var user_service_1 = __importDefault(require("./user.service"));
-var User = /** @class */ (function () {
-    function User(customer_id, username, firstname, lastname, password, role, email) {
-        this.customer_id = customer_id;
-        this.username = username;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.password = password;
-        this.email = email;
-        this.role = 'customer';
-        if (role) {
-            this.role = role;
-        }
-    }
-    ;
-    return User;
-}());
-exports.User = User;
-function login(username, password) {
+exports.handler = void 0;
+var pg_1 = require("pg");
+function handler(event) {
     return __awaiter(this, void 0, void 0, function () {
+        var client, account, query, values, response, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    log_1.default.debug("" + (username + ' ' + password));
-                    return [4 /*yield*/, user_service_1.default.getUserByName(username).then(function (user) {
-                            if (user && user.password === password) {
-                                return user;
-                            }
-                            else {
-                                return null;
-                            }
-                        })];
-                case 1: return [2 /*return*/, _a.sent()];
+                    client = new pg_1.Client();
+                    account = JSON.parse(event.body);
+                    client.connect();
+                    query = "insert into accounts (account_id,account_type,balance,customer_id) values ($1,$2,$3,$4)";
+                    values = [account.account_id, account.account_type, account.balance, account.customer_id];
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, client.query(query, values)];
+                case 2:
+                    response = _a.sent();
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_1 = _a.sent();
+                    console.log(error_1);
+                    return [3 /*break*/, 4];
+                case 4:
+                    console.log(response);
+                    client.end();
+                    return [2 /*return*/, response];
             }
         });
     });
 }
-exports.login = login;
-/* export function register(username: string, firstname: string,lastname: string,password:string, email: string) {
-    userService.addUser(new User(customer_id, username,firstname,lastname, password, 'customer', email)).then((res) => {
-        logger.trace(res);
-        //callback();
-    }).catch((err) => {
-        logger.error(err);
-        console.log('Error, this probably means that the username is already taken.')
-        //callback();
-    });
-} */
-function updateUser(user) {
-    user_service_1.default.updateUser(user).then(function (success) {
-        log_1.default.info('user updated successfully');
-    }).catch(function (error) {
-        log_1.default.warn('user not updated');
-    });
-}
-exports.updateUser = updateUser;
+exports.handler = handler;
