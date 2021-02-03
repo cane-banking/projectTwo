@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAccounts } from '../store/actions';
 import { CaneBankingState, UserState } from '../store/store';
 import AccountService from './account.service';
-import { color } from '../../global-styles';
+import style,{ color } from '../../global-styles';
 
 
 interface AccountProp {
@@ -30,17 +30,20 @@ export default function Accounts({navigation}:AccountProp) {
   }, [user])
 
   return (
-    <View>
-      <Text>
+    <View style={[style.login, style.screen]}
+    >
+    <View >
+      <Text style={style.screenHeader}>
       Welcome to your accounts {user.firstname}
       </Text>
       <View>
       {accounts ? accounts.map((account, index) => {
                     console.log('acct',account);
                        return <TouchableHighlight key = {index}  onPress={()=> '' } underlayColor={color.white} >
-                       <View ><Text>{account.account_type} {account.balance}</Text></View>
+                       <View style={style.label} ><Text >{account.account_type} {account.balance}</Text></View>
                    </TouchableHighlight>}):''}
                    </View>
+      </View>
       </View>
   );
 }
