@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
 import { View, Text, Button, FlatList } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { Card, Divider } from 'react-native-elements';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from '../../global-styles';
-import { getApplications} from '../store/actions';
-import { ApplicationState, UserState } from '../store/store';
+import { ApplicationState, CaneBankingState, UserState } from '../store/store';
 import { thunkGetApps } from '../store/thunks';
-import adminService from './admin.service';
-import AppComponent from './app.component';
+import declineService from './decline.service';
+import {changeApplication, getApplications, getUser} from '../store/actions'
+import { Application } from '../accounts/application';
+import userService from '../user/user.service';
 
 
 export default function Admin() {
@@ -17,23 +19,36 @@ export default function Admin() {
     const selectApplication = (state: ApplicationState) => state.applications;
     const applications = useSelector(selectApplication);
 
+    const application = useSelector((state: CaneBankingState) => state.application);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
-            dispatch(thunkGetApps());
+      dispatch(thunkGetApps());
+
+      userService.login(user).then((user) => {
+        dispatch(getUser(user));
+      });
     }, [dispatch]);
+
+    
+    
     console.log(applications)
 
-    function approveApp(){
+    function approveApp(id: string){
 
     }
 
-    function denyApp(){
-
+    function denyApp(id: string){
+      declineService.updateaApplication(id).then(() => {
+        dispatch(getApplications(applications))
+      });
+      console.log(id)
+      console.log(applications)
     }
     
   return (
-    <View style={styles.container}>
+    <View>
 
         <View style={styles.heading}>
           <Text style={styles.boldText}>Pending Applications</Text>
@@ -43,17 +58,45 @@ export default function Admin() {
             keyExtractor={(item) => item.application_id}
             data={applications}
             renderItem={({ item }) =>(
-                <Text style={styles.appitem}>
-                    Applicant: {item.firstname} {item.lastname}
-                    Type: {item.accounttype}
-                    <Button onPress={approveApp} title='Approve' color='#63D4FF' />
-                    <Button onPress={denyApp} title='Deny' color='#63D4FF' />
-                </Text>
+              <>
+              {item.applicationstatus === 'pending' && (
+              <Card containerStyle={styles.card}>
+                
+                  
+                <Text style={styles.apptitle}>{item.accounttype}</Text>
+
+                <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
+                  <View style={{flexDirection:'column', justifyContent:'space-between', alignItems:'center'}}>
+                    <Text style={styles.regularText}>{item.socialsecurity}</Text>
+                    <Text style={styles.regularText}>{item.dateofbirth}</Text>
+                    <Text style={styles.regularText}>{item.address}</Text>
+                  </View>
+                 
+                  <View style={{flexDirection:'column', justifyContent:'space-between', alignItems:'center'}}>
+                    <Text style={styles.applicant}>{item.firstname} {item.lastname}</Text>
+                    {/* <Text style={styles.applicant}>{item.applicationdate}</Text> */}
+                  </View>
+
+                </View>
+
+                <Divider style={{backgroundColor: '#dfe6e9', marginVertical:20}} />
+
+                <View style={{flexDirection:'row', justifyContent:'space-between'}}>
+
+                  <Button onPress={() => denyApp(item.application_id)} title='Decline' color='#63D4FF' />
+                  <Button onPress={() => approveApp(item.application_id)} title='Approve' color='#63D4FF' />
+                  
+                </View>
+                
+                
+        
+              </Card>
+            )}
+            </>
+
             )}
         />
 
-        
-        
 
     </View>
 

@@ -1,7 +1,6 @@
 import { Check } from '../check/check';
 import {User} from './../user/user';
 import { Application } from '../accounts/application';
-import { Apps } from '../employee/app';
 
 export enum UserActions {
     GetUser = 'GET_USER',
@@ -97,7 +96,7 @@ export function getApplications(applications: Application[]): ApplicationAction{
 }
 
 
-export function ChangeApplication(application: Application) : ApplicationAction {
+export function changeApplication(application: Application) : ApplicationAction {
     const action: ApplicationAction = {
         type: ApplicationActions.ChangeApplication,
         payload: application
