@@ -10,6 +10,8 @@ import declineService from './decline.service';
 import {changeApplication, getApplications, getUser} from '../store/actions'
 import { Application } from '../accounts/application';
 import userService from '../user/user.service';
+import approveappService from './approveapp.service';
+import Accounts from '../accounts/accounts.component';
 
 
 export default function Admin() {
@@ -36,12 +38,16 @@ export default function Admin() {
     console.log(applications)
 
     function approveApp(id: string){
+      Accounts.
+      approveappService.updateApplication(id).then(() => {
+        dispatch(thunkGetApps());
+      });
 
     }
 
     function denyApp(id: string){
-      declineService.updateaApplication(id).then(() => {
-        dispatch(getApplications(applications))
+      declineService.updateApplication(id).then(() => {
+        dispatch(thunkGetApps());
       });
       console.log(id)
       console.log(applications)

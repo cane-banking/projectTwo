@@ -4,7 +4,7 @@ import { Application } from '../accounts/application';
 class DeclineService{
     private URI: string;
     constructor(){
-        this.URI = 'https://cefrvzcure.execute-api.us-west-2.amazonaws.com/default/declineApp';
+        this.URI = 'https://mod7ye3b9a.execute-api.us-west-2.amazonaws.com/default/approveApplication';
     }
 
     updateApplication(id: string): Promise<null>{
