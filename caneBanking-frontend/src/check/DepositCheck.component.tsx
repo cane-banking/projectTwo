@@ -25,9 +25,7 @@ function DepositCheck({navigation}: Deposit) {
     const dispatch = useDispatch();
 
     useEffect(()=> {
-        console.log('hey! user', user);
         AccountService.getAccountsByCustomer(user.customer_id).then((accounts) => {
-            console.log('accounts', accounts);
             dispatch(getAccounts(accounts));
             dispatch(changeAccount(accounts[0].account_id))
         })
@@ -45,12 +43,14 @@ function DepositCheck({navigation}: Deposit) {
             dispatch(changeCheck(new Check()));
             navigation.navigate('Accounts');
         })
+        console.log('account balance', account.balance);
+        console.log('check amount to deposit', check.amount);
+        console.log('new amount', account.balance + check.amount);
         account.balance = account.balance + check.amount;
         AccountService.addDeposit(account).then(() => {
-            dispatch(changeAccount(account.account_id))
+            console.log('new account balance', account.balance);
         })
     }
-    console.log('accounts after', accounts);
     return (
         <View style={[style.login, style.screen]}>
             <Image source={require('../check/cameraIcon.png')}/>
@@ -61,7 +61,6 @@ function DepositCheck({navigation}: Deposit) {
                         selectedValue={account.account_id}
                         onValueChange={(itemValue, itemIndex) => {dispatch(changeAccount(itemValue.toString()))}}>
                 {accounts ? accounts.map((account, index) => {
-                    console.log('acct',account);
                        return <Picker.Item key={index} label={`${account.account_type}...
                                     ${account.account_id.substring(account.account_id.length - 5)}
                                     $(${account.balance})`} value={account.account_id}/>
