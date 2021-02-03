@@ -12,11 +12,7 @@ import {v4 as uuid4} from 'uuid';
 interface ApplicationProp {
     navigation: any;
 }
-//export class SwitchExample extends Component <any, any>{
-//    state = {
-//        choosenIndex: 0
-//    };
-//}
+
 export function CreateApplication(this: any, {navigation}: ApplicationProp) {
     const application = useSelector((state: CaneBankingState) => state.application);
     const dispatch = useDispatch();
@@ -36,6 +32,7 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
 
         applicationService.addApplication(application).then(() => {
             dispatch(ChangeApplication(new Application()));
+            navigation.navigate('Accounts');
         })
     }
 
