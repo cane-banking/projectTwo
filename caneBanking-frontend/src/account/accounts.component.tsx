@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { View, 
+import { View,
         Text,
         TouchableHighlight } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAccounts } from '../store/actions';
+import { changeAccount, getAccounts } from '../store/actions';
 import { CaneBankingState, UserState } from '../store/store';
 import AccountService from './account.service';
 import { color } from '../../global-styles';
@@ -16,18 +16,22 @@ interface AccountProp {
 export default function Accounts({navigation}:AccountProp) {
     const userSelector = (state: UserState) => state.user;
     const accounts = useSelector((state: CaneBankingState) => state.accounts);
+    const account = useSelector((state: CaneBankingState) => state.account);
     const user = useSelector(userSelector);
     const dispatch = useDispatch()
 
-    console.log(user)
 
     useEffect(()=> {
-      console.log('hey! user', user);
+
       AccountService.getAccountsByCustomer(user.customer_id).then((accounts) => {
-          console.log('accounts', accounts);
           dispatch(getAccounts(accounts));
       })
   }, [user])
+
+  function selectAccount() {
+    dispatch(changeAccount(account.account_id));
+    navigation.navigate('TransactionHistory');
+  }
 
   return (
     <View>
@@ -36,8 +40,7 @@ export default function Accounts({navigation}:AccountProp) {
       </Text>
       <View>
       {accounts ? accounts.map((account, index) => {
-                    console.log('acct',account);
-                       return <TouchableHighlight key = {index}  onPress={()=> '' } underlayColor={color.white} >
+                       return <TouchableHighlight key = {index}  onPress={selectAccount} underlayColor={color.white} >
                        <View ><Text>{account.account_type} {account.balance}</Text></View>
                    </TouchableHighlight>}):''}
                    </View>

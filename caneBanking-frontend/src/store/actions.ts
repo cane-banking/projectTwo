@@ -109,7 +109,6 @@ export function changeCheck(check: Check) : CheckAction<Check> {
 }
 
 export function changeAccount(account_id: string) : AccountAction<string> {
-    console.log('action', account_id);
     const action: AccountAction<string> = {
         type: AccountActions.ChangeAccount,
         payload: account_id
