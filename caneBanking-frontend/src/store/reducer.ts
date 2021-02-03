@@ -2,7 +2,8 @@ import * as Actions from './actions';
 import { User } from './../user/user';
 import { CaneBankingState } from './store';
 import { Check } from '../check/check';
-import { Application } from '../accounts/application';
+import { Account } from '../account/account';
+import { Application } from '../application/application';
 
 // We need to define the initial state of the application and that
 // state should include everything that the application might keep track of.
@@ -12,8 +13,10 @@ export const initialState: CaneBankingState = {
     loginUser: new User(),
     checks: [],
     check: new Check(),
-    application: Application,
-    applications: []
+    applications: [],
+    account: new Account(),
+    accounts: [],
+    application: new Application()
 }
 
 // Make sure that the reducer has a default argument of the inital state or it will not work.
@@ -41,6 +44,17 @@ const reducer = (state: CaneBankingState = initialState, action: Actions.AppActi
         case Actions.CheckActions.ChangeCheck:
             newState.check = action.payload as Check;
             return newState;
+        case Actions.AccountActions.NewAccount:
+            newState.account = action.payload as Account;
+            return newState;
+        case Actions.AccountActions.ChangeAccount:
+            console.log('changeAccounts', newState.accounts);
+            let getAccount = newState.accounts.filter((account) => account.account_id === action.payload) as Account[];
+            console.log('change acct', getAccount);
+            newState.account = getAccount[0];
+            return newState;
+        case Actions.AccountActions.GetAccounts:
+            newState.accounts = action.payload as Account[];
         case Actions.ApplicationActions.ChangeApplication:
             newState.application = action.payload as Application;
             return newState;
