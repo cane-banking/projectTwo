@@ -10,6 +10,8 @@ import DepositCheck from '../check/DepositCheck.component';
 import NavBarComponent from './navbar.component';
 import CreateApplication from '../accounts/application-component';
 import Accounts from '../accounts/accounts.component';
+import TransactionHistory from '../transaction/transaction-component';
+import { Transaction } from '../transaction/transaction';
 
 
 /* Parameter list for RouteProp requires a field for the route that we're on. */
@@ -19,6 +21,7 @@ export type StackParams = {
     Register: undefined;
     DepositCheck: undefined;
     CreateApplication: undefined;
+    TransactionHistory: Transaction;
 };
 
 const Stack = createStackNavigator<StackParams>();
@@ -30,6 +33,7 @@ const headerOptions: StackHeaderOptions = {
     headerRight: () => <NavBarComponent />
 };
 function RouterComponent(props: any) {
+    const tran = useSelector((state: CaneBankingState) => state.transaction);
     return (
         <Stack.Navigator initialRouteName='Login'>
             <Stack.Screen
@@ -56,6 +60,12 @@ function RouterComponent(props: any) {
                 name='DepositCheck'
                 component={DepositCheck}
                 options={headerOptions}
+            />
+            <Stack.Screen
+                name='TransactionHistory'
+                component={TransactionHistory}
+                options={headerOptions}
+                initialParams={tran}
             />
 
         </Stack.Navigator>

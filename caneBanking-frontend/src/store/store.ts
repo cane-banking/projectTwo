@@ -5,6 +5,7 @@ import { Application } from '../accounts/application';
 import { User } from "../user/user";
 import { AppAction } from "./actions";
 import reducer from "./reducer";
+import { Transaction } from "../transaction/transaction";
 
 export interface UserState {
     user: User;
@@ -19,7 +20,12 @@ export interface ApplicationState {
     application: Application;
 }
 
-export interface CaneBankingState extends UserState, CheckState, ApplicationState {
+export interface TransactionState {
+    transaction: Transaction;
+}
+
+export interface CaneBankingState extends UserState, CheckState, ApplicationState, TransactionState {
+    transaction: any;
     application: any;
 }
 // <> is generics: Generic arguments allow us to define the type of a thing at runtime instead of when we write it,
