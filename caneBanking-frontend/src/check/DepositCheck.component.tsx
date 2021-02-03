@@ -47,9 +47,8 @@ function DepositCheck({navigation}: Deposit) {
         })
         account.balance = account.balance + check.amount;
         AccountService.addDeposit(account).then(() => {
-            dispatch(changeAccount(''))
+            dispatch(changeAccount(account.account_id))
         })
-        navigation.navigate('Accounts');
     }
     console.log('accounts after', accounts);
     return (
