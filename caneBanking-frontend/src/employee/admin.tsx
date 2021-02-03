@@ -32,8 +32,6 @@ export default function Admin() {
         dispatch(getUser(user));
       });
     }, [dispatch]);
-    
-    console.log(applications)
 
     function approveApp(aid: string, type: string, cid: string){
       account.account_id = uuidv4();
@@ -43,7 +41,6 @@ export default function Admin() {
       newaccountService.addAccount(account).then(() => {
         dispatch(newAccount(new Account()));
       });
-      console.log(account)
 
       approveappService.updateApplication(aid).then(() => {
         dispatch(thunkGetApps());
@@ -55,8 +52,6 @@ export default function Admin() {
       declineService.updateApplication(id).then(() => {
         dispatch(thunkGetApps());
       });
-      console.log(id)
-      console.log(applications)
     }
     
   return (

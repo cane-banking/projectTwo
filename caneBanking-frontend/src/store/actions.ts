@@ -46,9 +46,9 @@ export interface AccountAction<A> extends AppAction{
     payload: A;
 }
 
-export interface ApplicationAction extends AppAction {
+export interface ApplicationAction<A> extends AppAction {
     type: ApplicationActions;
-    payload: Application | Application[];
+    payload: A;
 }
 
 export function getUser(user: User): UserAction<User> {
@@ -98,8 +98,8 @@ export function changeCheck(check: Check) : CheckAction<Check> {
     }
     return action;
 }
-export function getApplications(applications: Application[]): ApplicationAction{
-    const action: ApplicationAction = {
+export function getApplications(applications: Application[]): ApplicationAction<Application[]>{
+    const action: ApplicationAction<Application[]> = {
         type: ApplicationActions.GetApplications,
         payload: applications
     }
@@ -122,8 +122,8 @@ export function changeAccount(account_id: string) : AccountAction<string> {
     return action;
 }
 
-export function changeApplication(application: Application) : ApplicationAction {
-    const action: ApplicationAction = {
+export function ChangeApplication(application: Application) : ApplicationAction<Application> {
+    const action: ApplicationAction<Application> = {
         type: ApplicationActions.ChangeApplication,
         payload: application
     }
