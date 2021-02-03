@@ -23,7 +23,6 @@ function DepositCheck({navigation}: Deposit) {
     const accounts = useSelector((state: CaneBankingState) => state.accounts);
     const account = useSelector((state: CaneBankingState) => state.account);
     const dispatch = useDispatch();
-
     useEffect(()=> {
         AccountService.getAccountsByCustomer(user.customer_id).then((accounts) => {
             dispatch(getAccounts(accounts));

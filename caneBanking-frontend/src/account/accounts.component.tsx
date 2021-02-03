@@ -29,7 +29,6 @@ export default function Accounts({navigation}:AccountProp) {
   }, [user])
 
   function selectAccount() {
-    dispatch(changeAccount(account.account_id));
     navigation.navigate('TransactionHistory');
   }
 
