@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
 import { View, Text, Button, FlatList } from 'react-native';
 import { Card, Divider } from 'react-native-elements';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from '../../global-styles';
 import { ApplicationState, CaneBankingState, UserState } from '../store/store';
 import { thunkGetApps } from '../store/thunks';
 import declineService from './decline.service';
-import {changeApplication, getApplications, getUser} from '../store/actions'
-import { Application } from '../accounts/application';
+import {getUser, newAccount} from '../store/actions'
 import userService from '../user/user.service';
 import approveappService from './approveapp.service';
-import Accounts from '../accounts/accounts.component';
+import { v4 as uuidv4 } from 'uuid';
+import {Account} from '../account/account';
+import newaccountService from './newaccount.service';
 
 
 export default function Admin() {
@@ -21,7 +21,7 @@ export default function Admin() {
     const selectApplication = (state: ApplicationState) => state.applications;
     const applications = useSelector(selectApplication);
 
-    const application = useSelector((state: CaneBankingState) => state.application);
+    const account = useSelector((state: CaneBankingState) => state.account);
 
     const dispatch = useDispatch();
 
@@ -32,14 +32,20 @@ export default function Admin() {
         dispatch(getUser(user));
       });
     }, [dispatch]);
-
-    
     
     console.log(applications)
 
-    function approveApp(id: string){
-      Accounts.
-      approveappService.updateApplication(id).then(() => {
+    function approveApp(aid: string, type: string, cid: string){
+      account.account_id = uuidv4();
+      account.account_type = type;
+      account.customer_id = cid;
+
+      newaccountService.addAccount(account).then(() => {
+        dispatch(newAccount(new Account()));
+      });
+      console.log(account)
+
+      approveappService.updateApplication(aid).then(() => {
         dispatch(thunkGetApps());
       });
 
@@ -90,7 +96,7 @@ export default function Admin() {
                 <View style={{flexDirection:'row', justifyContent:'space-between'}}>
 
                   <Button onPress={() => denyApp(item.application_id)} title='Decline' color='#63D4FF' />
-                  <Button onPress={() => approveApp(item.application_id)} title='Approve' color='#63D4FF' />
+                  <Button onPress={() => approveApp(item.application_id, item.accounttype, item.customer_id)} title='Approve' color='#63D4FF' />
                   
                 </View>
                 

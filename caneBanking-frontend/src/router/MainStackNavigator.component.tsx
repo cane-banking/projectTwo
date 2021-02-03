@@ -8,6 +8,7 @@ import SignUpComponent from '../user/signup.component';
 import { enableScreens } from 'react-native-screens';
 import CreateApplication from "../application/application-component";
 import DepositCheck from "../check/DepositCheck.component";
+import Admin from "../employee/admin";
 
 
 enableScreens();
@@ -34,6 +35,20 @@ const loginStackNavigator = ({navigation}:MenuProp) => {
         }} />
 
       <Stack.Screen name="Accounts" component={Accounts} 
+        options={{title:'Cane Banking',
+        headerStyle: {
+          backgroundColor: '#63D4FF',
+        },
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+        headerTitleAlign:'center',
+        headerRight:() => (
+          <Icon.Button name ='ios-menu' size={25}
+          backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
+        }}/>
+
+  <Stack.Screen name="Admin" component={Admin} 
         options={{title:'Cane Banking',
         headerStyle: {
           backgroundColor: '#63D4FF',

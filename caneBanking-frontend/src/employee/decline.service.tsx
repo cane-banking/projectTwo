@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { Application } from '../accounts/application';
 
 class DeclineService{
     private URI: string;
