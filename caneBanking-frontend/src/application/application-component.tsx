@@ -41,7 +41,7 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
 
     return (
         <View style={styles.container}>
-             <Text>{user.firstname}Create An Application</Text>
+            <Text style={styles.label}>Create An Application</Text>
             <TextInput
                 placeholder='Social Security Number'
                 secureTextEntry={true}
@@ -83,9 +83,9 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
                 value={application.dateofbirth}
                 />
 
-                <View style={styles.create}>
+            <View style={styles.create}>
                     <Button onPress={submitCreateApplication} title='Create Application' color={color.lightBlue} />
-                </View>
+            </View>
         </View>
     );
 }

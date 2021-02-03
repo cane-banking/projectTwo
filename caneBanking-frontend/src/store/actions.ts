@@ -27,7 +27,7 @@ export enum ApplicationActions {
 }
 
 export enum TransactionActions {
-    GetTransaction = 'GET_TRANSACTION'
+    GetTransactions = 'GET_TRANSACTIONS'
 }
 
 export interface AppAction {
@@ -133,10 +133,10 @@ export function ChangeApplication(application: Application) : ApplicationAction<
     return action;
 }
 
-export function getTransaction(transaction: Transaction): TransactionAction<Transaction> {
-    const action: TransactionAction<Transaction> = {
-        type: TransactionActions.GetTransaction,
-        payload: transaction
+export function getTransaction(transactions: Transaction[]): TransactionAction<Transaction[]> {
+    const action: TransactionAction<Transaction[]> = {
+        type: TransactionActions.GetTransactions,
+        payload: transactions
     }
     return action;
 }

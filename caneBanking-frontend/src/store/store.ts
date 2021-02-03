@@ -26,11 +26,12 @@ export interface ApplicationState {
 
 export interface TransactionState {
     transaction: Transaction;
+    transactions: Transaction[];
 }
 
 export interface CaneBankingState extends UserState, CheckState, ApplicationState, TransactionState {
-    transaction: any;
-    application: any;
+    //transaction: any;
+    //application: any;
 }
 // <> is generics: Generic arguments allow us to define the type of a thing at runtime instead of when we write it,
 // creating a reusable object.

@@ -17,7 +17,7 @@ export type StackParams = {
     Register: undefined;
     DepositCheck: undefined;
     CreateApplication: undefined;
-    TransactionHistory: Transaction;
+    TransactionHistory: undefined;
 };
 
 
