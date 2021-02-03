@@ -41,8 +41,12 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
 
     return (
         <View style={styles.container}>
+             <Text>{user.firstname}Create An Application</Text>
             <TextInput
                 placeholder='Social Security Number'
+                secureTextEntry={true}
+                keyboardType = 'numeric'
+                maxLength={9}
                 style={styles.input}
                 onChangeText={(value) =>
                     dispatch(ChangeApplication({ ...application, socialsecurity: value}))
@@ -70,7 +74,7 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
                 />
 
             <TextInput
-                placeholder='Date of Birth'
+                placeholder='Date of Birth: MM/DD/YYYY'
                 style={styles.input}
                 onChangeText={(value) =>
                     dispatch(ChangeApplication({ ...application, dateofbirth: value}))

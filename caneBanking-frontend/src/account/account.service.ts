@@ -4,10 +4,10 @@ import { Account } from './account';
 class AccountService {
     private URI: string;
     constructor() {
-        this.URI = 'https://4ysnnx02ei.execute-api.us-west-2.amazonaws.com/default/account';
+        this.URI = 'https://4ysnnx02ei.execute-api.us-west-2.amazonaws.com/default/accounts';
     }
     addDeposit(account: Account): Promise<Account> {
-        return axios.put(this.URI,{params: {account: account}}).then(result => result.data).catch(err => err);
+        return axios.put(this.URI, account).then(result => result.data).catch(err => err);
     }
     getAccountsByCustomer(customerId: string): Promise<Account []> {
         console.log('customerId', customerId);
