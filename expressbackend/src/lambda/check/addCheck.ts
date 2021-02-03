@@ -2,7 +2,8 @@ import { Client } from 'pg';
 
 export async function handler(event: any) {
     const client = new Client();
-    const check = event.queryStringParameters.check;
+    const check = event.body;
+    console.log('event', event);
     client.connect();
     const query = `insert into checks (check_id,
                                    customer_id,
@@ -20,7 +21,6 @@ export async function handler(event: any) {
                     check.amount ];
     let response = await client.query(query, values);
     if (response) {
-
         return {
         statusCode: 200,
         headers: {
@@ -28,9 +28,9 @@ export async function handler(event: any) {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
         }
-    };
-}
-    console.log(response);
+        };
+    }
+    console.log('response',response);
     client.end();
     return response;
 }

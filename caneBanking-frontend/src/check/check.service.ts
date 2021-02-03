@@ -13,7 +13,7 @@ class CheckService {
         });
     }
     addCheck(check: Check): Promise<Check> {
-        return axios.post(this.URI, {params: {check: check}}).then(result => result.data).catch(err => err);
+        return axios.post(this.URI, check).then(result => result.data).catch(err => err);
     }
 }
 
