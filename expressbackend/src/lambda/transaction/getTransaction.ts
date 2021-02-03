@@ -1,9 +1,5 @@
 import {Client} from 'pg';
 
-interface MyEvent {
-    body: string;
-}
-
 export const handler = async (event: any) => {
     let accountId = event.queryStringParameters.account_id;
     const client = new Client();
