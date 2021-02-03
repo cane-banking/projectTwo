@@ -3,7 +3,7 @@ import { Client } from 'pg';
 export async function handler(event: any) {
     const client = new Client();
     console.log('event', event);
-    const account = event.queryStringParameters.account;
+    const account = event.body;
     console.log('account', account);
     client.connect();
     const query = `update accounts set account_balance = $1 where account_id = $2`;
