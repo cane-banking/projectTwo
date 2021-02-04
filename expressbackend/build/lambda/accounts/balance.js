@@ -40,48 +40,31 @@ exports.handler = void 0;
 var pg_1 = require("pg");
 function handler(event) {
     return __awaiter(this, void 0, void 0, function () {
-        var client, check, query, values, response;
+        var client, user, query, values, response, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     client = new pg_1.Client();
-                    check = JSON.parse(event.body);
+                    user = JSON.parse(event.body);
                     client.connect();
-                    query = "insert into checks (check_id,\n                                   customer_id,\n                                   account_id,\n                                   check_date,\n                                   firstname,\n                                   lastname,\n                                   amount) values ($1, $2, $3, $4, $5, $6, $7)";
-                    values = [check.check_id,
-                        check.customer_id,
-                        check.account_id,
-                        check.check_date,
-                        check.firstname,
-                        check.lastname,
-                        check.amount];
-                    return [4 /*yield*/, client.query(query, values)];
+                    query = 'select balance from accounts where customer_id = $1;';
+                    values = [user.customer_id];
+                    _a.label = 1;
                 case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, client.query(query, values)];
+                case 2:
                     response = _a.sent();
-                    console.log('addCheck response query', response);
-                    if (response) {
-                        client.end();
-                        return [2 /*return*/, {
-                                statusCode: 200,
-                                headers: {
-                                    "Access-Control-Allow-Headers": "Content-Type",
-                                    "Access-Control-Allow-Origin": "*",
-                                    "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
-                                }
-                            }];
-                    }
-                    else {
-                        client.end();
-                        return [2 /*return*/, {
-                                statusCode: 400,
-                                headers: {
-                                    "Access-Control-Allow-Headers": "Content-Type",
-                                    "Access-Control-Allow-Origin": "*",
-                                    "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
-                                }
-                            }];
-                    }
-                    return [2 /*return*/];
+                    console.log(response.rows);
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_1 = _a.sent();
+                    console.log(error_1);
+                    return [3 /*break*/, 4];
+                case 4:
+                    console.log(response);
+                    client.end;
+                    return [2 /*return*/, response === null || response === void 0 ? void 0 : response.rows];
             }
         });
     });

@@ -38,48 +38,28 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.handler = void 0;
 var pg_1 = require("pg");
-function handler(event) {
+function handler() {
     return __awaiter(this, void 0, void 0, function () {
-        var client, check, query, values, response;
+        var client, q, res;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     client = new pg_1.Client();
-                    check = JSON.parse(event.body);
                     client.connect();
-                    query = "insert into checks (check_id,\n                                   customer_id,\n                                   account_id,\n                                   check_date,\n                                   firstname,\n                                   lastname,\n                                   amount) values ($1, $2, $3, $4, $5, $6, $7)";
-                    values = [check.check_id,
-                        check.customer_id,
-                        check.account_id,
-                        check.check_date,
-                        check.firstname,
-                        check.lastname,
-                        check.amount];
-                    return [4 /*yield*/, client.query(query, values)];
+                    q = "select * from applications";
+                    return [4 /*yield*/, client.query(q)];
                 case 1:
-                    response = _a.sent();
-                    console.log('addCheck response query', response);
-                    if (response) {
-                        client.end();
-                        return [2 /*return*/, {
-                                statusCode: 200,
-                                headers: {
+                    res = _a.sent();
+                    if (res) {
+                        return [2 /*return*/, { statusCode: 200, headers: {
                                     "Access-Control-Allow-Headers": "Content-Type",
+                                    "Content-Type": "application/json",
                                     "Access-Control-Allow-Origin": "*",
-                                    "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
-                                }
-                            }];
+                                    "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+                                }, body: JSON.stringify(res.rows) }];
                     }
                     else {
-                        client.end();
-                        return [2 /*return*/, {
-                                statusCode: 400,
-                                headers: {
-                                    "Access-Control-Allow-Headers": "Content-Type",
-                                    "Access-Control-Allow-Origin": "*",
-                                    "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
-                                }
-                            }];
+                        return [2 /*return*/, { statusCode: 404, body: JSON.stringify({}) }];
                     }
                     return [2 /*return*/];
             }

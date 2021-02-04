@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Application } from '../account/application';
+import { Application } from '../application/application';
 
 class AdminService{
     private URI: string;

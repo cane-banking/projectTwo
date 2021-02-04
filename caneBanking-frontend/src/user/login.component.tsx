@@ -8,18 +8,20 @@ import {
     TextInput,
     Text,
     View,
+    Image
 } from 'react-native';
 import style from '../../global-styles';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 // Function Component
 interface LoginProp {
     navigation: any;
 }
+
 function LoginComponent({ navigation }: LoginProp) {
     const userSelector = (state: UserState) => state.loginUser;
     const user = useSelector(userSelector);
     const dispatch = useDispatch();
-
 
     function submitForm() {
         userService.login(user).then((user) => {
@@ -38,25 +40,46 @@ function LoginComponent({ navigation }: LoginProp) {
     }
 
     return (
-        <View style={[style.container, style.login]}>
-            <TextInput
-                placeholder='username'
-                style={style.input}
-                onChangeText={(value) =>
-                    dispatch(loginAction({ ...user, username: value }))
-                }
-                value={user.username}
+        <View style={style.container}>
+            <View style={style.heading}>
+                <Text style={style.boldText}>Take care of your financial needs today</Text>
+            </View>
+
+            <View style ={style.login}>
+                <TextInput
+                    placeholder='username'
+                    style={style.input}
+                    onChangeText={(value) =>
+                        dispatch(loginAction({ ...user, username: value }))
+                    }
+                    value={user.username}
+                />
+                <TextInput
+                    placeholder='password'
+                    secureTextEntry={true}
+                    style={style.input}
+                    onChangeText={(value) =>
+                        dispatch(loginAction({ ...user, password: value }))
+                    }
+                    value={user.password}
+                />
+                <TouchableOpacity style={{
+                    borderRadius: 30, 
+                    backgroundColor: '#63D4FF', 
+                    justifyContent: 'center', 
+                    alignItems:'center',
+                    height: 32, 
+                    width: 95 }} onPress={submitForm} >
+                        <Text style={style.boldText}>
+                            Login
+                        </Text>
+                            </TouchableOpacity>
+            </View>
+
+            <Image 
+                style={{width: 325, height: 261, marginBottom: 20}}
+                source={require('./undraw_Savings_re_eq4w (2).svg')}
             />
-            <TextInput
-                placeholder='password'
-                secureTextEntry={true}
-                style={style.input}
-                onChangeText={(value) =>
-                    dispatch(loginAction({ ...user, password: value }))
-                }
-                value={user.password}
-            />
-            <Button onPress={submitForm} title='Login' color='#63D4FF' />
             <Text style={style.boldText}>Don't have an account?</Text>
             <View style={style.create}>
                 <Button onPress={createAccount} title='Create Account' color='#63D4FF' />
