@@ -29,7 +29,8 @@ const styles = StyleSheet.create({
     regularText: {
         color: '#756262',
         fontFamily: 'Helvetica',
-        fontSize: 14
+        fontSize: 14,
+        marginBottom: 5
     },
     container: {
         flex: 1,
@@ -98,7 +99,36 @@ const styles = StyleSheet.create({
         alignSelf: 'stretch'
     },
     heading: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: 10,
+        marginTop: 10
+    },
+    appitem: {
+        fontFamily: 'Helvetica',
+        marginBottom: 24,
+        padding: 30,
+        backgroundColor: '#63D4FF',
+        fontSize: 12
+    },
+    card: {
+        backgroundColor: '#63D4FF',
+        borderWidth: 0,
+        borderRadius: 20
+    },
+    apptitle: {
+        fontFamily: 'Helvetica',
+        fontWeight: 'bold',
+        fontSize: 24,
+        textTransform: 'capitalize',
+        color: '#fff',
         marginBottom: 10
+    },
+    applicant: {
+        fontFamily: 'Helvetica',
+        fontWeight: 'bold',
+        fontSize: 18,
+        color: '#756262'
     }
 });
 
