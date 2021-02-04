@@ -92,14 +92,6 @@ export function changeLocale(locale: string): UserAction<string> {
     return action;
 }
 
-export function addCheck(check: Check) : CheckAction<Check> {
-    const action: CheckAction<Check> = {
-        type: CheckActions.AddCheck,
-        payload: check
-    }
-    return action;
-}
-
 export function changeCheck(check: Check) : CheckAction<Check> {
     const action: CheckAction<Check> = {
         type: CheckActions.ChangeCheck,
@@ -140,10 +132,4 @@ export function getTransaction(transaction: Transaction): TransactionAction<Tran
     return action;
 }
 
-export function addTransaction(transaction:Transaction):TransactionAction<Transaction>{
-    const action : TransactionAction<Transaction> = {
-        type: TransactionActions.AddTransaction,
-        payload: transaction
-    }
-    return action;
-}
+

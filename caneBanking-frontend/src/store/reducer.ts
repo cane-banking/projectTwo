@@ -41,9 +41,6 @@ const reducer = (state: CaneBankingState = initialState, action: Actions.AppActi
             return newState;
         case Actions.UserActions.ChangeUser:
             newState.user = action.payload as User;
-        case Actions.CheckActions.AddCheck:
-            newState.checks = [...newState.checks, action.payload] as Check[];
-            return newState;
         case Actions.CheckActions.ChangeCheck:
             newState.check = action.payload as Check;
             return newState;
@@ -59,9 +56,6 @@ const reducer = (state: CaneBankingState = initialState, action: Actions.AppActi
         case Actions.TransactionActions.GetTransaction:
             newState.transaction = action.payload as Transaction;
             return newState;
-        // case Actions.TransactionActions.AddTransaction:
-        //         newState.transaction =[...newState.transaction, action.payload] as Transaction;
-        //         return newState;
         default:
             return state;
     }
