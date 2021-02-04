@@ -17,11 +17,13 @@ export enum CheckActions {
 
 export enum AccountActions {
     ChangeAccount = 'CHANGE_ACCOUNT',
-    GetAccounts = 'GET_ACCOUNTS'
+    GetAccounts = 'GET_ACCOUNTS',
+    NewAccount ='NEW_ACCOUNT'
 }
 
 export enum ApplicationActions {
-    ChangeApplication = 'CHANGE_APPLICATION'
+    ChangeApplication = 'CHANGE_APPLICATION',
+    GetApplications = 'GET_APPLICATIONS'
 }
 
 export interface AppAction {
@@ -39,7 +41,7 @@ export interface CheckAction<C> extends AppAction {
     payload: C;
 }
 
-export interface AccountAction<A> extends AppAction {
+export interface AccountAction<A> extends AppAction{
     type: AccountActions;
     payload: A;
 }
@@ -96,19 +98,26 @@ export function changeCheck(check: Check) : CheckAction<Check> {
     }
     return action;
 }
+export function getApplications(applications: Application[]): ApplicationAction<Application[]>{
+    const action: ApplicationAction<Application[]> = {
+        type: ApplicationActions.GetApplications,
+        payload: applications
+    }
+    return action;
+}
+
+export function newAccount(account: Account) : AccountAction<Account>{
+    const action: AccountAction<Account> = {
+        type: AccountActions.NewAccount,
+        payload: account
+    }
+    return action
+}
 
 export function changeAccount(account_id: string) : AccountAction<string> {
     const action: AccountAction<string> = {
         type: AccountActions.ChangeAccount,
         payload: account_id
-    }
-    return action;
-}
-
-export function getAccounts(accounts: Account[]) : AccountAction<Account[]> {
-    const action: AccountAction<Account[]> = {
-        type: AccountActions.GetAccounts,
-        payload: accounts
     }
     return action;
 }
@@ -120,3 +129,13 @@ export function ChangeApplication(application: Application) : ApplicationAction<
     }
     return action;
 }
+
+export function getAccounts(accounts: Account[]) : AccountAction<Account[]>{
+    const action: AccountAction<Account[]> = {
+        type: AccountActions.GetAccounts,
+        payload: accounts
+    }
+    return action;
+}
+
+

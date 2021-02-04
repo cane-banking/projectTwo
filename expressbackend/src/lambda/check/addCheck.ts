@@ -3,7 +3,6 @@ import { Client } from 'pg';
 export async function handler(event: any) {
     const client = new Client();
     const check = JSON.parse(event.body);
-    console.log('event', event);
     client.connect();
     const query = `insert into checks (check_id,
                                    customer_id,

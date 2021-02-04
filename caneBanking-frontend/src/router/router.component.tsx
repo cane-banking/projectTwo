@@ -8,12 +8,12 @@ import { enableScreens } from 'react-native-screens';
 
 enableScreens();
 
-
 /* Parameter list for RouteProp requires a field for the route that we're on. */
 export type StackParams = {
     Login: undefined;
     Accounts: undefined;
     Register: undefined;
+    Admin: undefined;
     DepositCheck: undefined;
     CreateApplication: undefined;
 };

@@ -13,6 +13,7 @@ export const initialState: CaneBankingState = {
     loginUser: new User(),
     checks: [],
     check: new Check(),
+    applications: [],
     account: new Account(),
     accounts: [],
     application: new Application()
@@ -43,6 +44,9 @@ const reducer = (state: CaneBankingState = initialState, action: Actions.AppActi
         case Actions.CheckActions.ChangeCheck:
             newState.check = action.payload as Check;
             return newState;
+        case Actions.AccountActions.NewAccount:
+            newState.account = action.payload as Account;
+            return newState;
         case Actions.AccountActions.ChangeAccount:
             let getAccount = newState.accounts.filter((account) => account.account_id === action.payload) as Account[];
             newState.account = getAccount[0];
@@ -52,6 +56,10 @@ const reducer = (state: CaneBankingState = initialState, action: Actions.AppActi
         case Actions.ApplicationActions.ChangeApplication:
             newState.application = action.payload as Application;
             return newState;
+        case Actions.ApplicationActions.GetApplications:
+            newState.applications = action.payload as Application[];
+            return newState;
+    
         default:
             return state;
     }
