@@ -2,6 +2,7 @@ import { Check } from '../check/check';
 import {User} from './../user/user';
 import { Account } from '../account/account';
 import { Application } from '../application/application';
+import { Transaction } from '../transaction/transaction';
 
 export enum UserActions {
     GetUser = 'GET_USER',
@@ -22,6 +23,11 @@ export enum AccountActions {
 
 export enum ApplicationActions {
     ChangeApplication = 'CHANGE_APPLICATION'
+}
+
+export enum TransactionActions {
+    GetTransaction = 'GET_TRANSACTION',
+    AddTransaction='ADD_TRANSACTION'
 }
 
 export interface AppAction {
@@ -47,6 +53,11 @@ export interface AccountAction<A> extends AppAction {
 export interface ApplicationAction<A> extends AppAction {
     type: ApplicationActions;
     payload: A;
+}
+
+export interface TransactionAction<T> extends AppAction {
+    type: TransactionActions;
+    payload: T;
 }
 
 export function getUser(user: User): UserAction<User> {
@@ -118,6 +129,22 @@ export function ChangeApplication(application: Application) : ApplicationAction<
     const action: ApplicationAction<Application> = {
         type: ApplicationActions.ChangeApplication,
         payload: application
+    }
+    return action;
+}
+
+export function getTransaction(transaction: Transaction): TransactionAction<Transaction> {
+    const action: TransactionAction<Transaction> = {
+        type: TransactionActions.GetTransaction,
+        payload: transaction
+    }
+    return action;
+}
+
+export function addTransaction(transaction:Transaction):TransactionAction<Transaction>{
+    const action : TransactionAction<Transaction> = {
+        type: TransactionActions.AddTransaction,
+        payload: transaction
     }
     return action;
 }
