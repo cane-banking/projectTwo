@@ -63,17 +63,8 @@ function LoginComponent({ navigation }: LoginProp) {
                     }
                     value={user.password}
                 />
-                <TouchableOpacity style={{
-                    borderRadius: 30, 
-                    backgroundColor: '#63D4FF', 
-                    justifyContent: 'center', 
-                    alignItems:'center',
-                    height: 32, 
-                    width: 95 }} onPress={submitForm} >
-                        <Text style={style.boldText}>
-                            Login
-                        </Text>
-                            </TouchableOpacity>
+                <Button onPress={submitForm} title='Login' color='#63D4FF' />
+    
             </View>
 
             <Image 

@@ -24,10 +24,9 @@ export interface ApplicationState {
 }
 
 export interface CaneBankingState extends UserState, CheckState, ApplicationState {
-    //application: any;
+    
 }
-// <> is generics: Generic arguments allow us to define the type of a thing at runtime instead of when we write it,
-// creating a reusable object.
+
 const store: Store<CaneBankingState, AppAction> = createStore(reducer, applyMiddleware(thunk));
 
 export default store;

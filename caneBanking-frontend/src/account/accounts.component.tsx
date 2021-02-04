@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
 import { View,
         Text,
-        TouchableHighlight } from 'react-native';
+        TouchableHighlight, 
+        FlatList,
+        Button} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeAccount, getAccounts } from '../store/actions';
 import { CaneBankingState, UserState } from '../store/store';
 import AccountService from './account.service';
-import { color } from '../../global-styles';
+import styles, { color } from '../../global-styles';
+import { Card, Divider } from 'react-native-elements';
 
 
 interface AccountProp {
@@ -28,21 +31,54 @@ export default function Accounts({navigation}:AccountProp) {
       })
   }, [user])
 
+  console.log(accounts)
+
   function selectAccount() {
     navigation.navigate('TransactionHistory');
   }
 
   return (
     <View>
-      <Text>
-      Welcome to your accounts {user.firstname}
-      </Text>
-      <View>
-      {accounts ? accounts.map((account, index) => {
-                       return <TouchableHighlight key = {index}  onPress={selectAccount} underlayColor={color.white} >
-                       <View ><Text>{account.account_type} {account.balance}</Text></View>
-                   </TouchableHighlight>}):''}
-                   </View>
+
+      <View style={styles.heading}>
+        <Text style={styles.boldText}>Welcome to your accounts {user.firstname}</Text>
+      </View>
+
+      <FlatList 
+            keyExtractor={(item) => item.account_id}
+            data={accounts}
+            renderItem={({ item }) =>(
+              <>
+              
+              <Card containerStyle={styles.card}>
+                  
+                <Text style={styles.apptitle}>{item.account_type}</Text>
+
+                <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
+                 
+                  <View style={{flexDirection:'column', justifyContent:'space-between', alignItems:'center'}}>
+                    <Text style={styles.applicant}>${item.balance}</Text>
+                  </View>
+
+                </View>
+
+                <Divider style={{backgroundColor: '#dfe6e9', marginVertical:20}} />
+
+                <View style={{flexDirection:'row', justifyContent:'space-between'}}>
+
+                  <Button onPress={selectAccount} title={item.account_id} color='#63D4FF' />
+                  
+                </View>
+                
+                
+        
+              </Card>
+            
+            </>
+
+            )}
+        />
+
       </View>
   );
 }
