@@ -40,25 +40,21 @@ exports.handler = void 0;
 var pg_1 = require("pg");
 function handler(event) {
     return __awaiter(this, void 0, void 0, function () {
-        var client, check, query, values, response;
+        var client, account, query, values, response;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     client = new pg_1.Client();
-                    check = event.body;
                     console.log('event', event);
+                    account = event.body;
+                    console.log('account', account);
                     client.connect();
-                    query = "insert into checks (check_id,\n                                   customer_id,\n                                   account_id,\n                                   check_date,\n                                   firstname,\n                                   lastname,\n                                   amount) values ($1, $2, $3, $4, $5, $6, $7)";
-                    values = [check.check_id,
-                        check.customer_id,
-                        check.account_id,
-                        check.check_date,
-                        check.firstname,
-                        check.lastname,
-                        check.amount];
+                    query = "update accounts set account_balance = $1 where account_id = $2";
+                    values = [account.balance, account.account_id];
                     return [4 /*yield*/, client.query(query, values)];
                 case 1:
                     response = _a.sent();
+                    console.log('the response', response.rows);
                     if (response) {
                         return [2 /*return*/, {
                                 statusCode: 200,
@@ -69,7 +65,7 @@ function handler(event) {
                                 }
                             }];
                     }
-                    console.log('response', response);
+                    console.log(response);
                     client.end();
                     return [2 /*return*/, response];
             }

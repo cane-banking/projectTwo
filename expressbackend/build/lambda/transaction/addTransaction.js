@@ -40,22 +40,21 @@ exports.handler = void 0;
 var pg_1 = require("pg");
 function handler(event) {
     return __awaiter(this, void 0, void 0, function () {
-        var client, check, query, values, response;
+        var client, transaction, query, values, response;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     client = new pg_1.Client();
-                    check = event.body;
+                    transaction = JSON.parse(event.body);
                     console.log('event', event);
                     client.connect();
-                    query = "insert into checks (check_id,\n                                   customer_id,\n                                   account_id,\n                                   check_date,\n                                   firstname,\n                                   lastname,\n                                   amount) values ($1, $2, $3, $4, $5, $6, $7)";
-                    values = [check.check_id,
-                        check.customer_id,
-                        check.account_id,
-                        check.check_date,
-                        check.firstname,
-                        check.lastname,
-                        check.amount];
+                    query = "insert into transactions (transaction_id,\n                                   time_stamp,\n                                   vendor,\n                                   transaction_amt,\n                                   account_id,\n                                   customer_id) values ($1, $2, $3, $4, $5, $6)";
+                    values = [transaction.transaction_id,
+                        transaction.time_stamp,
+                        transaction.vendor,
+                        transaction.transaction_amt,
+                        transaction.account_id,
+                        transaction.customer_id];
                     return [4 /*yield*/, client.query(query, values)];
                 case 1:
                     response = _a.sent();
@@ -66,7 +65,7 @@ function handler(event) {
                                     "Access-Control-Allow-Headers": "Content-Type",
                                     "Access-Control-Allow-Origin": "*",
                                     "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
-                                }
+                                }, body: JSON.stringify(response.rows)
                             }];
                     }
                     console.log('response', response);

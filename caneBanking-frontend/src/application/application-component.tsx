@@ -7,22 +7,17 @@ import  {Application} from './application';
 import applicationService from './application.service';
 import styles, { color } from '../../global-styles';
 import {v4 as uuid4} from 'uuid';
-//import { format } from "date-fns";
+
 
 interface ApplicationProp {
     navigation: any;
 }
-//export class SwitchExample extends Component <any, any>{
-//    state = {
-//        choosenIndex: 0
-//    };
-//}
+
 export function CreateApplication(this: any, {navigation}: ApplicationProp) {
     const application = useSelector((state: CaneBankingState) => state.application);
     const dispatch = useDispatch();
     const userSelector = (state: UserState) => state.user;
     const user = useSelector(userSelector);
-    //const dispatch = useDispatch();
 
     function submitCreateApplication() {
         application.application_id = uuid4();
@@ -33,9 +28,9 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
         application.applicationstatus = 'pending';
         application.customer_id = user.customer_id;
 
-
         applicationService.addApplication(application).then(() => {
             dispatch(ChangeApplication(new Application()));
+            navigation.navigate('Accounts');
         })
     }
 
@@ -43,6 +38,9 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
         <View style={styles.container}>
             <TextInput
                 placeholder='Social Security Number'
+                secureTextEntry={true}
+                keyboardType = 'numeric'
+                maxLength={9}
                 style={styles.input}
                 onChangeText={(value) =>
                     dispatch(ChangeApplication({ ...application, socialsecurity: value}))
@@ -70,11 +68,10 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
                 />
 
             <TextInput
-                placeholder='Date of Birth'
+                placeholder='Date of Birth: MM/DD/YYYY'
                 style={styles.input}
                 onChangeText={(value) =>
                     dispatch(ChangeApplication({ ...application, dateofbirth: value}))
-
                 }
                 value={application.dateofbirth}
                 />
@@ -88,31 +85,3 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
 
 export default CreateApplication;
 
-/*
-<TextInput
-    placeholder='balance'
-    style={style.input}
-    keyboardType = 'numeric'
-    onChangeText={(value) =>
-    dispatch(changeAccount({ ...account, balance: value}))
-    }
-    value= {account.balance}
-    >
-</TextInput>
-    <view>
-                <RNPickerSelect
-
-                    placeholder= {{
-                        label: 'Select An Account',
-                        value: null,
-
-                    }}
-                    onValueChange={(value: any) => console.log(value)}
-                    items={[
-                        { label: 'Checking Account', value: 'Checking Account' },
-                        { label: 'Saving Account', value: 'Saving Account' },
-                        { label: 'Credit Card Account', value: 'Credit Card Account' },
-                    ]}
-                />
-    </view>
-*/
