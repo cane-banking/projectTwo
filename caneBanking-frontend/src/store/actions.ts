@@ -111,7 +111,7 @@ export function newAccount(account: Account) : AccountAction<Account>{
         type: AccountActions.NewAccount,
         payload: account
     }
-    return action;
+    return action
 }
 
 export function changeAccount(account_id: string) : AccountAction<string> {

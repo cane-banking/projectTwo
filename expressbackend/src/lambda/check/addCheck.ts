@@ -18,13 +18,27 @@ export async function handler(event: any) {
                     check.firstname,
                     check.lastname,
                     check.amount ];
-    let response;
-    try{
-        response = await client.query(query, values);
-    } catch (error) {
-        console.log(error);
+    let response = await client.query(query, values);
+    console.log('addCheck response query', response);
+    if (response) {
+        client.end();
+        return {
+        statusCode: 200,
+        headers: {
+            "Access-Control-Allow-Headers" : "Content-Type",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
+        }
+        };
+    } else {
+        client.end();
+        return {
+            statusCode: 400,
+            headers: {
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
+            }
+        };
     }
-    console.log(response);
-    client.end();
-    return response;
 }

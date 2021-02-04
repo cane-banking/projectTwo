@@ -41,7 +41,8 @@ const styles = StyleSheet.create({
         fontFamily: 'poppins'
     },
     screen: {
-        padding: 15
+        padding: 15,
+        height: '100%'
     },
     input: {
         color: 'black',

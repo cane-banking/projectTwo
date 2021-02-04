@@ -48,9 +48,7 @@ const reducer = (state: CaneBankingState = initialState, action: Actions.AppActi
             newState.account = action.payload as Account;
             return newState;
         case Actions.AccountActions.ChangeAccount:
-            console.log('changeAccounts', newState.accounts);
             let getAccount = newState.accounts.filter((account) => account.account_id === action.payload) as Account[];
-            console.log('change acct', getAccount);
             newState.account = getAccount[0];
             return newState;
         case Actions.AccountActions.GetAccounts:
