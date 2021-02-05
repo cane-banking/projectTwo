@@ -36,20 +36,6 @@ const loginStackNavigator = ({navigation}:MenuProp) => {
         headerTitleAlign:'center'
         }} />
 
-  {/*   <Stack.Screen name="Application" component={CreateApplication} 
-        options={{title:'Cane Banking',
-        headerStyle: {
-          backgroundColor: '#63D4FF',
-        },
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
-        headerTitleAlign:'center',
-        headerRight:() => (
-          <Icon.Button name ='ios-menu' size={25}
-          backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
-        }}/> */}
-
       <Stack.Screen name="Accounts" component={Accounts} 
         options={{title:'Cane Banking',
         headerStyle: {

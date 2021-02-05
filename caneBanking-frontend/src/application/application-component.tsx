@@ -24,11 +24,11 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
 
     console.log(application);
 
-    useEffect(() => {
+  /*   useEffect(() => {
         userService.login(user).then((user) => {
             dispatch(getUser(user))
         });
-    });
+    }); */
 
     function submitCreateApplication() {
         application.application_id = uuid4();
