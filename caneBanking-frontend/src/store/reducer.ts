@@ -16,7 +16,7 @@ export const initialState: CaneBankingState = {
     applications: [],
     account: new Account(),
     accounts: [],
-    application: new Application()
+    application: new Application(),
 }
 
 // Make sure that the reducer has a default argument of the inital state or it will not work.

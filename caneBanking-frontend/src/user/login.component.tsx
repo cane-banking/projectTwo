@@ -28,7 +28,7 @@ function LoginComponent({ navigation }: LoginProp) {
             console.log('user submit form', user);
             dispatch(getUser(user));
             if(user.role === 'customer'){
-            navigation.navigate('Accounts');
+            navigation.navigate('Application');
             } else {
                 navigation.navigate('Admin');
             }

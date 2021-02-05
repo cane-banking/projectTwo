@@ -1,7 +1,7 @@
 import { applyMiddleware, createStore, Store } from "redux";
 import thunk from "redux-thunk";
 import { Check } from "../check/check";
-import { Application } from '../account/application';
+import { Application } from '../application/application';
 import { User } from "../user/user";
 import { AppAction } from "./actions";
 import reducer from "./reducer";

@@ -5,11 +5,13 @@ import { View,
         FlatList,
         Button} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeAccount, getAccounts } from '../store/actions';
+import { changeAccount, changeApplication, getAccounts, getUser } from '../store/actions';
 import { CaneBankingState, UserState } from '../store/store';
 import AccountService from './account.service';
 import styles, { color } from '../../global-styles';
-import { Card, Divider } from 'react-native-elements';
+import { Card, Divider, Icon } from 'react-native-elements';
+import userService from '../user/user.service';
+import { Application } from '../application/application';
 
 
 interface AccountProp {
@@ -25,6 +27,13 @@ export default function Accounts({navigation}:AccountProp) {
 
 
     useEffect(()=> {
+    
+        dispatch(changeApplication(new Application()));
+        
+        userService.login(user).then((user) => {
+            dispatch(getUser(user))
+        });
+  
 
       AccountService.getAccountsByCustomer(user.customer_id).then((accounts) => {
           dispatch(getAccounts(accounts));
@@ -78,6 +87,10 @@ export default function Accounts({navigation}:AccountProp) {
 
             )}
         />
+
+        {/* <View>
+          <Icon name="plus" size={50}/>
+        </View> */}
 
       </View>
   );
