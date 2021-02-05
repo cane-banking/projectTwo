@@ -8,6 +8,7 @@ import SignUpComponent from '../user/signup.component';
 import { enableScreens } from 'react-native-screens';
 import CreateApplication from "../application/application-component";
 import DepositCheck from "../check/DepositCheck.component";
+import TransactionHistory from "../transaction/transaction-component";
 import Admin from "../employee/admin";
 import AppSubmit from "../application/app.submit";
 import Transfer from "../transaction/OwnTransfer";
@@ -54,6 +55,19 @@ const loginStackNavigator = ({navigation}:MenuProp) => {
           backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
         }}/>
 
+<Stack.Screen name="Transaction History" component={TransactionHistory} 
+        options={{title:'Cane Banking',
+        headerStyle: {
+          backgroundColor: '#63D4FF',
+        },
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+        headerTitleAlign:'center',
+        headerRight:() => (
+          <Icon.Button name ='ios-menu' size={25}
+          backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
+        }}/>
 
   <Stack.Screen name="Admin" component={Admin}
         options={{title:'Cane Banking',
@@ -152,6 +166,26 @@ const LogoutStack=({navigation}:MenuProp) =>{
 }
 
 
+const TransactionStack=({navigation}:MenuProp) =>{
+  return(
+    <Stack.Navigator>
+      <Stack.Screen name="Transaction History" component={TransactionHistory} 
+        options={{title:'Cane Banking',
+        headerStyle: {
+          backgroundColor: '#63D4FF',
+        },
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+        headerTitleAlign:'center',
+        headerRight:() => (
+          <Icon.Button name ='ios-menu' size={25}
+          backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
+        }}/>
+
+    </Stack.Navigator>
+  )
+}
 
 const DepositCheckStack=({navigation}:MenuProp) =>{
   return(
@@ -222,5 +256,5 @@ const TransferStack=({navigation}:MenuProp) =>{
   )
 }
 
+export {loginStackNavigator,registerAccountStack,LogoutStack,ApplicationStack,DepositCheckStack,TransactionStack, TransferStack} ;
 
-export {loginStackNavigator,registerAccountStack, ApplicationStack, LogoutStack,DepositCheckStack, TransferStack} ;

@@ -22,8 +22,8 @@ export interface CheckState {
     id: string;
 }
 export interface ApplicationState {
+    application: Application | any;
     applications: Application[];
-    application: Application;
 }
 
 export interface TransactionState {
@@ -32,7 +32,7 @@ export interface TransactionState {
     transferAmount: any;
     selection: string;
 }
-
+   
 export interface TransferState {
     fromAccount: Account;
     toAccount: Account;
