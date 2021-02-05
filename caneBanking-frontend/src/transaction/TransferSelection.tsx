@@ -33,7 +33,7 @@ function TransferSelection({navigation}: Deposit) {
 
     return (
         <View>
-            <Text>Transfer to.</Text>
+            <Text style={[style.screenHeader, style.screen]}>Transfer to.</Text>
             <Button onPress={()=> {
                 getTransferSelection('Own');
                 navigation.navigate('OwnTransfer')
@@ -44,20 +44,6 @@ function TransferSelection({navigation}: Deposit) {
                 navigation.navigate('OtherTransfer')
                 return;
             }} title='Cane Banking User'/>
-            {/* <Button onPress={submitSelection} title='Select'/>
-
-
-            <TouchableHighlight onPress={()=> getTransferSelection('Own') } underlayColor={color.white} >
-                <View style={style.checkPhoto}>
-                    <Text style={style.checkPhotoText}>Own Account</Text>
-                </View>
-            </TouchableHighlight>
-            <TouchableHighlight onPress={()=> getTransferSelection('Other')} underlayColor={color.white} >
-                <View style={style.checkPhoto}>
-                    <Text style={style.checkPhotoText}>Cane Banking User</Text>
-                </View>
-            </TouchableHighlight> */}
-            {/* <Button onPress={submitSelection} title='Select'/> */}
         </View>
     );
 }
