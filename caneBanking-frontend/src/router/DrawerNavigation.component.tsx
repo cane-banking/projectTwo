@@ -2,7 +2,7 @@ import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import{HomeTabNavigatorComponent,AccountTabNavigatorComponent} from "./TabNavigator.component";
 import { enableScreens } from 'react-native-screens';
-import { LogoutStack, DepositCheckStack, ApplicationStack } from "./MainStackNavigator.component";
+import { LogoutStack, DepositCheckStack, ApplicationStack, TransferStack } from "./MainStackNavigator.component";
 import Accounts from "../account/accounts.component";
 
 
@@ -16,10 +16,10 @@ const DrawerNavigatorComponent = () => {
     <Drawer.Navigator>
       <Drawer.Screen name="Home" component={HomeTabNavigatorComponent}  />
       <Drawer.Screen name="Logout" component={LogoutStack}/>
-      <Drawer.Screen name="Application" component={ApplicationStack}/> 
+      <Drawer.Screen name="Application" component={ApplicationStack}/>
       <Drawer.Screen name="Accounts" component={Accounts}/>
       <Drawer.Screen name="Check Deposit" component={DepositCheckStack}/>
-
+      <Drawer.Screen name="Transfer" component={TransferStack}/>
     </Drawer.Navigator>
   );
 }

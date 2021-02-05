@@ -23,8 +23,8 @@ export default function Accounts({navigation}:AccountProp) {
     const dispatch = useDispatch()
 
 
-   useEffect(()=> {
 
+   useEffect(()=> {
       AccountService.getAccountsByCustomer(user.customer_id).then((accounts) => {
           dispatch(getAccounts(accounts));
       })
@@ -48,18 +48,18 @@ export default function Accounts({navigation}:AccountProp) {
         <Text style={styles.boldText}>Welcome to your accounts {user.firstname}</Text>
       </View>
 
-      <FlatList 
+      <FlatList
             keyExtractor={(item) => item.account_id}
             data={accounts}
             renderItem={({ item }) =>(
               <>
-              
+
               <Card containerStyle={styles.card}>
-                  
+
                 <Text style={styles.apptitle}>{item.account_type}</Text>
 
                 <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
-                 
+
                   <View style={{flexDirection:'column', justifyContent:'space-between', alignItems:'center'}}>
                     <Text style={styles.applicant}>${item.balance}</Text>
                   </View>
@@ -71,13 +71,13 @@ export default function Accounts({navigation}:AccountProp) {
                 <View style={{flexDirection:'row', justifyContent:'space-between'}}>
 
                   <Button onPress={selectAccount} title={item.account_id} color='#63D4FF' />
-                  
+
                 </View>
-                
-                
-        
+
+
+
               </Card>
-            
+
             </>
 
             )}

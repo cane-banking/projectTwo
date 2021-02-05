@@ -16,7 +16,7 @@ interface ApplicationProp {
 
 export function CreateApplication(this: any, {navigation}: ApplicationProp) {
     const [click, setClick] = useState(false)
-    
+
     const application = useSelector((state: ApplicationState) => state.application);
     const dispatch = useDispatch();
     const userSelector = (state: UserState) => state.user;
@@ -39,7 +39,6 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
         application.applicationstatus = 'pending';
         application.customer_id = user.customer_id;
 
-
         applicationService.addApplication(application).then(() => {
             dispatch(changeApplication(new Application()));
             setClick(!click);
@@ -54,12 +53,15 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
 
              <TextInput
                 placeholder='Social Security Number'
+                secureTextEntry={true}
+                keyboardType = 'numeric'
+                maxLength={9}
                 style={styles.input}
                 onChangeText={(value) =>
                     dispatch(changeApplication({ ...application, socialsecurity: value}))
                 }
                 value= {application.socialsecurity}
-                /> 
+                />
 
             <TextInput
                 placeholder='Checking / Savings / Credit'
@@ -81,7 +83,7 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
                 />
 
             <TextInput
-                placeholder='Date of Birth'
+                placeholder='Date of Birth: MM/DD/YYYY'
                 style={styles.input}
                 onChangeText={(value) =>
                     dispatch(changeApplication({ ...application, dateofbirth: value}))

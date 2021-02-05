@@ -64,10 +64,10 @@ function LoginComponent({ navigation }: LoginProp) {
                     value={user.password}
                 />
                 <Button onPress={submitForm} title='Login' color='#63D4FF' />
-    
+
             </View>
 
-            <Image 
+            <Image
                 style={{width: 325, height: 261, marginBottom: 20}}
                 source={require('./undraw_Savings_re_eq4w (2).svg')}
             />
