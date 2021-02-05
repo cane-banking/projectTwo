@@ -20,7 +20,7 @@ export default function Accounts({navigation}:AccountProp) {
     const user = useSelector(userSelector);
     const dispatch = useDispatch()
 
-
+    console.log(accounts);
     useEffect(()=> {
 
       AccountService.getAccountsByCustomer(user.customer_id).then((accounts) => {
@@ -28,10 +28,10 @@ export default function Accounts({navigation}:AccountProp) {
       })
   }, [user])
 
-  function selectAccount() {
-    dispatch(changeAccount(account.account_id));
-    navigation.navigate('TransactionHistory');
-  }
+//  function selectAccount() {
+    //dispatch(changeAccount(account.account_id));
+//    navigation.navigate('TransactionHistory');
+//  }
 
   return (
     <View>
@@ -40,7 +40,13 @@ export default function Accounts({navigation}:AccountProp) {
       </Text>
       <View>
       {accounts ? accounts.map((account, index) => {
-                       return <TouchableHighlight key = {index}  onPress={selectAccount} underlayColor={color.white} >
+                       return <TouchableHighlight key = {index}  onPress={()=> {
+                        dispatch(changeAccount(account.account_id))
+                        navigation.navigate('TransactionHistory');
+                        return;
+                      }}
+
+                       underlayColor={color.white} >
                        <View ><Text>{account.account_type} {account.balance}</Text></View>
                    </TouchableHighlight>}):''}
                    </View>

@@ -43,7 +43,9 @@ var handler = function (event) { return __awaiter(void 0, void 0, void 0, functi
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                accountId = event.queryStringParameters.account_id;
+                console.log('event', event);
+                accountId = event.queryStringParameters.accountId;
+                console.log('accountId', accountId);
                 client = new pg_1.Client();
                 return [4 /*yield*/, client.connect()];
             case 1:
@@ -53,37 +55,31 @@ var handler = function (event) { return __awaiter(void 0, void 0, void 0, functi
                 return [4 /*yield*/, client.query(query, values)];
             case 2:
                 response = _a.sent();
-                console.log('the response', response.rows);
+                //console.log('the response', response.rows);
                 if (response) {
+                    client.end();
                     return [2 /*return*/, {
                             statusCode: 200,
                             headers: {
                                 "Access-Control-Allow-Headers": "Content-Type",
                                 "Access-Control-Allow-Origin": "*",
-                                "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
-                            },
-                            body: JSON.stringify(response.rows)
+                                "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
+                            }, body: JSON.stringify(response.rows)
                         }];
                 }
-                console.log(response);
-                client.end();
-                return [2 /*return*/, response];
+                else {
+                    client.end();
+                    return [2 /*return*/, {
+                            statusCode: 400,
+                            headers: {
+                                "Access-Control-Allow-Headers": "Content-Type",
+                                "Access-Control-Allow-Origin": "*",
+                                "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
+                            }
+                        }];
+                }
+                return [2 /*return*/];
         }
     });
 }); };
 exports.handler = handler;
-/*
-    let response;
-
-    //put headers. look at our branches for an example
-    try{
-        response = await client.query(query, values);
-    } catch (error) {
-        console.log(error);
-    }
-    console.log(response);
-    client.end();
-    return response;
-
-
-*/

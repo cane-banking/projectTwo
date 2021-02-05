@@ -21,21 +21,20 @@ export function TransactionHistory(props: TransactionProp) {
     //change to transactions to return an ARRAY of transaction. Action needs to be changed.
     const transactions = useSelector((state: CaneBankingState) => state.transactions); //getting transaction from state
     const account = useSelector((state: CaneBankingState) => state.account);
-    //const account = useSelector((state:CaneBankingState) => state.account);
-    //git pull from cterry2 . it has the account action called changeAccount
-    const userSelector = (state: UserState) => state.user;
-    const user = useSelector(userSelector);
+    const accounts = useSelector((state: CaneBankingState) => state.accounts);
+    
+    //const userSelector = (state: UserState) => state.user;
+    const user = useSelector((state: CaneBankingState) => state.user);
     const dispatch = useDispatch();
-
+    console.log('account',account);
+    console.log('accounts',accounts);
     useEffect (() => {                
     transactionService.getTransactions(account.account_id).then((transactions) => {
-    console.log(transactions);
+    console.log('transactions',transactions);
     dispatch(getTransaction(transactions));
-    //getTransacions (with a S!!)
-    //nav.navigate('Login');
-    });
+    })
 },[user]) 
-        
+//});       
     return (
         //get all the transactions from the state
         //then, map over the transactions and return a touchableHighlight or Text component
@@ -48,7 +47,13 @@ export function TransactionHistory(props: TransactionProp) {
             {transactions ? transactions.map((transaction, index) => {
                     
                     return <TouchableHighlight key = {index}  onPress={()=> '' } underlayColor={color.white} >
+                    <View ><Text>{transaction.transaction_id}</Text></View>
+                    <View ><Text>{transaction.time_stamp}</Text></View>
+                    <View ><Text>{transaction.vendor}</Text></View>
+                    <View ><Text>{transaction.vendor_account_id}</Text></View>
+                    <View ><Text>{transaction.transaction_amt}</Text></View>
                     <View ><Text>{transaction.account_id}</Text></View>
+                    <View ><Text>{transaction.customer_id}</Text></View> 
                    </TouchableHighlight>}):''}
             </View>
       </View>

@@ -48,6 +48,19 @@ const loginStackNavigator = ({navigation}:MenuProp) => {
           backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
         }}/>
 
+<Stack.Screen name="Transaction History" component={TransactionHistory} 
+        options={{title:'Cane Banking',
+        headerStyle: {
+          backgroundColor: '#63D4FF',
+        },
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+        headerTitleAlign:'center',
+        headerRight:() => (
+          <Icon.Button name ='ios-menu' size={25}
+          backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
+        }}/>
 
       <Stack.Screen name="Register" component={SignUpComponent}  
        options={{title:'Cane Banking',

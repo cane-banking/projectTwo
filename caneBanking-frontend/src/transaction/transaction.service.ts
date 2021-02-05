@@ -8,7 +8,8 @@ class TransactionService {
         
     }
     getTransactions(accountId: string): Promise<Transaction []> {
-        return axios.get(this.URI, {params: {accountId: accountId }}).then(result => result.data).catch(err => err);
+        console.log('accountId', accountId);
+        return axios.get(this.URI, {params: {accountId: accountId }}).then(result => result.data).catch(err => {console.log(err)});
     }
 }
 
