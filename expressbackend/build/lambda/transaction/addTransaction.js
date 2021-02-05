@@ -48,10 +48,11 @@ function handler(event) {
                     transaction = JSON.parse(event.body);
                     console.log('event', event);
                     client.connect();
-                    query = "insert into transactions (transaction_id,\n                                   time_stamp,\n                                   vendor,\n                                   transaction_amt,\n                                   account_id,\n                                   customer_id) values ($1, $2, $3, $4, $5, $6)";
+                    query = "insert into transactions (transaction_id,\n                                   time_stamp,\n                                   vendor,\n                                   vendor_account_id,\n                                   transaction_amt,\n                                   account_id,\n                                   customer_id) values ($1, $2, $3, $4, $5, $6,$7)";
                     values = [transaction.transaction_id,
                         transaction.time_stamp,
                         transaction.vendor,
+                        transaction.vendor_account_id,
                         transaction.transaction_amt,
                         transaction.account_id,
                         transaction.customer_id];

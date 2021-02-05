@@ -7,12 +7,7 @@ import  {Application} from './application';
 import applicationService from './application.service';
 import styles, { color } from '../../global-styles';
 import {v4 as uuid4} from 'uuid';
-<<<<<<< HEAD:caneBanking-frontend/src/application/application-component.tsx
 //import { format } from "date-fns";
-=======
-import { color } from '../helpers/colorScheme';
-
->>>>>>> c22371e220709f37e0b9fc17316848c197c34282:caneBanking-frontend/src/accounts/application-component.tsx
 
 interface ApplicationProp {
     navigation: any;
@@ -77,10 +72,6 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
                 style={styles.input}
                 onChangeText={(value) =>
                     dispatch(ChangeApplication({ ...application, dateofbirth: value}))
-<<<<<<< HEAD:caneBanking-frontend/src/application/application-component.tsx
-
-=======
->>>>>>> c22371e220709f37e0b9fc17316848c197c34282:caneBanking-frontend/src/accounts/application-component.tsx
                 }
                 value={application.dateofbirth}
                 />
@@ -94,7 +85,6 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
 
 export default CreateApplication;
 
-<<<<<<< HEAD:caneBanking-frontend/src/application/application-component.tsx
 /*
 <TextInput
     placeholder='balance'
@@ -123,5 +113,3 @@ export default CreateApplication;
                 />
     </view>
 */
-=======
->>>>>>> c22371e220709f37e0b9fc17316848c197c34282:caneBanking-frontend/src/accounts/application-component.tsx
