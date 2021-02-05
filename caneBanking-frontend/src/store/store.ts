@@ -28,9 +28,15 @@ export interface ApplicationState {
 export interface TransactionState {
     transaction: Transaction;
     transactions: Transaction[];
+    transferAmount: any;
 }
 
-export interface CaneBankingState extends UserState, CheckState, ApplicationState, TransactionState {
+export interface TransferState {
+    fromAccount: Account;
+    toAccount: Account;
+}
+
+export interface CaneBankingState extends UserState, CheckState, ApplicationState, TransactionState, TransferState {
 
 }
 
