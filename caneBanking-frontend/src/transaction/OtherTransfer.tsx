@@ -1,16 +1,11 @@
 import  React, { SyntheticEvent, useEffect }  from 'react';
 import { View, TextInput, Button, Text, TouchableHighlight, Image } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import style, {color} from '../../global-styles';
-import { changeAccount, changeAccountId, changeCheck, changeFromAccount, changeToAccount, changeTransferAmount, getAccounts, getUser } from '../store/actions';
+import {color} from '../../global-styles';
+import { changeAccountId, changeFromAccount, changeToAccount, changeTransferAmount } from '../store/actions';
 import { CaneBankingState } from '../store/store';
-import { Transaction} from './transaction';
-import TransactionService from './addTransaction.service';
-import {getDate} from '../helpers/date';
-import { v4 as uuidv4 } from 'uuid';
 import  AccountService  from '../account/account.service';
 import { Picker } from '@react-native-picker/picker';
-import { Account } from '../account/account';
 
 
 

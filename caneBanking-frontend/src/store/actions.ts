@@ -138,14 +138,6 @@ export function changeAccount(account_id: string) : AccountAction<string> {
     return action;
 }
 
-// export function ChangeApplication(application: Application) : ApplicationAction<Application> {
-//     const action: ApplicationAction<Application> = {
-//         type: ApplicationActions.ChangeApplication,
-//         payload: application
-//     }
-//     return action;
-// }
-
 export function getTransaction(transaction: Transaction): TransactionAction<Transaction> {
     const action: TransactionAction<Transaction> = {
         type: TransactionActions.GetTransaction,

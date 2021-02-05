@@ -70,7 +70,7 @@ export default function Accounts({navigation}:AccountProp) {
 
                 <View style={{flexDirection:'row', justifyContent:'space-between'}}>
 
-                  <Button onPress={selectAccount} title={item.account_id} color='#63D4FF' />
+                  <Button onPress={selectAccount} title='View Account Transactions' color='#63D4FF' />
 
                 </View>
 
