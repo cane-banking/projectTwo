@@ -40,7 +40,7 @@ const loginStackNavigator = ({navigation}:MenuProp) => {
         headerTitleAlign:'center'
         }} />
 
-      <Stack.Screen name="Accounts" component={Accounts} 
+      <Stack.Screen name="Accounts" component={Accounts}
         options={{title:'Cane Banking',
         headerStyle: {
           backgroundColor: '#63D4FF',
