@@ -77,9 +77,9 @@ ddb.deleteTable(removeUsers, function (err, data) {
     }, 5000);
 });
 function populateUserTable() {
-    user_service_1.default.addUser({ customer_id: '1234', username: 'cassandra', firstname: 'cassandra', lastname: 'terry', password: 'pass', role: 'customer', email: 'cterry@gmail.com' }).then(function () { });
-    user_service_1.default.addUser({ customer_id: '5678', username: 'asad', firstname: 'asad', lastname: 'nazir', password: 'pass', role: 'customer', email: 'anazir@gmail.com' }).then(function () { });
-    user_service_1.default.addUser({ customer_id: '9012', username: 'nilam', firstname: 'nilam', lastname: 'patel', password: 'pass', role: 'customer', email: 'npatel@gmail.com' }).then(function () { });
-    user_service_1.default.addUser({ customer_id: '3456', username: 'emily', firstname: 'emily', lastname: 'smith', password: 'pass', role: 'employee', email: 'esmith@gmail.com' }).then(function () { });
-    user_service_1.default.addUser({ customer_id: '7890', username: 'richard', firstname: 'richard', lastname: 'orr', password: 'pass', role: 'employee', email: 'rorr@gmail.com' }).then(function () { });
+    user_service_1.default.addUser({ customer_id: '1234', username: 'cassandra', firstname: 'Cassandra', lastname: 'Terry', password: 'pass', role: 'customer', email: 'cterry@gmail.com' }).then(function () { });
+    user_service_1.default.addUser({ customer_id: '5678', username: 'asad', firstname: 'Asad', lastname: 'Nazir', password: 'pass', role: 'customer', email: 'anazir@gmail.com' }).then(function () { });
+    user_service_1.default.addUser({ customer_id: '9012', username: 'nilam', firstname: 'Nilam', lastname: 'Patel', password: 'pass', role: 'customer', email: 'npatel@gmail.com' }).then(function () { });
+    user_service_1.default.addUser({ customer_id: '3456', username: 'emily', firstname: 'Emily', lastname: 'Smith', password: 'pass', role: 'employee', email: 'esmith@gmail.com' }).then(function () { });
+    user_service_1.default.addUser({ customer_id: '7890', username: 'richard', firstname: 'Richard', lastname: 'Orr', password: 'pass', role: 'employee', email: 'rorr@gmail.com' }).then(function () { });
 }

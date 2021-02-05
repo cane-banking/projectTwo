@@ -9,6 +9,7 @@ import { enableScreens } from 'react-native-screens';
 import CreateApplication from "../application/application-component";
 import DepositCheck from "../check/DepositCheck.component";
 import Admin from "../employee/admin";
+import AppSubmit from "../application/app.submit";
 
 
 enableScreens();
@@ -19,6 +20,7 @@ const Stack = createStackNavigator();
 interface MenuProp {
   navigation: any;
 }
+
 
 const loginStackNavigator = ({navigation}:MenuProp) => {
   return (
@@ -47,6 +49,7 @@ const loginStackNavigator = ({navigation}:MenuProp) => {
           <Icon.Button name ='ios-menu' size={25}
           backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
         }}/>
+
 
   <Stack.Screen name="Admin" component={Admin} 
         options={{title:'Cane Banking',
@@ -80,10 +83,32 @@ const loginStackNavigator = ({navigation}:MenuProp) => {
     </Stack.Navigator>
   );
 }
+
 const registerAccountStack=({navigation}:MenuProp) =>{
   return(
     <Stack.Navigator>
       <Stack.Screen name="Register" component={SignUpComponent} 
+        options={{title:'Cane Banking',
+        headerStyle: {
+          backgroundColor: '#63D4FF',
+        },
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+        headerTitleAlign:'center',
+        headerRight:() => (
+          <Icon.Button name ='ios-menu' size={25}
+          backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
+        }}/>
+
+    </Stack.Navigator>
+  )
+}
+
+const ApplicationStack=({navigation}:MenuProp) =>{
+  return(
+    <Stack.Navigator>
+      <Stack.Screen name="Application" component={CreateApplication} 
         options={{title:'Cane Banking',
         headerStyle: {
           backgroundColor: '#63D4FF',
@@ -122,47 +147,7 @@ const LogoutStack=({navigation}:MenuProp) =>{
   )
 }
 
-// const BalanceStack=({navigation}:MenuProp) =>{
-//   return(
-//     <Stack.Navigator>
-//       <Stack.Screen name="Balance" component={BalanceComponent} 
-//         options={{title:'Cane Banking',
-//         headerStyle: {
-//           backgroundColor: '#63D4FF',
-//         },
-//         headerTitleStyle: {
-//           fontWeight: 'bold',
-//         },
-//         headerTitleAlign:'center',
-//         headerRight:() => (
-//           <Icon.Button name ='ios-menu' size={25}
-//           backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
-//         }}/>
 
-//     </Stack.Navigator>
-//   )
-// }
-
-const ApplicationStack=({navigation}:MenuProp) =>{
-  return(
-    <Stack.Navigator>
-      <Stack.Screen name="Application" component={CreateApplication} 
-        options={{title:'Cane Banking',
-        headerStyle: {
-          backgroundColor: '#63D4FF',
-        },
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
-        headerTitleAlign:'center',
-        headerRight:() => (
-          <Icon.Button name ='ios-menu' size={25}
-          backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
-        }}/>
-
-    </Stack.Navigator>
-  )
-}
 
 const DepositCheckStack=({navigation}:MenuProp) =>{
   return(
@@ -186,4 +171,4 @@ const DepositCheckStack=({navigation}:MenuProp) =>{
 }
 
 
-export {loginStackNavigator,registerAccountStack,LogoutStack,ApplicationStack,DepositCheckStack} ;
+export {loginStackNavigator,registerAccountStack, ApplicationStack, LogoutStack,DepositCheckStack} ;

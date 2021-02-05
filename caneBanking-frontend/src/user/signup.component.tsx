@@ -20,6 +20,8 @@ export default function SignUpComponent({ navigation }: SignupProp) {
 
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+
+    console.log(user);
    
 
     function createAccount(){

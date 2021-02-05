@@ -54,7 +54,10 @@ const styles = StyleSheet.create({
         width: 250,
     },
     login: {
-        backgroundColor: '#f5feff'
+        backgroundColor: '#f5feff',
+        marginBottom: 60,
+        justifyContent: 'center', 
+        alignItems:'center'
     },
     logo: {
         // perfectSize is only going to call when the app is first loaded in the device.
