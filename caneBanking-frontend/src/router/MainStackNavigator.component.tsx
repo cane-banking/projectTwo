@@ -15,6 +15,7 @@ import Transfer from "../transaction/OwnTransfer";
 import TransferSelection from "../transaction/TransferSelection";
 import OwnTransfer from "../transaction/OwnTransfer";
 import OtherTransfer from "../transaction/OtherTransfer";
+import Logout from "../user/logout.component";
 
 
 enableScreens();
@@ -147,7 +148,7 @@ const ApplicationStack=({navigation}:MenuProp) =>{
 const LogoutStack=({navigation}:MenuProp) =>{
   return(
     <Stack.Navigator>
-      <Stack.Screen name="Logout" component={LoginComponent}
+      <Stack.Screen name="Logout" component={Logout}
         options={{title:'Cane Banking',
         headerStyle: {
           backgroundColor: '#63D4FF',

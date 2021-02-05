@@ -31,7 +31,7 @@ export default function Accounts({navigation}:AccountProp) {
   console.log(accounts)
 
   function selectAccount() {
-    navigation.navigate('TransactionHistory');
+    navigation.navigate('Transaction History');
   }
 
   function createAccount() {

@@ -1,15 +1,10 @@
-import  React, { useState, Component, useEffect }  from 'react';
-import { View, TextInput,Text, Button,StyleSheet} from 'react-native';
+import  React, { useEffect }  from 'react';
+import { View, Text} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { ChangeApplication, getTransaction } from '../store/actions';
-import { CaneBankingState, UserState } from '../store/store';
-import  {Transaction} from './transaction';
+import { getTransaction } from '../store/actions';
+import { CaneBankingState } from '../store/store';
 import transactionService from './transaction.service';
-import styles from '../../global-styles';
-import {v4 as uuid4} from 'uuid';
 import { color } from '../helpers/colorScheme';
-import { RouteProp, useNavigation } from '@react-navigation/native';
-import { StackParams } from '../router/router.component';
 import { TouchableHighlight } from 'react-native';
 
 
