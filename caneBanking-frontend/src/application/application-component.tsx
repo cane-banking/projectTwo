@@ -22,14 +22,6 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
     const userSelector = (state: UserState) => state.user;
     const user = useSelector(userSelector);
 
-    console.log(application);
-
-  /*   useEffect(() => {
-        userService.login(user).then((user) => {
-            dispatch(getUser(user))
-        });
-    }); */
-
     function submitCreateApplication() {
         application.application_id = uuid4();
         application.firstname = user.firstname;
@@ -79,7 +71,7 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
                 onChangeText={(value) =>
                     dispatch(changeApplication({ ...application, address: value}))
                 }
-                value={application.address}
+                value={application.address || ''}
                 />
 
             <TextInput
@@ -88,9 +80,9 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
                 onChangeText={(value) =>
                     dispatch(changeApplication({ ...application, dateofbirth: value}))
 
-                }
-                value={application.dateofbirth}
-                />
+                    }
+                    value={application.dateofbirth || ''}
+                    />
 
                 <View style={styles.create}>
                     <Button onPress={submitCreateApplication} title='Create Account' color={color.lightBlue} />
@@ -107,3 +99,4 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
 }
 
 export default CreateApplication;
+

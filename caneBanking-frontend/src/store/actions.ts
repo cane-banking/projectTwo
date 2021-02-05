@@ -1,8 +1,8 @@
 import { Check } from '../check/check';
 import {User} from './../user/user';
+import { Transaction } from '../transaction/transaction';
 import { Account } from '../account/account';
 import { Application } from '../application/application';
-import { Transaction } from '../transaction/transaction';
 
 export enum UserActions {
     GetUser = 'GET_USER',
@@ -37,6 +37,10 @@ export enum TransactionActions {
     TransferSelection= 'GET_TRANSFER_SELECTION'
 }
 
+export enum TransactionActions {
+    GetTransactions = 'GET_TRANSACTIONS'
+}
+
 export interface AppAction {
     type: string;
     payload: any;
@@ -60,6 +64,11 @@ export interface AccountAction<A> extends AppAction{
 export interface ApplicationAction extends AppAction {
     type: ApplicationActions;
     payload: Application | Application[];
+}
+
+export interface TransactionAction<T> extends AppAction {
+    type: TransactionActions;
+    payload: T;
 }
 
 export interface TransactionAction<T> extends AppAction {
@@ -138,14 +147,6 @@ export function changeAccount(account_id: string) : AccountAction<string> {
     return action;
 }
 
-export function getTransaction(transaction: Transaction): TransactionAction<Transaction> {
-    const action: TransactionAction<Transaction> = {
-        type: TransactionActions.GetTransaction,
-        payload: transaction
-    }
-    return action;
-}
-
 export function getAccounts(accounts: Account[]) : AccountAction<Account[]>{
     const action: AccountAction<Account[]> = {
         type: AccountActions.GetAccounts,
@@ -194,5 +195,11 @@ export function getTransferSelection(selection: string)  {
     return action;
 }
 
-
+export function getTransaction(transactions: Transaction[]): TransactionAction<Transaction[]> {
+    const action: TransactionAction<Transaction[]> = {
+        type: TransactionActions.GetTransactions,
+        payload: transactions
+    }
+    return action;
+}
 

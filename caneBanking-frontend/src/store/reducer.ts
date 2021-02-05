@@ -64,6 +64,8 @@ const reducer = (state: CaneBankingState = initialState, action: Actions.AppActi
         case Actions.ApplicationActions.ChangeApplication:
             newState.application = action.payload as Application;
             return newState;
+        case Actions.TransactionActions.GetTransactions:
+            newState.transactions = action.payload as Transaction[];
         case Actions.TransactionActions.GetTransaction:
             newState.transaction = action.payload as Transaction;
             return newState;

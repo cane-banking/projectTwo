@@ -22,8 +22,6 @@ export default function Accounts({navigation}:AccountProp) {
     const user = useSelector(userSelector);
     const dispatch = useDispatch()
 
-
-
    useEffect(()=> {
       AccountService.getAccountsByCustomer(user.customer_id).then((accounts) => {
           dispatch(getAccounts(accounts));
