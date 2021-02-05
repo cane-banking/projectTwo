@@ -52,9 +52,9 @@ export interface AccountAction<A> extends AppAction{
     payload: A;
 }
 
-export interface ApplicationAction<A> extends AppAction {
+export interface ApplicationAction extends AppAction {
     type: ApplicationActions;
-    payload: A;
+    payload: Application | Application[];
 }
 
 export interface TransactionAction<T> extends AppAction {
@@ -101,10 +101,18 @@ export function changeCheck(check: Check) : CheckAction<Check> {
     }
     return action;
 }
-export function getApplications(applications: Application[]): ApplicationAction<Application[]>{
-    const action: ApplicationAction<Application[]> = {
+export function getApplications(applications: Application[]): ApplicationAction{
+    const action: ApplicationAction = {
         type: ApplicationActions.GetApplications,
         payload: applications
+    }
+    return action;
+}
+
+export function changeApplication(application: Application) : ApplicationAction {
+    const action: ApplicationAction = {
+        type: ApplicationActions.ChangeApplication,
+        payload: application
     }
     return action;
 }
@@ -125,13 +133,13 @@ export function changeAccount(account_id: string) : AccountAction<string> {
     return action;
 }
 
-export function ChangeApplication(application: Application) : ApplicationAction<Application> {
-    const action: ApplicationAction<Application> = {
-        type: ApplicationActions.ChangeApplication,
-        payload: application
-    }
-    return action;
-}
+// export function ChangeApplication(application: Application) : ApplicationAction<Application> {
+//     const action: ApplicationAction<Application> = {
+//         type: ApplicationActions.ChangeApplication,
+//         payload: application
+//     }
+//     return action;
+// }
 
 export function getTransaction(transaction: Transaction): TransactionAction<Transaction> {
     const action: TransactionAction<Transaction> = {

@@ -59,7 +59,13 @@ function handler(event) {
                     return [4 /*yield*/, client.query(query, values)];
                 case 1:
                     response = _a.sent();
+<<<<<<< HEAD
                     if (response) {
+=======
+                    console.log('addCheck response query', response);
+                    if (response) {
+                        client.end();
+>>>>>>> e57cd128956a8856278b4724b0733c07edddcba8
                         return [2 /*return*/, {
                                 statusCode: 200,
                                 headers: {
@@ -69,9 +75,24 @@ function handler(event) {
                                 }
                             }];
                     }
+<<<<<<< HEAD
                     console.log('response', response);
                     client.end();
                     return [2 /*return*/, response];
+=======
+                    else {
+                        client.end();
+                        return [2 /*return*/, {
+                                statusCode: 400,
+                                headers: {
+                                    "Access-Control-Allow-Headers": "Content-Type",
+                                    "Access-Control-Allow-Origin": "*",
+                                    "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
+                                }
+                            }];
+                    }
+                    return [2 /*return*/];
+>>>>>>> e57cd128956a8856278b4724b0733c07edddcba8
             }
         });
     });

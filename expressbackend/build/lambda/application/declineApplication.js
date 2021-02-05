@@ -40,62 +40,40 @@ exports.handler = void 0;
 var pg_1 = require("pg");
 function handler(event) {
     return __awaiter(this, void 0, void 0, function () {
-        var client, account, query, values, response;
+        var app_id, client, query, values, res;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
+                    app_id = event.body;
+                    console.log(event);
                     client = new pg_1.Client();
-                    console.log('event', event);
-<<<<<<< HEAD
-                    account = event.body;
-                    console.log('account', account);
-                    client.connect();
-                    query = "update accounts set account_balance = $1 where account_id = $2";
-=======
-                    account = JSON.parse(event.body);
-                    console.log('account', account);
-                    client.connect();
-                    query = "update accounts set balance = $1 where account_id = $2";
->>>>>>> e57cd128956a8856278b4724b0733c07edddcba8
-                    values = [account.balance, account.account_id];
-                    return [4 /*yield*/, client.query(query, values)];
+                    return [4 /*yield*/, client.connect()];
                 case 1:
-                    response = _a.sent();
-<<<<<<< HEAD
-                    console.log('the response', response.rows);
-                    if (response) {
-=======
-                    console.log('the response', response);
-                    if (response) {
+                    _a.sent();
+                    query = "UPDATE applications SET applicationstatus = 'declined' WHERE application_id = $1";
+                    values = [app_id];
+                    return [4 /*yield*/, client.query(query, values)];
+                case 2:
+                    res = _a.sent();
+                    if (res) {
                         client.end();
->>>>>>> e57cd128956a8856278b4724b0733c07edddcba8
-                        return [2 /*return*/, {
-                                statusCode: 200,
-                                headers: {
+                        return [2 /*return*/, { statusCode: 200, headers: {
                                     "Access-Control-Allow-Headers": "Content-Type",
+                                    "Content-Type": "application/json",
                                     "Access-Control-Allow-Origin": "*",
-                                    "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
-                                }
-                            }];
+                                    "Access-Control-Allow-Methods": "PUT, OPTIONS"
+                                } }];
                     }
-<<<<<<< HEAD
-                    console.log(response);
-                    client.end();
-                    return [2 /*return*/, response];
-=======
                     else {
                         client.end();
-                        return [2 /*return*/, {
-                                statusCode: 400,
-                                headers: {
+                        return [2 /*return*/, { statusCode: 404, headers: {
                                     "Access-Control-Allow-Headers": "Content-Type",
+                                    "Content-Type": "application/json",
                                     "Access-Control-Allow-Origin": "*",
-                                    "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
-                                }
-                            }];
+                                    "Access-Control-Allow-Methods": "PUT, OPTIONS"
+                                } }];
                     }
                     return [2 /*return*/];
->>>>>>> e57cd128956a8856278b4724b0733c07edddcba8
             }
         });
     });

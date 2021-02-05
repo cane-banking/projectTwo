@@ -38,64 +38,30 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.handler = void 0;
 var pg_1 = require("pg");
-function handler(event) {
+function handler() {
     return __awaiter(this, void 0, void 0, function () {
-        var client, account, query, values, response;
+        var client, q, res;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     client = new pg_1.Client();
-                    console.log('event', event);
-<<<<<<< HEAD
-                    account = event.body;
-                    console.log('account', account);
                     client.connect();
-                    query = "update accounts set account_balance = $1 where account_id = $2";
-=======
-                    account = JSON.parse(event.body);
-                    console.log('account', account);
-                    client.connect();
-                    query = "update accounts set balance = $1 where account_id = $2";
->>>>>>> e57cd128956a8856278b4724b0733c07edddcba8
-                    values = [account.balance, account.account_id];
-                    return [4 /*yield*/, client.query(query, values)];
+                    q = "select * from applications";
+                    return [4 /*yield*/, client.query(q)];
                 case 1:
-                    response = _a.sent();
-<<<<<<< HEAD
-                    console.log('the response', response.rows);
-                    if (response) {
-=======
-                    console.log('the response', response);
-                    if (response) {
-                        client.end();
->>>>>>> e57cd128956a8856278b4724b0733c07edddcba8
-                        return [2 /*return*/, {
-                                statusCode: 200,
-                                headers: {
+                    res = _a.sent();
+                    if (res) {
+                        return [2 /*return*/, { statusCode: 200, headers: {
                                     "Access-Control-Allow-Headers": "Content-Type",
+                                    "Content-Type": "application/json",
                                     "Access-Control-Allow-Origin": "*",
-                                    "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
-                                }
-                            }];
+                                    "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+                                }, body: JSON.stringify(res.rows) }];
                     }
-<<<<<<< HEAD
-                    console.log(response);
-                    client.end();
-                    return [2 /*return*/, response];
-=======
                     else {
-                        client.end();
-                        return [2 /*return*/, {
-                                statusCode: 400,
-                                headers: {
-                                    "Access-Control-Allow-Headers": "Content-Type",
-                                    "Access-Control-Allow-Origin": "*",
-                                    "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
-                                }
-                            }];
+                        return [2 /*return*/, { statusCode: 404, body: JSON.stringify({}) }];
                     }
                     return [2 /*return*/];
->>>>>>> e57cd128956a8856278b4724b0733c07edddcba8
             }
         });
     });
