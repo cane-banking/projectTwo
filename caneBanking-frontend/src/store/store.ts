@@ -25,7 +25,6 @@ export interface ApplicationState {
     application: Application;
 }
 
-<<<<<<< HEAD
 export interface TransactionState {
     transaction: Transaction;
     transactions: Transaction[];
@@ -33,10 +32,6 @@ export interface TransactionState {
 
 export interface CaneBankingState extends UserState, CheckState, ApplicationState, TransactionState {
 
-=======
-export interface CaneBankingState extends UserState, CheckState, ApplicationState {
-    
->>>>>>> e57cd128956a8856278b4724b0733c07edddcba8
 }
 
 const store: Store<CaneBankingState, AppAction> = createStore(reducer, applyMiddleware(thunk));
