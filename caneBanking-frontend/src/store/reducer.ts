@@ -22,7 +22,9 @@ export const initialState: CaneBankingState = {
     transaction: new Transaction(),
     fromAccount: new Account(),
     toAccount: new Account(),
-    transferAmount: 0
+    transferAmount: 0,
+    id: '',
+    selection: ''
 }
 
 // Make sure that the reducer has a default argument of the inital state or it will not work.
@@ -56,11 +58,17 @@ const reducer = (state: CaneBankingState = initialState, action: Actions.AppActi
             return newState;
         case Actions.AccountActions.GetAccounts:
             newState.accounts = action.payload as Account[];
+        case Actions.AccountActions.ChangeId:
+            newState.id = action.payload;
+            return newState;
         case Actions.ApplicationActions.ChangeApplication:
             newState.application = action.payload as Application;
             return newState;
         case Actions.TransactionActions.GetTransaction:
             newState.transaction = action.payload as Transaction;
+            return newState;
+        case Actions.TransactionActions.TransferSelection:
+            newState.selection = action.payload;
             return newState;
         case Actions.TransactionActions.NewTransferAmount:
             newState.transferAmount = action.payload;

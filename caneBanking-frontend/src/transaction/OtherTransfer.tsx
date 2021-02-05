@@ -2,7 +2,7 @@ import  React, { SyntheticEvent, useEffect }  from 'react';
 import { View, TextInput, Button, Text, TouchableHighlight, Image } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import style, {color} from '../../global-styles';
-import { changeAccount, changeCheck, changeFromAccount, changeToAccount, changeTransferAmount, getAccounts, getUser } from '../store/actions';
+import { changeAccount, changeAccountId, changeCheck, changeFromAccount, changeToAccount, changeTransferAmount, getAccounts, getUser } from '../store/actions';
 import { CaneBankingState } from '../store/store';
 import { Transaction} from './transaction';
 import TransactionService from './addTransaction.service';
@@ -18,7 +18,7 @@ interface Deposit {
     navigation: any;
 }
 
-function Transfer({navigation}: Deposit) {
+function OwnTransfer({navigation}: Deposit) {
     const transaction = useSelector((state: CaneBankingState) => state.transaction);
     const user = useSelector((state: CaneBankingState) => state.user);
     const accounts = useSelector((state: CaneBankingState) => state.accounts);
@@ -26,6 +26,7 @@ function Transfer({navigation}: Deposit) {
     const toAccount = useSelector((state: CaneBankingState) => state.toAccount);
     const fromAccount = useSelector((state: CaneBankingState) => state.fromAccount);
     const transferAmount = useSelector((state: CaneBankingState) => state.transferAmount);
+    const id = useSelector((state: CaneBankingState) => state.id);
     const dispatch = useDispatch();
 
 function submitTransfer(){
@@ -38,7 +39,7 @@ function submitTransfer(){
         })
     })
 }
-
+console.log('accountid', id);
     return (
         <View>
             <TextInput
@@ -62,18 +63,20 @@ function submitTransfer(){
                 }): <Picker.Item label='No accounts available'></Picker.Item>}
                  </Picker>
                  <Text>TO</Text>
-            <Picker style={{width:'100%', padding: 10}}
-                        selectedValue={toAccount.account_id}
-                        onValueChange={(itemValue, itemIndex) => {dispatch(changeToAccount(itemValue.toString()))}}>
-                {accounts ? accounts.map((account, index) => {
-                       return <Picker.Item key={index} label={`${account.account_type}...
-                                    ${account.account_id.substring(account.account_id.length - 5)}
-                                    $(${account.balance})`} value={toAccount.account_id}/>
-                }): <Picker.Item label='No accounts available'></Picker.Item>}
-            </Picker>
+            <TextInput
+                placeholder='Someone else'
+                style={{fontSize: 55, color:color.lightBlue, borderBottomWidth: 1, borderBottomColor: color.darkGray, padding: 10, width: '80vw'}}
+                keyboardType = 'default'
+                onChangeText={(value) =>
+                    dispatch(changeAccountId(value))
+                }
+                value={id}
+                >
+
+            </TextInput>
             <Button onPress={submitTransfer} title='Submit'/>
         </View>
     );
 }
 
-export default Transfer;
+export default OwnTransfer;

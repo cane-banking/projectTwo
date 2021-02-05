@@ -10,7 +10,10 @@ import CreateApplication from "../application/application-component";
 import DepositCheck from "../check/DepositCheck.component";
 import Admin from "../employee/admin";
 import AppSubmit from "../application/app.submit";
-import Transfer from "../transaction/Transfer";
+import Transfer from "../transaction/OwnTransfer";
+import TransferSelection from "../transaction/TransferSelection";
+import OwnTransfer from "../transaction/OwnTransfer";
+import OtherTransfer from "../transaction/OtherTransfer";
 
 
 enableScreens();
@@ -188,7 +191,7 @@ const DepositCheckStack=({navigation}:MenuProp) =>{
 const TransferStack=({navigation}:MenuProp) =>{
   return(
     <Stack.Navigator>
-      <Stack.Screen name="Transfer" component={Transfer}
+      <Stack.Screen name="Transfer" component={TransferSelection}
         options={{title:'Cane Banking',
         headerStyle: {
           backgroundColor: '#63D4FF',
@@ -202,6 +205,33 @@ const TransferStack=({navigation}:MenuProp) =>{
           backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
         }}/>
 
+      <Stack.Screen name="OwnTransfer" component={OwnTransfer}
+        options={{title:'Cane Banking',
+        headerStyle: {
+          backgroundColor: '#63D4FF',
+        },
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+        headerTitleAlign:'center',
+        headerRight:() => (
+          <Icon.Button name ='ios-menu' size={25}
+          backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
+        }}/>
+
+      <Stack.Screen name="OtherTransfer" component={OtherTransfer}
+        options={{title:'Cane Banking',
+        headerStyle: {
+          backgroundColor: '#63D4FF',
+        },
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+        headerTitleAlign:'center',
+        headerRight:() => (
+          <Icon.Button name ='ios-menu' size={25}
+          backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
+        }}/>
     </Stack.Navigator>
   )
 }

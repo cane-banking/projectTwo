@@ -21,7 +21,8 @@ export enum AccountActions {
     GetAccounts = 'GET_ACCOUNTS',
     NewAccount ='NEW_ACCOUNT',
     ChangeToAccount = 'CHANGE_TO_ACCOUNT',
-    ChangeFromAccount = 'CHANGE_FROM_ACCOUNT'
+    ChangeFromAccount = 'CHANGE_FROM_ACCOUNT',
+    ChangeId = 'CHANGE_ID'
 }
 
 export enum ApplicationActions {
@@ -32,7 +33,8 @@ export enum ApplicationActions {
 export enum TransactionActions {
     GetTransaction = 'GET_TRANSACTION',
     AddTransaction='ADD_TRANSACTION',
-    NewTransferAmount='NEW_TRANSFER_AMOUNT'
+    NewTransferAmount='NEW_TRANSFER_AMOUNT',
+    TransferSelection= 'GET_TRANSFER_SELECTION'
 }
 
 export interface AppAction {
@@ -180,6 +182,22 @@ export function changeTransferAmount(amount: number)  {
     const action = {
         type: TransactionActions.NewTransferAmount,
         payload: amount
+    }
+    return action;
+}
+
+export function changeAccountId(accountId: string)  {
+    const action = {
+        type: AccountActions.ChangeId,
+        payload: accountId
+    }
+    return action;
+}
+
+export function getTransferSelection(selection: string)  {
+    const action = {
+        type: TransactionActions.TransferSelection,
+        payload: selection
     }
     return action;
 }

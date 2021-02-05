@@ -19,6 +19,7 @@ export interface CheckState {
     check: Check;
     account: Account;
     accounts: Account[];
+    id: string;
 }
 export interface ApplicationState {
     applications: Application[];
@@ -29,6 +30,7 @@ export interface TransactionState {
     transaction: Transaction;
     transactions: Transaction[];
     transferAmount: any;
+    selection: string;
 }
 
 export interface TransferState {

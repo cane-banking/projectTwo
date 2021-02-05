@@ -27,14 +27,6 @@ export default function Accounts({navigation}:AccountProp) {
 
 
     useEffect(()=> {
-
-        dispatch(changeApplication(new Application()));
-
-        userService.login(user).then((user) => {
-            dispatch(getUser(user))
-        });
-
-
       AccountService.getAccountsByCustomer(user.customer_id).then((accounts) => {
           dispatch(getAccounts(accounts));
       })
