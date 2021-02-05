@@ -37,50 +37,15 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.handler = void 0;
-var pg_1 = require("pg");
+// handler - the entry point for the lambda
 var handler = function (event) { return __awaiter(void 0, void 0, void 0, function () {
-    var account, client, q, values, res;
+    var res;
     return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                account = JSON.parse(event.body);
-                client = new pg_1.Client();
-                return [4 /*yield*/, client.connect()];
-            case 1:
-                _a.sent();
-                q = "insert into accounts (\n                                   account_id,\n                                   account_type,\n                                   balance,\n                                   customer_id) values ($1, $2, $3, $4)";
-                values = [
-                    account.account_id,
-                    account.account_type,
-                    account.balance,
-                    account.customer_id
-                ];
-                return [4 /*yield*/, client.query(q, values)];
-            case 2:
-                res = _a.sent();
-                if (res) {
-                    client.end();
-                    return [2 /*return*/, {
-                            statusCode: 200,
-                            headers: {
-                                "Access-Control-Allow-Headers": "Content-Type",
-                                "Access-Control-Allow-Origin": "*",
-                                "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
-                            }
-                        }];
-                }
-                else {
-                    client.end();
-                    return [2 /*return*/, { statusCode: 404, headers: {
-                                "Access-Control-Allow-Headers": "Content-Type",
-                                "Content-Type": "application/json",
-                                "Access-Control-Allow-Origin": "*",
-                                "Access-Control-Allow-Methods": "PUT, OPTIONS"
-                            }
-                        }];
-                }
-                return [2 /*return*/];
-        }
+        console.log('Hello World');
+        res = { money: 50 };
+        if (event.username === 'bill' && event.password === 'pass')
+            return [2 /*return*/, JSON.stringify(event)];
+        return [2 /*return*/, '401'];
     });
 }); };
 exports.handler = handler;

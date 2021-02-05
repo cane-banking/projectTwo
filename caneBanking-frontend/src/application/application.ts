@@ -4,9 +4,9 @@ export class Application {
     firstname = '';
     lastname = '';
     accounttype = '';
-    applicationdate= Date;
+    applicationdate= new Date();
     address = '';
     dateofbirth = '';
     applicationstatus = '';
     customer_id = '';
-} 
+}

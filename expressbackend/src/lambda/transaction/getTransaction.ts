@@ -1,8 +1,8 @@
 import {Client} from 'pg';
 
+
 export const handler = async (event: any) => {
     console.log('event', event);
-    //let account = JSON.parse(event.body);
     const accountId = event.queryStringParameters.accountId;
     console.log('accountId',accountId);
     const client = new Client();
@@ -10,7 +10,6 @@ export const handler = async (event: any) => {
     const query = `select * from transactions where account_id = $1`;
     const values = [accountId] ;
     let response = await client.query(query, values);
-    //console.log('the response', response.rows);
     if (response) {
         client.end();
         return {
@@ -33,6 +32,5 @@ export const handler = async (event: any) => {
         };
     }
 }
-
 
 

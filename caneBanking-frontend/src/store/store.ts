@@ -1,13 +1,13 @@
 import { applyMiddleware, createStore, Store } from "redux";
 import thunk from "redux-thunk";
 import { Check } from "../check/check";
-import { Account } from '../account/account';
 import { Application } from '../application/application';
 import { User } from "../user/user";
 import { AppAction } from "./actions";
 import reducer from "./reducer";
 import { Transaction } from "../transaction/transaction";
 
+import { Account } from "../account/account";
 
 export interface UserState {
     user: User;
@@ -19,22 +19,29 @@ export interface CheckState {
     check: Check;
     account: Account;
     accounts: Account[];
+    id: string;
 }
 export interface ApplicationState {
     application: Application | any;
+    applications: Application[];
 }
 
 export interface TransactionState {
     transaction: Transaction;
     transactions: Transaction[];
+    transferAmount: any;
+    selection: string;
+}
+   
+export interface TransferState {
+    fromAccount: Account;
+    toAccount: Account;
 }
 
-export interface CaneBankingState extends UserState, CheckState, ApplicationState, TransactionState {
-    //transaction: any;
-    //application: any;
+export interface CaneBankingState extends UserState, CheckState, ApplicationState, TransactionState, TransferState {
+
 }
-// <> is generics: Generic arguments allow us to define the type of a thing at runtime instead of when we write it,
-// creating a reusable object.
+
 const store: Store<CaneBankingState, AppAction> = createStore(reducer, applyMiddleware(thunk));
 
 export default store;

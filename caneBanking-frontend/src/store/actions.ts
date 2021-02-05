@@ -1,9 +1,9 @@
 import { Check } from '../check/check';
 import {User} from './../user/user';
-
 import { Transaction } from '../transaction/transaction';
 import { Account } from '../account/account';
 import { Application } from '../application/application';
+import { Transaction } from '../transaction/transaction';
 
 export enum UserActions {
     GetUser = 'GET_USER',
@@ -19,11 +19,23 @@ export enum CheckActions {
 
 export enum AccountActions {
     ChangeAccount = 'CHANGE_ACCOUNT',
-    GetAccounts = 'GET_ACCOUNTS'
+    GetAccounts = 'GET_ACCOUNTS',
+    NewAccount ='NEW_ACCOUNT',
+    ChangeToAccount = 'CHANGE_TO_ACCOUNT',
+    ChangeFromAccount = 'CHANGE_FROM_ACCOUNT',
+    ChangeId = 'CHANGE_ID'
 }
 
 export enum ApplicationActions {
-    ChangeApplication = 'CHANGE_APPLICATION'
+    ChangeApplication = 'CHANGE_APPLICATION',
+    GetApplications = 'GET_APPLICATIONS'
+}
+
+export enum TransactionActions {
+    GetTransaction = 'GET_TRANSACTION',
+    AddTransaction='ADD_TRANSACTION',
+    NewTransferAmount='NEW_TRANSFER_AMOUNT',
+    TransferSelection= 'GET_TRANSFER_SELECTION'
 }
 
 export enum TransactionActions {
@@ -45,14 +57,19 @@ export interface CheckAction<C> extends AppAction {
     payload: C;
 }
 
-export interface AccountAction<A> extends AppAction {
+export interface AccountAction<A> extends AppAction{
     type: AccountActions;
     payload: A;
 }
 
-export interface ApplicationAction<A> extends AppAction {
+export interface ApplicationAction extends AppAction {
     type: ApplicationActions;
-    payload: A;
+    payload: Application | Application[];
+}
+
+export interface TransactionAction<T> extends AppAction {
+    type: TransactionActions;
+    payload: T;
 }
 
 export interface TransactionAction<T> extends AppAction {
@@ -92,20 +109,35 @@ export function changeLocale(locale: string): UserAction<string> {
     return action;
 }
 
-export function addCheck(check: Check) : CheckAction<Check> {
-    const action: CheckAction<Check> = {
-        type: CheckActions.AddCheck,
-        payload: check
-    }
-    return action;
-}
-
 export function changeCheck(check: Check) : CheckAction<Check> {
     const action: CheckAction<Check> = {
         type: CheckActions.ChangeCheck,
         payload: check
     }
     return action;
+}
+export function getApplications(applications: Application[]): ApplicationAction{
+    const action: ApplicationAction = {
+        type: ApplicationActions.GetApplications,
+        payload: applications
+    }
+    return action;
+}
+
+export function changeApplication(application: Application) : ApplicationAction {
+    const action: ApplicationAction = {
+        type: ApplicationActions.ChangeApplication,
+        payload: application
+    }
+    return action;
+}
+
+export function newAccount(account: Account) : AccountAction<Account>{
+    const action: AccountAction<Account> = {
+        type: AccountActions.NewAccount,
+        payload: account
+    }
+    return action
 }
 
 export function changeAccount(account_id: string) : AccountAction<string> {
@@ -116,7 +148,15 @@ export function changeAccount(account_id: string) : AccountAction<string> {
     return action;
 }
 
-export function getAccounts(accounts: Account[]) : AccountAction<Account[]> {
+export function getTransaction(transaction: Transaction): TransactionAction<Transaction> {
+    const action: TransactionAction<Transaction> = {
+        type: TransactionActions.GetTransaction,
+        payload: transaction
+    }
+    return action;
+}
+
+export function getAccounts(accounts: Account[]) : AccountAction<Account[]>{
     const action: AccountAction<Account[]> = {
         type: AccountActions.GetAccounts,
         payload: accounts
@@ -124,10 +164,42 @@ export function getAccounts(accounts: Account[]) : AccountAction<Account[]> {
     return action;
 }
 
-export function ChangeApplication(application: Application) : ApplicationAction<Application> {
-    const action: ApplicationAction<Application> = {
-        type: ApplicationActions.ChangeApplication,
-        payload: application
+export function changeFromAccount(account_id: string) : AccountAction<string> {
+    const action: AccountAction<string> = {
+        type: AccountActions.ChangeFromAccount,
+        payload: account_id
+    }
+    return action;
+}
+
+export function changeToAccount(account_id: string) : AccountAction<string> {
+    const action: AccountAction<string> = {
+        type: AccountActions.ChangeToAccount,
+        payload: account_id
+    }
+    return action;
+}
+
+export function changeTransferAmount(amount: number)  {
+    const action = {
+        type: TransactionActions.NewTransferAmount,
+        payload: amount
+    }
+    return action;
+}
+
+export function changeAccountId(accountId: string)  {
+    const action = {
+        type: AccountActions.ChangeId,
+        payload: accountId
+    }
+    return action;
+}
+
+export function getTransferSelection(selection: string)  {
+    const action = {
+        type: TransactionActions.TransferSelection,
+        payload: selection
     }
     return action;
 }
@@ -139,3 +211,4 @@ export function getTransaction(transactions: Transaction[]): TransactionAction<T
     }
     return action;
 }
+

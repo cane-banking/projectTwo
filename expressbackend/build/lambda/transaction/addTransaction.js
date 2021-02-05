@@ -38,49 +38,41 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.handler = void 0;
 var pg_1 = require("pg");
-var handler = function (event) { return __awaiter(void 0, void 0, void 0, function () {
-    var account, client, q, values, res;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                account = JSON.parse(event.body);
-                client = new pg_1.Client();
-                return [4 /*yield*/, client.connect()];
-            case 1:
-                _a.sent();
-                q = "insert into accounts (\n                                   account_id,\n                                   account_type,\n                                   balance,\n                                   customer_id) values ($1, $2, $3, $4)";
-                values = [
-                    account.account_id,
-                    account.account_type,
-                    account.balance,
-                    account.customer_id
-                ];
-                return [4 /*yield*/, client.query(q, values)];
-            case 2:
-                res = _a.sent();
-                if (res) {
+function handler(event) {
+    return __awaiter(this, void 0, void 0, function () {
+        var client, transaction, query, values, response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    client = new pg_1.Client();
+                    transaction = JSON.parse(event.body);
+                    console.log('event', event);
+                    client.connect();
+                    query = "insert into transactions (transaction_id,\n                                   time_stamp,\n                                   vendor,\n                                   transaction_amt,\n                                   account_id,\n                                   customer_id) values ($1, $2, $3, $4, $5, $6)";
+                    values = [transaction.transaction_id,
+                        transaction.time_stamp,
+                        transaction.vendor,
+                        transaction.transaction_amt,
+                        transaction.account_id,
+                        transaction.customer_id];
+                    return [4 /*yield*/, client.query(query, values)];
+                case 1:
+                    response = _a.sent();
+                    if (response) {
+                        return [2 /*return*/, {
+                                statusCode: 200,
+                                headers: {
+                                    "Access-Control-Allow-Headers": "Content-Type",
+                                    "Access-Control-Allow-Origin": "*",
+                                    "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
+                                }, body: JSON.stringify(response.rows)
+                            }];
+                    }
+                    console.log('response', response);
                     client.end();
-                    return [2 /*return*/, {
-                            statusCode: 200,
-                            headers: {
-                                "Access-Control-Allow-Headers": "Content-Type",
-                                "Access-Control-Allow-Origin": "*",
-                                "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
-                            }
-                        }];
-                }
-                else {
-                    client.end();
-                    return [2 /*return*/, { statusCode: 404, headers: {
-                                "Access-Control-Allow-Headers": "Content-Type",
-                                "Content-Type": "application/json",
-                                "Access-Control-Allow-Origin": "*",
-                                "Access-Control-Allow-Methods": "PUT, OPTIONS"
-                            }
-                        }];
-                }
-                return [2 /*return*/];
-        }
+                    return [2 /*return*/, response];
+            }
+        });
     });
-}); };
+}
 exports.handler = handler;

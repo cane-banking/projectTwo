@@ -9,6 +9,12 @@ import { enableScreens } from 'react-native-screens';
 import CreateApplication from "../application/application-component";
 import DepositCheck from "../check/DepositCheck.component";
 import TransactionHistory from "../transaction/transaction-component";
+import Admin from "../employee/admin";
+import AppSubmit from "../application/app.submit";
+import Transfer from "../transaction/OwnTransfer";
+import TransferSelection from "../transaction/TransferSelection";
+import OwnTransfer from "../transaction/OwnTransfer";
+import OtherTransfer from "../transaction/OtherTransfer";
 
 
 enableScreens();
@@ -20,10 +26,11 @@ interface MenuProp {
   navigation: any;
 }
 
+
 const loginStackNavigator = ({navigation}:MenuProp) => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Login" component={LoginComponent}  
+      <Stack.Screen name="Login" component={LoginComponent}
       options={{title:'Cane Banking',
         headerStyle: {
           backgroundColor: '#63D4FF',
@@ -62,7 +69,22 @@ const loginStackNavigator = ({navigation}:MenuProp) => {
           backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
         }}/>
 
-      <Stack.Screen name="Register" component={SignUpComponent}  
+  <Stack.Screen name="Admin" component={Admin}
+        options={{title:'Cane Banking',
+        headerStyle: {
+          backgroundColor: '#63D4FF',
+        },
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+        headerTitleAlign:'center',
+        headerRight:() => (
+          <Icon.Button name ='ios-menu' size={25}
+          backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
+        }}/>
+
+
+      <Stack.Screen name="Register" component={SignUpComponent}
        options={{title:'Cane Banking',
        headerStyle: {
          backgroundColor: '#63D4FF',
@@ -79,10 +101,32 @@ const loginStackNavigator = ({navigation}:MenuProp) => {
     </Stack.Navigator>
   );
 }
+
 const registerAccountStack=({navigation}:MenuProp) =>{
   return(
     <Stack.Navigator>
-      <Stack.Screen name="Register" component={SignUpComponent} 
+      <Stack.Screen name="Register" component={SignUpComponent}
+        options={{title:'Cane Banking',
+        headerStyle: {
+          backgroundColor: '#63D4FF',
+        },
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+        headerTitleAlign:'center',
+        headerRight:() => (
+          <Icon.Button name ='ios-menu' size={25}
+          backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
+        }}/>
+
+    </Stack.Navigator>
+  )
+}
+
+const ApplicationStack=({navigation}:MenuProp) =>{
+  return(
+    <Stack.Navigator>
+      <Stack.Screen name="Application" component={CreateApplication}
         options={{title:'Cane Banking',
         headerStyle: {
           backgroundColor: '#63D4FF',
@@ -103,7 +147,7 @@ const registerAccountStack=({navigation}:MenuProp) =>{
 const LogoutStack=({navigation}:MenuProp) =>{
   return(
     <Stack.Navigator>
-      <Stack.Screen name="Logout" component={LoginComponent} 
+      <Stack.Screen name="Logout" component={LoginComponent}
         options={{title:'Cane Banking',
         headerStyle: {
           backgroundColor: '#63D4FF',
@@ -120,6 +164,7 @@ const LogoutStack=({navigation}:MenuProp) =>{
     </Stack.Navigator>
   )
 }
+
 
 const TransactionStack=({navigation}:MenuProp) =>{
   return(
@@ -142,31 +187,10 @@ const TransactionStack=({navigation}:MenuProp) =>{
   )
 }
 
-const ApplicationStack=({navigation}:MenuProp) =>{
-  return(
-    <Stack.Navigator>
-      <Stack.Screen name="Application" component={CreateApplication} 
-        options={{title:'Cane Banking',
-        headerStyle: {
-          backgroundColor: '#63D4FF',
-        },
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
-        headerTitleAlign:'center',
-        headerRight:() => (
-          <Icon.Button name ='ios-menu' size={25}
-          backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
-        }}/>
-
-    </Stack.Navigator>
-  )
-}
-
 const DepositCheckStack=({navigation}:MenuProp) =>{
   return(
     <Stack.Navigator>
-      <Stack.Screen name="Deposit Check" component={DepositCheck} 
+      <Stack.Screen name="Deposit Check" component={DepositCheck}
         options={{title:'Cane Banking',
         headerStyle: {
           backgroundColor: '#63D4FF',
@@ -184,5 +208,53 @@ const DepositCheckStack=({navigation}:MenuProp) =>{
   )
 }
 
+const TransferStack=({navigation}:MenuProp) =>{
+  return(
+    <Stack.Navigator>
+      <Stack.Screen name="Transfer" component={TransferSelection}
+        options={{title:'Cane Banking',
+        headerStyle: {
+          backgroundColor: '#63D4FF',
+        },
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+        headerTitleAlign:'center',
+        headerRight:() => (
+          <Icon.Button name ='ios-menu' size={25}
+          backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
+        }}/>
 
-export {loginStackNavigator,registerAccountStack,LogoutStack,ApplicationStack,DepositCheckStack,TransactionStack} ;
+      <Stack.Screen name="OwnTransfer" component={OwnTransfer}
+        options={{title:'Cane Banking',
+        headerStyle: {
+          backgroundColor: '#63D4FF',
+        },
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+        headerTitleAlign:'center',
+        headerRight:() => (
+          <Icon.Button name ='ios-menu' size={25}
+          backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
+        }}/>
+
+      <Stack.Screen name="OtherTransfer" component={OtherTransfer}
+        options={{title:'Cane Banking',
+        headerStyle: {
+          backgroundColor: '#63D4FF',
+        },
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+        headerTitleAlign:'center',
+        headerRight:() => (
+          <Icon.Button name ='ios-menu' size={25}
+          backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
+        }}/>
+    </Stack.Navigator>
+  )
+}
+
+export {loginStackNavigator,registerAccountStack,LogoutStack,ApplicationStack,DepositCheckStack,TransactionStack, TransferStack} ;
+
