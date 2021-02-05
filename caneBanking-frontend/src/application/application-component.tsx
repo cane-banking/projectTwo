@@ -71,7 +71,7 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
                 onChangeText={(value) =>
                     dispatch(changeApplication({ ...application, address: value}))
                 }
-                value={application.address}
+                value={application.address || ''}
                 />
 
             <TextInput

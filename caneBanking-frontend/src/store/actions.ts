@@ -3,7 +3,6 @@ import {User} from './../user/user';
 import { Transaction } from '../transaction/transaction';
 import { Account } from '../account/account';
 import { Application } from '../application/application';
-import { Transaction } from '../transaction/transaction';
 
 export enum UserActions {
     GetUser = 'GET_USER',
@@ -144,14 +143,6 @@ export function changeAccount(account_id: string) : AccountAction<string> {
     const action: AccountAction<string> = {
         type: AccountActions.ChangeAccount,
         payload: account_id
-    }
-    return action;
-}
-
-export function getTransaction(transaction: Transaction): TransactionAction<Transaction> {
-    const action: TransactionAction<Transaction> = {
-        type: TransactionActions.GetTransaction,
-        payload: transaction
     }
     return action;
 }
