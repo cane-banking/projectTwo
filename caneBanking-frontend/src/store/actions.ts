@@ -31,15 +31,15 @@ export enum ApplicationActions {
 }
 
 export enum TransactionActions {
-    GetTransaction = 'GET_TRANSACTION',
+    GetTransactions = 'GET_TRANSACTIONS',
     AddTransaction='ADD_TRANSACTION',
     NewTransferAmount='NEW_TRANSFER_AMOUNT',
     TransferSelection= 'GET_TRANSFER_SELECTION'
 }
 
-export enum TransactionActions {
-    GetTransactions = 'GET_TRANSACTIONS'
-}
+//export enum TransactionActions {
+//    GetTransactions = 'GET_TRANSACTIONS'
+//}
 
 export interface AppAction {
     type: string;
@@ -71,10 +71,10 @@ export interface TransactionAction<T> extends AppAction {
     payload: T;
 }
 
-export interface TransactionAction<T> extends AppAction {
-    type: TransactionActions;
-    payload: T;
-}
+//export interface TransactionAction<T> extends AppAction {
+//    type: TransactionActions;
+//    payload: T;
+//}
 
 export function getUser(user: User): UserAction<User> {
     const action: UserAction<User> = {

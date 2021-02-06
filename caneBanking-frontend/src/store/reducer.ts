@@ -18,8 +18,9 @@ export const initialState: CaneBankingState = {
     account: new Account(),
     accounts: [],
     application: new Application(),
-    transactions: [],
+    //transactions: [],
     transaction: new Transaction(),
+    transactions: [],
     fromAccount: new Account(),
     toAccount: new Account(),
     transferAmount: 0,
@@ -46,6 +47,7 @@ const reducer = (state: CaneBankingState = initialState, action: Actions.AppActi
             return newState;
         case Actions.UserActions.ChangeUser:
             newState.user = action.payload as User;
+            return newState;
         case Actions.CheckActions.ChangeCheck:
             newState.check = action.payload as Check;
             return newState;
@@ -66,9 +68,10 @@ const reducer = (state: CaneBankingState = initialState, action: Actions.AppActi
             return newState;
         case Actions.TransactionActions.GetTransactions:
             newState.transactions = action.payload as Transaction[];
-        case Actions.TransactionActions.GetTransaction:
-            newState.transaction = action.payload as Transaction;
             return newState;
+        //case Actions.TransactionActions.GetTransaction:
+        //    newState.transaction = action.payload as Transaction;
+        //    return newState;
         case Actions.TransactionActions.TransferSelection:
             newState.selection = action.payload;
             return newState;
