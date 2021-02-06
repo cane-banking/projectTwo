@@ -4,7 +4,7 @@ import { View,
         FlatList,
         Button} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import {getAccounts} from '../store/actions';
+import {changeAccount, getAccounts} from '../store/actions';
 import { CaneBankingState, UserState } from '../store/store';
 import AccountService from './account.service';
 import styles, { color } from '../../global-styles';
@@ -30,10 +30,6 @@ export default function Accounts({navigation}:AccountProp) {
 
   console.log(accounts)
 
-  function selectAccount() {
-    navigation.navigate('Transaction History');
-  }
-
   function createAccount() {
     navigation.navigate('Application');
 }
@@ -57,22 +53,19 @@ export default function Accounts({navigation}:AccountProp) {
                 <Text style={styles.apptitle}>{item.account_type}</Text>
 
                 <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
-
-                  <View style={{flexDirection:'column', justifyContent:'space-between', alignItems:'center'}}>
+                 <View style={{flexDirection:'column', justifyContent:'space-between', alignItems:'center'}}>
                     <Text style={styles.applicant}>${item.balance}</Text>
-                  </View>
-
+                 </View>
                 </View>
 
                 <Divider style={{backgroundColor: '#dfe6e9', marginVertical:20}} />
-
                 <View style={{flexDirection:'row', justifyContent:'space-between'}}>
-
-                  <Button onPress={selectAccount} title={item.account_id} color='#63D4FF' />
-
+                  <Button onPress={() => {
+                    dispatch(changeAccount(item.account_id));
+                    navigation.navigate('Transaction History');
+                    return;
+                  }} title='View Transaction History' color='#63D4FF' />
                 </View>
-
-
 
               </Card>
 

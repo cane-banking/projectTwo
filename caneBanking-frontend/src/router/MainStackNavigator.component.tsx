@@ -4,7 +4,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Accounts from '../account/accounts.component';
 import LoginComponent from '../user/login.component';
 import SignUpComponent from '../user/signup.component';
-// import BalanceComponent from '../accounts/Balance/Balance.component';
 import { enableScreens } from 'react-native-screens';
 import CreateApplication from "../application/application-component";
 import DepositCheck from "../check/DepositCheck.component";
@@ -15,6 +14,7 @@ import Transfer from "../transaction/OwnTransfer";
 import TransferSelection from "../transaction/TransferSelection";
 import OwnTransfer from "../transaction/OwnTransfer";
 import OtherTransfer from "../transaction/OtherTransfer";
+import Logout from "../user/logout.component";
 
 
 enableScreens();
@@ -65,7 +65,7 @@ const loginStackNavigator = ({navigation}:MenuProp) => {
         },
         headerTitleAlign:'center',
         headerRight:() => (
-          <Icon.Button name ='ios-menu' size={25}
+          <Icon.Button name ='ios-menu' size={15}
           backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
         }}/>
 
@@ -147,7 +147,7 @@ const ApplicationStack=({navigation}:MenuProp) =>{
 const LogoutStack=({navigation}:MenuProp) =>{
   return(
     <Stack.Navigator>
-      <Stack.Screen name="Logout" component={LoginComponent}
+      <Stack.Screen name="Logout" component={Logout}
         options={{title:'Cane Banking',
         headerStyle: {
           backgroundColor: '#63D4FF',
