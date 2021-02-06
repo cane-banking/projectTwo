@@ -31,7 +31,7 @@ export default function Accounts({navigation}:AccountProp) {
   console.log(accounts)
 
   function createAccount() {
-    navigation.navigate('Application');
+    navigation.navigate('Add Account');
 }
 
   return (
