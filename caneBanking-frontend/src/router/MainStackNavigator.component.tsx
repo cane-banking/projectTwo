@@ -66,7 +66,7 @@ const loginStackNavigator = ({navigation}:MenuProp) => {
         },
         headerTitleAlign:'center',
         headerRight:() => (
-          <Icon.Button name ='ios-menu' size={25}
+          <Icon.Button name ='ios-menu' size={15}
           backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
         }}/>
 
