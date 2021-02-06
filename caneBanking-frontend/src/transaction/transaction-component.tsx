@@ -1,7 +1,7 @@
 import  React, { useState, Component, useEffect }  from 'react';
-import { View, TextInput,Text, Button,StyleSheet} from 'react-native';
+import { View, TextInput,Text, Button,StyleSheet, FlatList} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { ChangeApplication, getTransaction } from '../store/actions';
+import { getTransaction } from '../store/actions';
 import { CaneBankingState, UserState } from '../store/store';
 import  {Transaction} from './transaction';
 import transactionService from './transaction.service';
@@ -9,8 +9,8 @@ import styles from '../../global-styles';
 import {v4 as uuid4} from 'uuid';
 import { color } from '../helpers/colorScheme';
 import { RouteProp, useNavigation } from '@react-navigation/native';
-import { StackParams } from '../router/router.component';
 import { TouchableHighlight } from 'react-native';
+import { Card, Divider, Icon } from 'react-native-elements';
 
 
 interface TransactionProp {
@@ -22,8 +22,6 @@ export function TransactionHistory(props: TransactionProp) {
     const transactions = useSelector((state: CaneBankingState) => state.transactions); //getting transaction from state
     const account = useSelector((state: CaneBankingState) => state.account);
     const accounts = useSelector((state: CaneBankingState) => state.accounts);
-    
-    //const userSelector = (state: UserState) => state.user;
     const user = useSelector((state: CaneBankingState) => state.user);
     const dispatch = useDispatch();
     console.log('account',account);
@@ -34,29 +32,51 @@ export function TransactionHistory(props: TransactionProp) {
     dispatch(getTransaction(transactions));
     })
 },[user]) 
-//});       
+       
     return (
-        //get all the transactions from the state
-        //then, map over the transactions and return a touchableHighlight or Text component
-        //ex. {transactions? transactions.map(transaction) => {Text, Touchable Highlight}}
-        <View>
-            <Text>
-                 Welcome to your transactions 
-            </Text>
-            <View>
-            {transactions ? transactions.map((transaction, index) => {
-                    
-                    return <TouchableHighlight key = {index}  onPress={()=> '' } underlayColor={color.white} >
-                    <View ><Text>{transaction.transaction_id}</Text></View>
-                    <View ><Text>{transaction.time_stamp}</Text></View>
-                    <View ><Text>{transaction.vendor}</Text></View>
-                    <View ><Text>{transaction.vendor_account_id}</Text></View>
-                    <View ><Text>{transaction.transaction_amt}</Text></View>
-                    <View ><Text>{transaction.account_id}</Text></View>
-                    <View ><Text>{transaction.customer_id}</Text></View> 
-                   </TouchableHighlight>}):''}
-            </View>
-      </View>
+          <View style={styles.container}>
+            {transactions.length ? (
+              <>
+                <View style={styles.heading}>
+                  <Text style={styles.boldText}>Welcome to your transactions history {user.firstname}</Text>
+                </View>
+                <FlatList
+                  keyExtractor={(item) => item.account_id}
+                  data={transactions}
+                  renderItem={({ item }) =>(
+                <>
+
+                <Card containerStyle={styles.card}>
+                  <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
+                    <View style={{flexDirection:'column', justifyContent:'space-between', alignItems:'center'}}>
+                      <Text style={styles.applicant}>Transaction Date: {item.time_stamp}</Text>
+                    </View>
+                  </View>
+                  <Divider style={{backgroundColor: '#dfe6e9', marginVertical:20}} />
+                  <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
+                    <View style={{flexDirection:'column', justifyContent:'space-between', alignItems:'center'}}>
+                      <Text style={styles.applicant}>Transaction Vendor: {item.vendor}</Text>
+                    </View>
+                  </View>
+                  <Divider style={{backgroundColor: '#dfe6e9', marginVertical:20}} />
+                  <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
+                    <View style={{flexDirection:'column', justifyContent:'space-between', alignItems:'center'}}>
+                      <Text style={styles.applicant}>Transaction Amount: ${item.transaction_amt}</Text>
+                    </View>
+                  </View>
+                </Card>
+                </>
+                )}
+                />
+              </>
+              ) :  (
+              <View>
+                <View style={styles.heading}>
+                  <Text style={styles.boldText}>Welcome {user.firstname}, You have not made any transaction yet.</Text>
+                </View>
+              </View>
+            )}
+          </View>
     );
 }
 
