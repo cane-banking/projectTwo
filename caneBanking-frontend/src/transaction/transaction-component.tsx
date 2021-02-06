@@ -9,6 +9,7 @@ import { color } from '../helpers/colorScheme';
 import { RouteProp, useNavigation } from '@react-navigation/native';
 import { TouchableHighlight } from 'react-native';
 import { Card, Divider, Icon } from 'react-native-elements';
+import styles from '../../global-styles';
 
 
 interface TransactionProp {
