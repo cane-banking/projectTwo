@@ -8,13 +8,15 @@ export async function handler(event: any) {
     const query = `insert into transactions (transaction_id,
                                    time_stamp,
                                    vendor,
+                                   vendor_account_id,
                                    transaction_amt,
                                    account_id,
-                                   customer_id) values ($1, $2, $3, $4, $5, $6)`;
+                                   customer_id) values ($1, $2, $3, $4, $5, $6,$7)`;
 
     const values = [transaction.transaction_id,
                     transaction.time_stamp,
                     transaction.vendor,
+                    transaction.vendor_account_id,
                     transaction.transaction_amt,
                     transaction.account_id,
                     transaction.customer_id ];

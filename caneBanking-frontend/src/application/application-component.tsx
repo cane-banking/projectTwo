@@ -7,8 +7,8 @@ import  {Application} from './application';
 import applicationService from './application.service';
 import styles, { color } from '../../global-styles';
 import {v4 as uuid4} from 'uuid';
-import userService from '../user/user.service';
-import { format } from "date-fns";
+import { Account } from '../account/account';
+
 
 interface ApplicationProp {
     navigation: any;
@@ -33,7 +33,7 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
 
         applicationService.addApplication(application).then(() => {
             dispatch(changeApplication(new Application()));
-            setClick(!click);
+            navigation.navigate(Account)
         })
     }
 

@@ -4,7 +4,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Accounts from '../account/accounts.component';
 import LoginComponent from '../user/login.component';
 import SignUpComponent from '../user/signup.component';
-// import BalanceComponent from '../accounts/Balance/Balance.component';
 import { enableScreens } from 'react-native-screens';
 import CreateApplication from "../application/application-component";
 import DepositCheck from "../check/DepositCheck.component";

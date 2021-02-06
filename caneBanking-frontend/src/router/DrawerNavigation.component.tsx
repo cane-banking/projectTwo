@@ -21,6 +21,7 @@ const DrawerNavigatorComponent = () => {
 
   return (
     <Drawer.Navigator>
+      <Drawer.Screen name="Home" component={loginStackNavigator}  />
       <Drawer.Screen name="Home" component={HomeTabNavigatorComponent}  />
       <Drawer.Screen name="Accounts" component={Accounts}/>
       <Drawer.Screen name="Add Account" component={ApplicationStack}/>

@@ -53,26 +53,19 @@ export default function Accounts({navigation}:AccountProp) {
                 <Text style={styles.apptitle}>{item.account_type}</Text>
 
                 <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
-
-                  <View style={{flexDirection:'column', justifyContent:'space-between', alignItems:'center'}}>
+                 <View style={{flexDirection:'column', justifyContent:'space-between', alignItems:'center'}}>
                     <Text style={styles.applicant}>${item.balance}</Text>
-                  </View>
-
+                 </View>
                 </View>
 
                 <Divider style={{backgroundColor: '#dfe6e9', marginVertical:20}} />
-
                 <View style={{flexDirection:'row', justifyContent:'space-between'}}>
-
                   <Button onPress={() => {
                     dispatch(changeAccount(item.account_id));
                     navigation.navigate('Transaction History');
                     return;
                   }} title='View Transaction History' color='#63D4FF' />
-
                 </View>
-
-
 
               </Card>
 
