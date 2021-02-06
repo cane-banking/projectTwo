@@ -6,6 +6,9 @@ import { changeAccountId, changeFromAccount, changeToAccount, changeTransferAmou
 import { CaneBankingState } from '../store/store';
 import  AccountService  from '../account/account.service';
 import { Picker } from '@react-native-picker/picker';
+import { Account } from '../account/account';
+import addTransactionService from './addTransaction.service';
+
 
 
 
@@ -33,6 +36,23 @@ function submitTransfer(){
             dispatch(changeToAccount(''));
         })
     })
+    // transaction_id = '';
+    // time_stamp = Date;
+    // vendor = '';
+    // vendor_account_id = '';
+    // transaction_amt = 0;
+    // account_id = '';
+    // customer_id = '';
+    //6b35df18-0be0-4c4a-8380-e0a1eb70bef0
+    transaction.transaction_id = uuidv4();
+    transaction.time_stamp = new Date();
+    transaction.transaction_amt = transferAmount;
+    transaction.account_id = fromAccount.account_id;
+    transaction.customer_id = user.customer_id;
+    transaction.vendor = 'transfer'
+    transaction.vendor_account_id = uuidv4();
+    addTransactionService.addTransaction(transaction).then(()=>{})
+    navigation.navigate('Accounts');
 }
 console.log('accountid', id);
     return (
@@ -59,7 +79,7 @@ console.log('accountid', id);
                  </Picker>
                  <Text>TO</Text>
             <TextInput
-                placeholder='Someone else'
+                placeholder=''
                 style={{fontSize: 55, color:color.lightBlue, borderBottomWidth: 1, borderBottomColor: color.darkGray, padding: 10, width: '80vw'}}
                 keyboardType = 'default'
                 onChangeText={(value) =>

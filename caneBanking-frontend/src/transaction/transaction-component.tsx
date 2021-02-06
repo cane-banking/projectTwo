@@ -24,12 +24,12 @@ export function TransactionHistory(props: TransactionProp) {
     const dispatch = useDispatch();
     console.log('account',account);
     console.log('accounts',accounts);
-    useEffect (() => {                
+    useEffect (() => {
     transactionService.getTransactions(account.account_id).then((transactions) => {
     console.log('transactions',transactions);
     dispatch(getTransaction(transactions));
     })
-},[user]) 
+},[user])
        
     return (
           <View style={styles.container}>

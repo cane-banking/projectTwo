@@ -26,7 +26,7 @@ export default function Accounts({navigation}:AccountProp) {
       AccountService.getAccountsByCustomer(user.customer_id).then((accounts) => {
           dispatch(getAccounts(accounts));
       })
-  }, [user]) 
+  }, [user])
 
   console.log(accounts)
 
@@ -74,7 +74,7 @@ export default function Accounts({navigation}:AccountProp) {
             )}
         />
 
-      
+
       </>
 
     ) :  (
@@ -87,7 +87,7 @@ export default function Accounts({navigation}:AccountProp) {
     )}
 
     </View>
-    
+
   );
 }
 

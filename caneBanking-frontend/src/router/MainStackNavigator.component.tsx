@@ -55,7 +55,7 @@ const loginStackNavigator = ({navigation}:MenuProp) => {
           backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
         }}/>
 
-<Stack.Screen name="Transaction History" component={TransactionHistory} 
+<Stack.Screen name="Transaction History" component={TransactionHistory}
         options={{title:'Cane Banking',
         headerStyle: {
           backgroundColor: '#63D4FF',
@@ -169,7 +169,7 @@ const LogoutStack=({navigation}:MenuProp) =>{
 const TransactionStack=({navigation}:MenuProp) =>{
   return(
     <Stack.Navigator>
-      <Stack.Screen name="Transaction History" component={TransactionHistory} 
+      <Stack.Screen name="Transaction History" component={TransactionHistory}
         options={{title:'Cane Banking',
         headerStyle: {
           backgroundColor: '#63D4FF',
@@ -207,6 +207,49 @@ const DepositCheckStack=({navigation}:MenuProp) =>{
     </Stack.Navigator>
   )
 }
+
+const OtherTransferStack=({navigation}:MenuProp) =>{
+  return(
+    <Stack.Navigator>
+      <Stack.Screen name="OtherTransfer" component={OtherTransfer}
+        options={{title:'Cane Banking',
+        headerStyle: {
+          backgroundColor: '#63D4FF',
+        },
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+        headerTitleAlign:'center',
+        headerRight:() => (
+          <Icon.Button name ='ios-menu' size={25}
+          backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
+        }}/>
+
+    </Stack.Navigator>
+  )
+}
+
+const AccountStack=({navigation}:MenuProp) =>{
+  return(
+    <Stack.Navigator>
+        <Stack.Screen name="Accounts" component={Accounts}
+        options={{title:'Cane Banking',
+        headerStyle: {
+          backgroundColor: '#63D4FF',
+        },
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+        headerTitleAlign:'center',
+        headerRight:() => (
+          <Icon.Button name ='ios-menu' size={25}
+          backgroundColor='#63D4FF' onPress={()=> navigation.openDrawer()}></Icon.Button>)
+        }}/>
+    </Stack.Navigator>
+  )
+}
+
+
 
 const TransferStack=({navigation}:MenuProp) =>{
   return(
@@ -256,5 +299,5 @@ const TransferStack=({navigation}:MenuProp) =>{
   )
 }
 
-export {loginStackNavigator,registerAccountStack,LogoutStack,ApplicationStack,DepositCheckStack,TransactionStack, TransferStack} ;
+export {loginStackNavigator,registerAccountStack,LogoutStack,ApplicationStack,DepositCheckStack,TransactionStack, TransferStack, OtherTransferStack, AccountStack} ;
 
