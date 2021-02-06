@@ -30,10 +30,6 @@ export default function Accounts({navigation}:AccountProp) {
 
   console.log(accounts)
 
-  // function selectAccount() {
-  //   navigation.navigate('Transaction History');
-  // }
-
   function createAccount() {
     navigation.navigate('Application');
 }
@@ -72,7 +68,7 @@ export default function Accounts({navigation}:AccountProp) {
                     dispatch(changeAccount(item.account_id));
                     navigation.navigate('Transaction History');
                     return;
-                  }} title={item.account_id} color='#63D4FF' />
+                  }} title='View Transaction History' color='#63D4FF' />
 
                 </View>
 

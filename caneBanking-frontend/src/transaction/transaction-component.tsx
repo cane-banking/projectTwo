@@ -5,8 +5,6 @@ import { getTransaction } from '../store/actions';
 import { CaneBankingState, UserState } from '../store/store';
 import  {Transaction} from './transaction';
 import transactionService from './transaction.service';
-import styles from '../../global-styles';
-import {v4 as uuid4} from 'uuid';
 import { color } from '../helpers/colorScheme';
 import { RouteProp, useNavigation } from '@react-navigation/native';
 import { TouchableHighlight } from 'react-native';
