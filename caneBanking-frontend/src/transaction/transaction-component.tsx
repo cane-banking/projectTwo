@@ -38,7 +38,7 @@ export function TransactionHistory(props: TransactionProp) {
             {transactions.length ? (
               <>
                 <View style={styles.heading}>
-                  <Text style={styles.boldText}>Welcome to your transactions {user.firstname}</Text>
+                  <Text style={styles.boldText}>Welcome to your transactions history {user.firstname}</Text>
                 </View>
                 <FlatList
                   keyExtractor={(item) => item.account_id}
@@ -47,13 +47,6 @@ export function TransactionHistory(props: TransactionProp) {
                 <>
 
                 <Card containerStyle={styles.card}>
-                  <Text style={styles.apptitle}>Account Id: {item.account_id}</Text>
-                  <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
-                    <View style={{flexDirection:'column', justifyContent:'space-between', alignItems:'center'}}>
-                      <Text style={styles.applicant}>Transaction Id: {item.transaction_id}</Text>
-                    </View>
-                  </View>
-                  <Divider style={{backgroundColor: '#dfe6e9', marginVertical:20}} />
                   <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
                     <View style={{flexDirection:'column', justifyContent:'space-between', alignItems:'center'}}>
                       <Text style={styles.applicant}>Transaction Date: {item.time_stamp}</Text>
