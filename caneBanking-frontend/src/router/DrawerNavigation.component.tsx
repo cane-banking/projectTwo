@@ -31,7 +31,7 @@ const DrawerNavigatorComponent = () => {
       <Drawer.Screen name="Accounts" component={AccountStack}/>
       <Drawer.Screen name="Check Deposit" component={DepositCheckStack}/>
       <Drawer.Screen name="Transaction History" component={TransactionStack}/>
-      <Drawer.Screen name="Transfer" component={accounts.length < 2 ? OtherTransferStack: TransferStack}/>
+      <Drawer.Screen name="Transfer" component={accounts && accounts.length <= 2 ? OtherTransferStack: TransferStack}/>
       <Drawer.Screen name="Logout" component={Logout}/>
       <Drawer.Screen name="---" component={LoginComponent}/>
     </Drawer.Navigator>

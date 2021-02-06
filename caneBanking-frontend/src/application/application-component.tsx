@@ -33,7 +33,7 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
 
         applicationService.addApplication(application).then(() => {
             dispatch(changeApplication(new Application()));
-            navigation.navigate(Account)
+            navigation.navigate('Accounts')
         })
     }
 
