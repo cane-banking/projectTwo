@@ -86,14 +86,14 @@ function DepositCheck({navigation}: Deposit) {
             <TouchableHighlight onPress={()=> ''} underlayColor={color.white} >
                 <View style={style.checkPhoto}>
                 <Image source={{uri: 'https://cdn.iconscout.com/icon/free/png-512/camera-1721-433501.png'}}
-       style={{width: 50, height: 50, marginTop: 20}} />
+                       style={{width: 50, height: 50, marginTop: 20}} />
                     <Text style={style.checkPhotoText}>Front of check</Text>
                 </View>
             </TouchableHighlight>
             <TouchableHighlight onPress={()=> ''} underlayColor={color.white} >
                 <View style={style.checkPhoto}>
                 <Image source={{uri: 'https://cdn.iconscout.com/icon/free/png-512/camera-1721-433501.png'}}
-       style={{width: 50, height: 50, marginTop: 20}} />
+                       style={{width: 50, height: 50, marginTop: 20}} />
                     <Text style={style.checkPhotoText}>Back of check</Text>
                 </View>
             </TouchableHighlight>
