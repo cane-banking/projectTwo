@@ -46,9 +46,8 @@ function handler(event) {
                 case 0:
                     client = new pg_1.Client();
                     transaction = JSON.parse(event.body);
-                    console.log('event', event);
                     client.connect();
-                    query = "insert into transactions (transaction_id,\n                                   time_stamp,\n                                   vendor,\n                                   vendor_account_id,\n                                   transaction_amt,\n                                   account_id,\n                                   customer_id) values ($1, $2, $3, $4, $5, $6,$7)";
+                    query = "insert into transactions (transaction_id,\n                                            time_stamp,\n                                            vendor,\n                                            vendor_account_id,\n                                            transaction_amt,\n                                            account_id,\n                                            customer_id) values ($1, $2, $3, $4, $5, $6, $7)";
                     values = [transaction.transaction_id,
                         transaction.time_stamp,
                         transaction.vendor,
@@ -59,19 +58,30 @@ function handler(event) {
                     return [4 /*yield*/, client.query(query, values)];
                 case 1:
                     response = _a.sent();
+                    console.log('addCheck response query', response);
                     if (response) {
+                        client.end();
                         return [2 /*return*/, {
                                 statusCode: 200,
                                 headers: {
                                     "Access-Control-Allow-Headers": "Content-Type",
                                     "Access-Control-Allow-Origin": "*",
                                     "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
-                                }, body: JSON.stringify(response.rows)
+                                }
                             }];
                     }
-                    console.log('response', response);
-                    client.end();
-                    return [2 /*return*/, response];
+                    else {
+                        client.end();
+                        return [2 /*return*/, {
+                                statusCode: 400,
+                                headers: {
+                                    "Access-Control-Allow-Headers": "Content-Type",
+                                    "Access-Control-Allow-Origin": "*",
+                                    "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
+                                }
+                            }];
+                    }
+                    return [2 /*return*/];
             }
         });
     });

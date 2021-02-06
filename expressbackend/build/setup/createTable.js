@@ -18,12 +18,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var AWS = __importStar(require("aws-sdk"));
-var user_service_1 = __importDefault(require("../user/user.service"));
 // Set the region
 AWS.config.update({ region: 'us-west-2' });
 // Create a DynamoDB service object
@@ -69,17 +65,7 @@ ddb.deleteTable(removeUsers, function (err, data) {
             else {
                 // celebrate, I guess
                 console.log('Table Created', data);
-                setTimeout(function () {
-                    populateUserTable();
-                }, 10000);
             }
         });
     }, 5000);
 });
-function populateUserTable() {
-    user_service_1.default.addUser({ customer_id: '1234', username: 'cassandra', firstname: 'Cassandra', lastname: 'Terry', password: 'pass', role: 'customer', email: 'cterry@gmail.com' }).then(function () { });
-    user_service_1.default.addUser({ customer_id: '5678', username: 'asad', firstname: 'Asad', lastname: 'Nazir', password: 'pass', role: 'customer', email: 'anazir@gmail.com' }).then(function () { });
-    user_service_1.default.addUser({ customer_id: '9012', username: 'nilam', firstname: 'Nilam', lastname: 'Patel', password: 'pass', role: 'customer', email: 'npatel@gmail.com' }).then(function () { });
-    user_service_1.default.addUser({ customer_id: '3456', username: 'emily', firstname: 'Emily', lastname: 'Smith', password: 'pass', role: 'employee', email: 'esmith@gmail.com' }).then(function () { });
-    user_service_1.default.addUser({ customer_id: '7890', username: 'richard', firstname: 'Richard', lastname: 'Orr', password: 'pass', role: 'employee', email: 'rorr@gmail.com' }).then(function () { });
-}
