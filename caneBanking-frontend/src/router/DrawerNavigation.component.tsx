@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { CaneBankingState } from "../store/store";
 import LoginComponent from "../user/login.component";
 import Logout from "../user/logout.component";
+import OtherTransfer from "../transaction/OtherTransfer";
+import { UserState } from "../store/store";
 
 
 
