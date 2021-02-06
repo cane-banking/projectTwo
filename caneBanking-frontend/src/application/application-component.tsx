@@ -47,12 +47,12 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
                 placeholder='Social Security Number'
                 secureTextEntry={true}
                 keyboardType = 'numeric'
-                maxLength={9}
+                maxLength={11}
                 style={styles.input}
                 onChangeText={(value) =>
                     dispatch(changeApplication({ ...application, socialsecurity: value}))
                 }
-                value= {application.socialsecurity}
+                value= {application.socialsecurity || ''}
                 />
 
             <TextInput
@@ -61,7 +61,7 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
                 onChangeText={(value) =>
                     dispatch(changeApplication({ ...application, accounttype: value}))
                 }
-                value={application.accounttype}
+                value={application.accounttype || ''}
                 />
 
 

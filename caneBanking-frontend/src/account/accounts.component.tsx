@@ -4,7 +4,7 @@ import { View,
         FlatList,
         Button} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import {getAccounts} from '../store/actions';
+import {changeAccount, getAccounts} from '../store/actions';
 import { CaneBankingState, UserState } from '../store/store';
 import AccountService from './account.service';
 import styles, { color } from '../../global-styles';
@@ -29,10 +29,6 @@ export default function Accounts({navigation}:AccountProp) {
   }, [user]) 
 
   console.log(accounts)
-
-  function selectAccount() {
-    navigation.navigate('Transaction History');
-  }
 
   function createAccount() {
     navigation.navigate('Application');
@@ -68,7 +64,11 @@ export default function Accounts({navigation}:AccountProp) {
 
                 <View style={{flexDirection:'row', justifyContent:'space-between'}}>
 
-                  <Button onPress={selectAccount} title='View Account Transactions' color='#63D4FF' />
+                  <Button onPress={() => {
+                    dispatch(changeAccount(item.account_id));
+                    navigation.navigate('Transaction History');
+                    return;
+                  }} title='View Transaction History' color='#63D4FF' />
 
                 </View>
 
