@@ -16,10 +16,8 @@ const DrawerNavigatorComponent = () => {
     <Drawer.Navigator>
       <Drawer.Screen name="Home" component={loginStackNavigator}  />
       <Drawer.Screen name="Logout" component={LogoutStack}/>
-      <Drawer.Screen name="Application" component={ApplicationStack}/>
-      <Drawer.Screen name="Accounts" component={Accounts}/>
+      <Drawer.Screen name="Add Account" component={ApplicationStack}/>
       <Drawer.Screen name="Check Deposit" component={DepositCheckStack}/>
-      <Drawer.Screen name="Transaction History" component={TransactionStack}/>
       <Drawer.Screen name="Transfer" component={TransferStack}/>
     </Drawer.Navigator>
   );
