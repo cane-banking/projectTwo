@@ -38,49 +38,44 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.handler = void 0;
 var pg_1 = require("pg");
-var handler = function (event) { return __awaiter(void 0, void 0, void 0, function () {
-    var account, client, q, values, res;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                account = JSON.parse(event.body);
-                client = new pg_1.Client();
-                return [4 /*yield*/, client.connect()];
-            case 1:
-                _a.sent();
-                q = "insert into accounts (\n                                   account_id,\n                                   account_type,\n                                   balance,\n                                   customer_id) values ($1, $2, $3, $4)";
-                values = [
-                    account.account_id,
-                    account.account_type,
-                    account.balance,
-                    account.customer_id
-                ];
-                return [4 /*yield*/, client.query(q, values)];
-            case 2:
-                res = _a.sent();
-                if (res) {
-                    client.end();
-                    return [2 /*return*/, {
-                            statusCode: 200,
-                            headers: {
-                                "Access-Control-Allow-Headers": "Content-Type",
-                                "Access-Control-Allow-Origin": "*",
-                                "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
-                            }
-                        }];
-                }
-                else {
-                    client.end();
-                    return [2 /*return*/, { statusCode: 404, headers: {
-                                "Access-Control-Allow-Headers": "Content-Type",
-                                "Content-Type": "application/json",
-                                "Access-Control-Allow-Origin": "*",
-                                "Access-Control-Allow-Methods": "PUT, OPTIONS"
-                            }
-                        }];
-                }
-                return [2 /*return*/];
-        }
+function handler(event) {
+    return __awaiter(this, void 0, void 0, function () {
+        var app_id, client, query, values, res;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    app_id = event.body;
+                    console.log(event);
+                    client = new pg_1.Client();
+                    return [4 /*yield*/, client.connect()];
+                case 1:
+                    _a.sent();
+                    query = "UPDATE applications SET applicationstatus = 'declined' WHERE application_id = $1";
+                    values = [app_id];
+                    return [4 /*yield*/, client.query(query, values)];
+                case 2:
+                    res = _a.sent();
+                    if (res) {
+                        client.end();
+                        return [2 /*return*/, { statusCode: 200, headers: {
+                                    "Access-Control-Allow-Headers": "Content-Type",
+                                    "Content-Type": "application/json",
+                                    "Access-Control-Allow-Origin": "*",
+                                    "Access-Control-Allow-Methods": "PUT, OPTIONS"
+                                } }];
+                    }
+                    else {
+                        client.end();
+                        return [2 /*return*/, { statusCode: 404, headers: {
+                                    "Access-Control-Allow-Headers": "Content-Type",
+                                    "Content-Type": "application/json",
+                                    "Access-Control-Allow-Origin": "*",
+                                    "Access-Control-Allow-Methods": "PUT, OPTIONS"
+                                } }];
+                    }
+                    return [2 /*return*/];
+            }
+        });
     });
-}); };
+}
 exports.handler = handler;

@@ -39,62 +39,36 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.handler = void 0;
 var pg_1 = require("pg");
 var handler = function (event) { return __awaiter(void 0, void 0, void 0, function () {
-    var application, client, query, values, response;
+    var customer, client, query, values, response, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                application = JSON.parse(event.body);
+                customer = JSON.parse(event.body);
                 client = new pg_1.Client();
                 return [4 /*yield*/, client.connect()];
             case 1:
                 _a.sent();
-                query = "insert into applications (\n                                   application_id,\n                                   socialsecurity,\n                                   firstname,\n                                   lastname,\n                                   accounttype,\n                                   applicationdate,\n                                   address,\n                                   dateofbirth,\n                                   applicationstatus,\n                                   customer_id) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)";
+                query = "insert into customer (\n                                   customer_id,\n                                   firstname,\n                                   lastname) values ($1, $2, $3)";
                 values = [
-                    application.application_id,
-                    application.socialsecurity,
-                    application.firstname,
-                    application.lastname,
-                    application.accounttype,
-                    application.applicationdate,
-                    application.address,
-                    application.dateofbirth,
-                    application.applicationstatus,
-                    application.customer_id
+                    customer.customer_id,
+                    customer.firstname,
+                    customer.lastname
                 ];
-                return [4 /*yield*/, client.query(query, values)];
+                _a.label = 2;
             case 2:
+                _a.trys.push([2, 4, , 5]);
+                return [4 /*yield*/, client.query(query, values)];
+            case 3:
                 response = _a.sent();
-                //try{
-                //    response = await client.query(query, values);
-                //} catch (error) {
-                //    console.log(error);
-                //}
-                //console.log(response);
-                //client.end();
-                //return response;
-                if (response) {
-                    client.end();
-                    return [2 /*return*/, {
-                            statusCode: 200,
-                            headers: {
-                                "Access-Control-Allow-Headers": "Content-Type",
-                                "Access-Control-Allow-Origin": "*",
-                                "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
-                            }
-                        }];
-                }
-                else {
-                    client.end();
-                    return [2 /*return*/, {
-                            statusCode: 400,
-                            headers: {
-                                "Access-Control-Allow-Headers": "Content-Type",
-                                "Access-Control-Allow-Origin": "*",
-                                "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
-                            }
-                        }];
-                }
-                return [2 /*return*/];
+                return [3 /*break*/, 5];
+            case 4:
+                error_1 = _a.sent();
+                console.log(error_1);
+                return [3 /*break*/, 5];
+            case 5:
+                console.log(response);
+                client.end();
+                return [2 /*return*/, response];
         }
     });
 }); };

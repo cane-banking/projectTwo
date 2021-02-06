@@ -26,4 +26,4 @@ const AccountTabNavigatorComponent = () => {
   );
 };
 
-export {HomeTabNavigatorComponent,AccountTabNavigatorComponent};
+export {HomeTabNavigatorComponent, AccountTabNavigatorComponent};
