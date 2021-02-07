@@ -31,16 +31,16 @@ export function TransactionHistory(props: TransactionProp) {
     dispatch(getTransaction(transactions));
     })
 },[user])
-       
+
     return (
           <View style={styles.container}>
             {transactions.length ? (
               <>
                 <View style={styles.heading}>
-                  <Text style={styles.boldText}>Welcome to your transactions history {user.firstname}</Text>
+                  <Text style={styles.boldText}>Transaction History</Text>
                 </View>
                 <FlatList
-                  keyExtractor={(item) => item.account_id}
+                  keyExtractor={(item) => item.transaction_id}
                   data={transactions}
                   renderItem={({ item }) =>(
                 <>
