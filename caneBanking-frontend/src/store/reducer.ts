@@ -54,6 +54,7 @@ const reducer = (state: CaneBankingState = initialState, action: Actions.AppActi
             return newState;
         case Actions.AccountActions.GetAccounts:
             newState.accounts = action.payload as Account[];
+            return newState;
         case Actions.AccountActions.ChangeId:
             newState.id = action.payload;
             return newState;

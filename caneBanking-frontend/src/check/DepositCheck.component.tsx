@@ -43,10 +43,11 @@ function DepositCheck({navigation}: Deposit) {
 
         account.balance = account.balance + check.amount;
         AccountService.addDeposit(account).then(() => {
-            dispatch(getAccounts(accounts));
+            AccountService.getAccountsByCustomer(user.customer_id).then((accounts)=> {
+                dispatch(getAccounts(accounts));
+            })
             navigation.navigate('Accounts');
         })
-
     }
     return (
         <View style={[style.login, style.screen]}>
