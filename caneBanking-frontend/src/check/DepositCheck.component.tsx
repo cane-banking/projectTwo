@@ -26,7 +26,7 @@ function DepositCheck({navigation}: Deposit) {
     useEffect(()=> {
         AccountService.getAccountsByCustomer(user.customer_id).then((accounts) => {
             dispatch(getAccounts(accounts));
-            dispatch(changeAccount(accounts[0].account_id))
+            accounts.length >= 1 ? dispatch(changeAccount(accounts[0].account_id)) : ''
         })
     }, [user])
 
@@ -40,7 +40,6 @@ function DepositCheck({navigation}: Deposit) {
         check.lastname = user.lastname
         checkService.addCheck(check).then(() => {
             dispatch(changeCheck(new Check()));
-            navigation.navigate('Accounts');
         })
         console.log('account balance', account.balance);
         console.log('check amount to deposit', check.amount);
@@ -48,7 +47,12 @@ function DepositCheck({navigation}: Deposit) {
         account.balance = account.balance + check.amount;
         AccountService.addDeposit(account).then(() => {
             console.log('new account balance', account.balance);
+            dispatch(getAccounts(accounts));
+            console.log('account', account);
+            console.log('accountss', accounts);
+            navigation.navigate('Accounts');
         })
+
     }
     return (
         <View style={[style.login, style.screen]}>

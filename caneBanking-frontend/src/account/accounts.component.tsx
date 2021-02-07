@@ -26,7 +26,7 @@ export default function Accounts({navigation}:AccountProp) {
       AccountService.getAccountsByCustomer(user.customer_id).then((accounts) => {
           dispatch(getAccounts(accounts));
       })
-  }, [user])
+  }, [user, dispatch])
 
   console.log(accounts)
 
