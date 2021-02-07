@@ -164,6 +164,7 @@ export function changeFromAccount(account_id: string) : AccountAction<string> {
 }
 
 export function changeToAccount(account_id: string) : AccountAction<string> {
+    console.log('im getting hit');
     const action: AccountAction<string> = {
         type: AccountActions.ChangeToAccount,
         payload: account_id

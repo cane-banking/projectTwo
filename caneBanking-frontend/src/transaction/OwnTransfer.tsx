@@ -19,6 +19,8 @@ interface Deposit {
     navigation: any;
 }
 
+
+
 function OwnTransfer({navigation}: Deposit) {
     const transaction = useSelector((state: CaneBankingState) => state.transaction);
     const user = useSelector((state: CaneBankingState) => state.user);
@@ -28,16 +30,33 @@ function OwnTransfer({navigation}: Deposit) {
     const fromAccount = useSelector((state: CaneBankingState) => state.fromAccount);
     const transferAmount = useSelector((state: CaneBankingState) => state.transferAmount);
     const dispatch = useDispatch();
+ console.log('accounts', accounts);
+
+    useEffect(()=> {
+        dispatch(changeFromAccount(accounts[0].account_id));
+        dispatch(changeToAccount(accounts[1].account_id));
+    }, [user])
+
 
 function submitTransfer(){
     fromAccount.balance = fromAccount.balance - transferAmount;
+    console.log('fromaccoutn balance', fromAccount);
     toAccount.balance = toAccount.balance + transferAmount;
+    console.log('toacount balance', toAccount);
     AccountService.addDeposit(fromAccount).then(()=>{
         AccountService.addDeposit(toAccount).then(()=>{
-            dispatch(changeFromAccount(''));
-            dispatch(changeToAccount(''));
         })
     })
+    transaction.transaction_id = uuidv4();
+    transaction.time_stamp = new Date();
+    transaction.transaction_amt = transferAmount;
+    transaction.account_id = toAccount.account_id;
+    transaction.customer_id = user.customer_id;
+    transaction.vendor = 'transfer'
+    transaction.vendor_account_id = uuidv4();
+    console.log('transaction after updates', transaction);
+    addTransactionService.addTransaction(transaction).then(()=>{})
+    navigation.navigate('Accounts');
 }
 
     return (
@@ -57,9 +76,9 @@ function submitTransfer(){
                         selectedValue={fromAccount.account_id}
                         onValueChange={(itemValue, itemIndex) => {dispatch(changeFromAccount(itemValue.toString()))}}>
                 {accounts ? accounts.map((account, index) => {
-                       return <Picker.Item key={index} label={`${account.account_type}...
-                                    ${account.account_id.substring(account.account_id.length - 5)}
-                                    $(${account.balance})`} value={fromAccount.account_id}/>
+                       return <Picker.Item key={index} label={`${fromAccount.account_type}...
+                                    ${fromAccount.account_id.substring(fromAccount.account_id.length - 5)}
+                                    $(${fromAccount.balance})`} value={fromAccount.account_id}/>
                 }): <Picker.Item label='No accounts available'></Picker.Item>}
                  </Picker>
                  <Text>TO</Text>
@@ -67,12 +86,12 @@ function submitTransfer(){
                         selectedValue={toAccount.account_id}
                         onValueChange={(itemValue, itemIndex) => {dispatch(changeToAccount(itemValue.toString()))}}>
                 {accounts ? accounts.map((account, index) => {
-                       return <Picker.Item key={index} label={`${account.account_type}...
-                                    ${account.account_id.substring(account.account_id.length - 5)}
-                                    $(${account.balance})`} value={toAccount.account_id}/>
+                       return <Picker.Item key={index} label={`${toAccount.account_type}...
+                                    ${toAccount.account_id.substring(toAccount.account_id.length - 5)}
+                                    $(${toAccount.balance})`} value={toAccount.account_id}/>
                 }): <Picker.Item label='No accounts available'></Picker.Item>}
             </Picker>
-            <Button onPress={submitTransfer} title='Submit'/>
+            {transferAmount > fromAccount.balance ? <Text>Insufficient Funds.</Text> : <Button onPress={submitTransfer} title='Submit'/>}
         </View>
     );
 }

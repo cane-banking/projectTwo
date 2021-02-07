@@ -34,11 +34,14 @@ function TransferSelection({navigation}: Deposit) {
     return (
         <View>
             <Text style={[style.screenHeader, style.screen]}>Transfer to.</Text>
+            {accounts.length >= 2 ?
+
             <Button onPress={()=> {
                 getTransferSelection('Own');
                 navigation.navigate('OwnTransfer')
                 return;
-            }} title='Own Account'/>
+            }} title='Own Account'/> : ''}
+
             <Button onPress={()=> {
                 getTransferSelection('Other');
                 navigation.navigate('OtherTransfer')
