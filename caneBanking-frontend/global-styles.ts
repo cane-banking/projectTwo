@@ -1,12 +1,10 @@
-import {SnapshotViewIOSComponent, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 
-
-// Importing using require because there is no @types
 const { create } = require('react-native-pixel-perfect');
 const designResolution = {
     width: 1125,
     height: 2436
-} // what we're designing for
+}
 const perfectSize = create(designResolution);
 
 export const color = {
@@ -56,11 +54,10 @@ const styles = StyleSheet.create({
     login: {
         backgroundColor: '#f5feff',
         marginBottom: 60,
-        justifyContent: 'center', 
+        justifyContent: 'center',
         alignItems:'center'
     },
     logo: {
-        // perfectSize is only going to call when the app is first loaded in the device.
         width: perfectSize(840),
         height: perfectSize(840)
     },

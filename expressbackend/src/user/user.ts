@@ -10,8 +10,6 @@ export class User {
     };
 }
 
-
-
 export async function login(username: string, password: string): Promise<User|null> {
     logger.debug(`${username +' '+ password}`);
     return await userService.getUserByName(username).then((user)=> {
@@ -22,17 +20,6 @@ export async function login(username: string, password: string): Promise<User|nu
         }
     })
 }
-
-/* export function register(username: string, firstname: string,lastname: string,password:string, email: string) {
-    userService.addUser(new User(customer_id, username,firstname,lastname, password, 'customer', email)).then((res) => {
-        logger.trace(res);
-        //callback();
-    }).catch((err) => {
-        logger.error(err);
-        console.log('Error, this probably means that the username is already taken.')
-        //callback();
-    });
-} */
 
 export function updateUser(user: User) {
     userService.updateUser(user).then((success) => {

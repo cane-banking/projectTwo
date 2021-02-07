@@ -5,12 +5,10 @@ class UserService {
     private URI: string;
     private URI2: string;
     constructor() {
-        // URL of the express server
         this.URI = 'https://h2zckpset2.execute-api.us-west-2.amazonaws.com/default/login';
         this.URI2 = 'https://wto81ob5ob.execute-api.us-west-2.amazonaws.com/default/signup';
     }
     getLogin(): Promise<User> {
-        // withCredentials sends our cookies with the request.
         return axios.get(this.URI).then(result=>{
             console.log(result);
             return result.data

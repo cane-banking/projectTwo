@@ -3,6 +3,7 @@ import { Application } from '../application/application';
 
 class AdminService{
     private URI: string;
+
     constructor(){
         this.URI = ' https://wwvrdqbav8.execute-api.us-west-2.amazonaws.com/default/getApplications';
     }
@@ -10,7 +11,6 @@ class AdminService{
     getApplications(): Promise<Application[]>{
         return axios.get(this.URI).then(result => result.data);
     }
-
 }
 
 export default new AdminService();

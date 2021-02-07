@@ -2,9 +2,7 @@ import {Client} from 'pg';
 
 
 export const handler = async (event: any) => {
-    console.log('event', event);
     const accountId = event.queryStringParameters.accountId;
-    console.log('accountId',accountId);
     const client = new Client();
     await client.connect();
     const query = `select * from transactions where account_id = $1`;
@@ -17,7 +15,7 @@ export const handler = async (event: any) => {
         headers: {
             "Access-Control-Allow-Headers" : "Content-Type",
             "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT" 
+            "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
         }, body: JSON.stringify(response.rows)
         };
     } else {

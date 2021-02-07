@@ -6,7 +6,6 @@ let docClient = new AWS.DynamoDB.DocumentClient({
     endpoint: 'http://dynamodb.us-west-2.amazonaws.com'
 });
 
-//handler
 
 export const handler = async (event: any): Promise<any> => {
     const user = await getUserByName(event.body.username);
@@ -23,8 +22,6 @@ export const handler = async (event: any): Promise<any> => {
     }
 }
 
-
-//service to talk to database
 async function getUserByName(username: string): Promise<User | null> {
     const params = {
         TableName: 'users',
@@ -34,7 +31,6 @@ async function getUserByName(username: string): Promise<User | null> {
     };
     return await docClient.get(params).promise().then((data) => {
         if (data && data.Item) {
-            //logger.debug(`data.Item: ${JSON.stringify(data.Item)}`);
             return data.Item as User;
         } else {
             return null;

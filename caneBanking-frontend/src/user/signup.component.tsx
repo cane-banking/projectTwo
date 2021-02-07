@@ -17,12 +17,8 @@ export default function SignUpComponent({ navigation }: SignupProp) {
     const userSelector = (state: UserState) => state.user;
     const user = useSelector(userSelector);
     const dispatch = useDispatch();
-
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-
-    console.log(user);
-   
 
     function createAccount(){
         if(password !== confirmPassword){
@@ -42,7 +38,6 @@ export default function SignUpComponent({ navigation }: SignupProp) {
             dispatch(getUser(new User()));
             navigation.navigate('Login');
         });
-
         }
     }
 
@@ -58,38 +53,38 @@ export default function SignUpComponent({ navigation }: SignupProp) {
                         dispatch(getUser({ ...user, username: value }))
                     }
                     value={user.username}
-                />
-             <TextInput
+            />
+            <TextInput
                     placeholder='email'
                     style={styles.input}
                     onChangeText={(value) =>
                         dispatch(getUser({ ...user, email: value }))
                     }
                     value={user.email}
-                />
-             <TextInput
+            />
+            <TextInput
                     placeholder='first name'
                     style={styles.input}
                     onChangeText={(value) =>
                         dispatch(getUser({ ...user, firstname: value }))
                     }
                     value={user.firstname}
-                />
-             <TextInput
+            />
+            <TextInput
                     placeholder='last name'
                     style={styles.input}
                     onChangeText={(value) =>
                         dispatch(getUser({ ...user, lastname: value }))
                     }
                     value={user.lastname}
-                />
-              <TextInput
+            />
+            <TextInput
                     secureTextEntry={true}
                     placeholder='password'
                     style={styles.input}
                     onChangeText={(value) => setPassword(value)}
                     value={password}
-                />
+            />
             <Text style={styles.regularText}>confirm password</Text>
             <TextInput
                     secureTextEntry={true}
@@ -97,10 +92,10 @@ export default function SignUpComponent({ navigation }: SignupProp) {
                     style={styles.input}
                     onChangeText={(value) => setConfirmPassword(value)}
                     value={confirmPassword}
-                />
-                <View style={styles.create}>
-                    <Button onPress={createAccount} title='Create Account' color='#63D4FF' />
-                </View>
+            />
+            <View style={styles.create}>
+                <Button onPress={createAccount} title='Create Account' color='#63D4FF' />
+            </View>
        </View>
     )
 }

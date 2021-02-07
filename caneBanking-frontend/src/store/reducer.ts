@@ -6,9 +6,6 @@ import { Account } from '../account/account';
 import { Application } from '../application/application';
 import { Transaction } from '../transaction/transaction';
 
-// We need to define the initial state of the application and that
-// state should include everything that the application might keep track of.
-
 export const initialState: CaneBankingState = {
     user: new User(),
     loginUser: new User(),
@@ -18,7 +15,6 @@ export const initialState: CaneBankingState = {
     account: new Account(),
     accounts: [],
     application: new Application(),
-    //transactions: [],
     transaction: new Transaction(),
     transactions: [],
     fromAccount: new Account(),
@@ -28,11 +24,9 @@ export const initialState: CaneBankingState = {
     selection: ''
 }
 
-// Make sure that the reducer has a default argument of the inital state or it will not work.
 const reducer = (state: CaneBankingState = initialState, action: Actions.AppAction): CaneBankingState => {
-    //console.log(action);
-    // We want to call setState. (redux will do that when we return a new state object from the reducer)
-    const newState = {...state}; // If we return this, it will re render the application. (call setState)
+
+    const newState = {...state};
 
     switch (action.type) {
         case Actions.UserActions.GetUser:
@@ -61,10 +55,7 @@ const reducer = (state: CaneBankingState = initialState, action: Actions.AppActi
         case Actions.AccountActions.GetAccounts:
             newState.accounts = action.payload as Account[];
         case Actions.AccountActions.ChangeId:
-            console.log('actionpayload', action.payload);
-            console.log('newstateb4', newState);
             newState.id = action.payload;
-            console.log('newstateAFter', newState);
             return newState;
         case Actions.ApplicationActions.ChangeApplication:
             newState.application = action.payload as Application;
@@ -72,9 +63,6 @@ const reducer = (state: CaneBankingState = initialState, action: Actions.AppActi
         case Actions.TransactionActions.GetTransactions:
             newState.transactions = action.payload as Transaction[];
             return newState;
-        //case Actions.TransactionActions.GetTransaction:
-        //    newState.transaction = action.payload as Transaction;
-        //    return newState;
         case Actions.TransactionActions.TransferSelection:
             newState.selection = action.payload;
             return newState;

@@ -24,7 +24,6 @@ export async function handler(event: any) {
 
     let response = await client.query(query, values);
 
-    console.log('addCheck response query', response);
     if (response) {
         client.end();
         return {

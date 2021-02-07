@@ -13,21 +13,16 @@ import { v4 as uuidv4 } from 'uuid';
 import {Account} from '../account/account';
 import newaccountService from './newaccount.service';
 
-
 export default function Admin() {
     const userSelector = (state: UserState) => state.user;
     const user = useSelector(userSelector);
-
     const selectApplication = (state: ApplicationState) => state.applications;
     const applications = useSelector(selectApplication);
-
     const account = useSelector((state: CaneBankingState) => state.account);
-
     const dispatch = useDispatch();
 
     useEffect(() => {
       dispatch(thunkGetApps());
-
       userService.login(user).then((user) => {
         dispatch(getUser(user));
       });
@@ -53,59 +48,40 @@ export default function Admin() {
         dispatch(thunkGetApps());
       });
     }
-    
+
   return (
     <View>
-
         <View style={styles.heading}>
           <Text style={styles.boldText}>Pending Applications</Text>
         </View>
-
-        <FlatList 
+        <FlatList
             keyExtractor={(item) => item.application_id}
             data={applications}
             renderItem={({ item }) =>(
               <>
-              {item.applicationstatus === 'pending' && (
-              <Card containerStyle={styles.card}>
-                
-                  
-                <Text style={styles.apptitle}>{item.accounttype}</Text>
-
-                <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
-                  <View style={{flexDirection:'column', justifyContent:'space-between', alignItems:'center'}}>
-                    <Text style={styles.regularText}>{item.socialsecurity}</Text>
-                    <Text style={styles.regularText}>{item.dateofbirth}</Text>
-                    <Text style={styles.regularText}>{item.address}</Text>
-                  </View>
-                 
-                  <View style={{flexDirection:'column', justifyContent:'space-between', alignItems:'center'}}>
-                    <Text style={styles.applicant}>{item.firstname} {item.lastname}</Text>
-                    {/* <Text style={styles.applicant}>{item.applicationdate}</Text> */}
-                  </View>
-
-                </View>
-
-                <Divider style={{backgroundColor: '#dfe6e9', marginVertical:20}} />
-
-                <View style={{flexDirection:'row', justifyContent:'space-between'}}>
-
-                  <Button onPress={() => denyApp(item.application_id)} title='Decline' color='#63D4FF' />
-                  <Button onPress={() => approveApp(item.application_id, item.accounttype, item.customer_id)} title='Approve' color='#63D4FF' />
-                  
-                </View>
-                
-                
-        
-              </Card>
-            )}
-            </>
-
+                {item.applicationstatus === 'pending' && (
+                  <Card containerStyle={styles.card}>
+                    <Text style={styles.apptitle}>{item.accounttype}</Text>
+                    <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
+                      <View style={{flexDirection:'column', justifyContent:'space-between', alignItems:'center'}}>
+                        <Text style={styles.regularText}>{item.socialsecurity}</Text>
+                        <Text style={styles.regularText}>{item.dateofbirth}</Text>
+                        <Text style={styles.regularText}>{item.address}</Text>
+                      </View>
+                      <View style={{flexDirection:'column', justifyContent:'space-between', alignItems:'center'}}>
+                        <Text style={styles.applicant}>{item.firstname} {item.lastname}</Text>
+                      </View>
+                    </View>
+                    <Divider style={{backgroundColor: '#dfe6e9', marginVertical:20}} />
+                    <View style={{flexDirection:'row', justifyContent:'space-between'}}>
+                      <Button onPress={() => denyApp(item.application_id)} title='Decline' color='#63D4FF' />
+                      <Button onPress={() => approveApp(item.application_id, item.accounttype, item.customer_id)} title='Approve' color='#63D4FF' />
+                    </View>
+                  </Card>
+                )}
+              </>
             )}
         />
-
-
     </View>
-
   );
 }

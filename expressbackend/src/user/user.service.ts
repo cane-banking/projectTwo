@@ -6,8 +6,7 @@ import { User } from './user';
 class UserService {
     private doc: DocumentClient;
     constructor() {
-        // The documentClient. This is our interface with DynamoDB
-        this.doc = dynamo; // We imported the DocumentClient from dyamo.ts
+        this.doc = dynamo;
     }
 
     async getUsers(): Promise<User[]> {
@@ -19,9 +18,8 @@ class UserService {
         })
     }
 
-    //getUser
     async getUserByName(username: string): Promise<User | null> {
-        // GetItem api call allows us to get something by the key
+
         const params = {
             TableName: 'users',
             Key: {
@@ -39,29 +37,19 @@ class UserService {
     }
 
     async addUser(user: User): Promise<boolean> {
-        // object to be sent to AWS.
+
         const params = {
-            // TableName - the name of the table we are sending it to
+
             TableName: 'users',
-            // Item - the object we are sending
             Item: user,
             ConditionExpression: '#username <> :username',
             ExpressionAttributeNames: {
                 '#username': 'username'
-
             },
             ExpressionAttributeValues: {
                 ':username': user.username
-
             }
         };
-
-        /*
-            The await is just returning all of that as another promise
-                to be resolved by a different layer of the application.
-            put function takes in our params, and PUTs (http method) the item in the db.
-            promise function returns a promise representation of the request
-        */
         return await this.doc.put(params).promise().then(() => {
             logger.info('Successfully created item');
             return true;

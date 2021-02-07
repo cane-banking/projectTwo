@@ -10,8 +10,6 @@ class AddTransactionService {
     addTransaction(transaction:Transaction): Promise<Transaction> {
         return axios.post(this.URI, transaction).then(result => result.data).catch(err => err);
     }
-
-
 }
 
 export default new AddTransactionService();
