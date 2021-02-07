@@ -1,8 +1,8 @@
 # projectTwo
 
-Cane Banking
+# Cane Banking
 
-Cane Banking is a banking app that allows users to perform transactions, check balance, transfer funds, and open up accounts such as savings and money market(buying and selling stocks). As a client, the user will have access to common services like checking balance, create a savings account, apply for loan, transfer funds and etc. As an employee, user will have access to client applications, approve and deny loans, and answer inquiries.
+Cane Banking is a full-stack web application that allows users to sipn up, perform transactions, check balance, transfer funds, and open up accounts such as saving, checking, or credit card account. As a client, the user will have access to common services like checking balance, create a saving, checking, or credit card account, deposit a check, transfer funds and etc. As an employee, user will have access to client applications, approve and deny applications for account creation, and answer inquiries.
 
 User stories:
 in trello and pointed
