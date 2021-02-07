@@ -7,5 +7,7 @@ Postgres Database,
 React Native,
 Redux,
 TypeScript,
-AWS: API Gateway, cloudWatch, DynamoDB, Lambda, RDS  
+AWS: API Gateway, cloudWatch, DynamoDB, Lambda, RDS.
+# Getting Started
+## git clone 
 
