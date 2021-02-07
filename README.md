@@ -10,5 +10,16 @@ TypeScript,
 AWS: API Gateway, cloudWatch, DynamoDB, Lambda, RDS.
 # Getting Started
 ## git clone https://github.com/cane-banking/projectTwo.git
-## 
+## CLIENT=http://localhost:3001
+## MOBILE=http://localhost:19006
+## ANDROID=http://localhost:19000
+# Usage
+You will need an AWS account, and API Gateway, CloudWatch, DynamoDB, Lambda, RDS services.
+1) npm install on caneBanking-frontend folder.
+2) npm install on expressbackend folder.
+## caneBanking-frontend
+npm run start
+# License
+This project uses the following license: https://opensource.org/licenses/ISC
+
 
