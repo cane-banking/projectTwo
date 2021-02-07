@@ -9,5 +9,6 @@ Redux,
 TypeScript,
 AWS: API Gateway, cloudWatch, DynamoDB, Lambda, RDS.
 # Getting Started
-## git clone 
+## git clone https://github.com/cane-banking/projectTwo.git
+## 
 
