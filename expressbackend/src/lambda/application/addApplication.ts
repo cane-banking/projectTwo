@@ -30,15 +30,8 @@ export const handler = async (event: MyEvent) => {
                     application.dateofbirth,
                     application.applicationstatus,
                     application.customer_id ];
+
     let response = await client.query(query, values);
-    //try{
-    //    response = await client.query(query, values);
-    //} catch (error) {
-    //    console.log(error);
-    //}
-    //console.log(response);
-    //client.end();
-    //return response;
     if (response) {
         client.end();
         return {
@@ -61,4 +54,4 @@ export const handler = async (event: MyEvent) => {
         };
     }
 
-} 
+}

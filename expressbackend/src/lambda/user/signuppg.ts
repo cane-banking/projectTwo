@@ -22,8 +22,7 @@ export const handler = async (event: MyEvent) => {
     } catch (error) {
         console.log(error);
     }
-    console.log(response);
     client.end();
     return response;
 
-} 
+}

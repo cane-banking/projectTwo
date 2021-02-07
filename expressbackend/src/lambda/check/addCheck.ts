@@ -19,7 +19,6 @@ export async function handler(event: any) {
                     check.lastname,
                     check.amount ];
     let response = await client.query(query, values);
-    console.log('addCheck response query', response);
     if (response) {
         client.end();
         return {

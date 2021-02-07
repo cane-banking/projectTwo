@@ -9,8 +9,6 @@ import CreateApplication from "../application/application-component";
 import DepositCheck from "../check/DepositCheck.component";
 import TransactionHistory from "../transaction/transaction-component";
 import Admin from "../employee/admin";
-import AppSubmit from "../application/app.submit";
-import Transfer from "../transaction/OwnTransfer";
 import TransferSelection from "../transaction/TransferSelection";
 import OwnTransfer from "../transaction/OwnTransfer";
 import OtherTransfer from "../transaction/OtherTransfer";
@@ -248,8 +246,6 @@ const AccountStack=({navigation}:MenuProp) =>{
     </Stack.Navigator>
   )
 }
-
-
 
 const TransferStack=({navigation}:MenuProp) =>{
   return(

@@ -1,9 +1,7 @@
 import {Client} from 'pg';
 
-
 export const handler = async (event: any) => {
     const accountId = event.queryStringParameters.accountId;
-    console.log('accountId',accountId);
     const client = new Client();
     await client.connect();
     const query = `select * from accounts where account_id = $1`;

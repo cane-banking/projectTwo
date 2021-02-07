@@ -1,25 +1,18 @@
-import  React, { SyntheticEvent, useEffect }  from 'react';
-import { View, TextInput, Button, Text, TouchableHighlight, Image } from 'react-native';
+import  React, { useEffect }  from 'react';
+import { View, TextInput, Button, Text} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import style, {color} from '../../global-styles';
-import { changeAccount, changeAccountId, changeCheck, changeFromAccount, changeToAccount, changeTransferAmount, getAccounts, getUser } from '../store/actions';
+import { changeFromAccount, changeToAccount, changeTransferAmount} from '../store/actions';
 import { CaneBankingState } from '../store/store';
-import { Transaction} from './transaction';
-import TransactionService from './addTransaction.service';
-import {getDate} from '../helpers/date';
 import { v4 as uuidv4 } from 'uuid';
 import  AccountService  from '../account/account.service';
 import { Picker } from '@react-native-picker/picker';
-import { Account } from '../account/account';
 import addTransactionService from './addTransaction.service';
-
 
 
 interface Deposit {
     navigation: any;
 }
-
-
 
 function OwnTransfer({navigation}: Deposit) {
     const transaction = useSelector((state: CaneBankingState) => state.transaction);
@@ -30,23 +23,23 @@ function OwnTransfer({navigation}: Deposit) {
     const fromAccount = useSelector((state: CaneBankingState) => state.fromAccount);
     const transferAmount = useSelector((state: CaneBankingState) => state.transferAmount);
     const dispatch = useDispatch();
- console.log('accounts', accounts);
 
     useEffect(()=> {
-        dispatch(changeFromAccount(accounts[0].account_id));
-        dispatch(changeToAccount(accounts[1].account_id));
+        if(accounts){
+            dispatch(changeFromAccount(accounts[0].account_id));
+            dispatch(changeToAccount(accounts[1].account_id));
+        }
     }, [user])
 
 
 function submitTransfer(){
     fromAccount.balance = fromAccount.balance - transferAmount;
-    console.log('fromaccoutn balance', fromAccount);
     toAccount.balance = toAccount.balance + transferAmount;
-    console.log('toacount balance', toAccount);
     AccountService.addDeposit(fromAccount).then(()=>{
         AccountService.addDeposit(toAccount).then(()=>{
         })
     })
+
     transaction.transaction_id = uuidv4();
     transaction.time_stamp = new Date();
     transaction.transaction_amt = transferAmount;
@@ -54,11 +47,10 @@ function submitTransfer(){
     transaction.customer_id = user.customer_id;
     transaction.vendor = 'transfer'
     transaction.vendor_account_id = uuidv4();
-    console.log('transaction after updates', transaction);
+
     addTransactionService.addTransaction(transaction).then(()=>{})
     navigation.navigate('Accounts');
 }
-
     return (
         <View>
             <TextInput
@@ -74,7 +66,7 @@ function submitTransfer(){
             <Text>FROM</Text>
             <Picker style={{width:'100%', padding: 10}}
                         selectedValue={fromAccount.account_id}
-                        onValueChange={(itemValue, itemIndex) => {dispatch(changeFromAccount(itemValue.toString()))}}>
+                        onValueChange={(itemValue) => {dispatch(changeFromAccount(itemValue.toString()))}}>
                 {accounts ? accounts.map((account, index) => {
                        return <Picker.Item key={index} label={`${fromAccount.account_type}...
                                     ${fromAccount.account_id.substring(fromAccount.account_id.length - 5)}
@@ -84,7 +76,7 @@ function submitTransfer(){
                  <Text>TO</Text>
             <Picker style={{width:'100%', padding: 10}}
                         selectedValue={toAccount.account_id}
-                        onValueChange={(itemValue, itemIndex) => {dispatch(changeToAccount(itemValue.toString()))}}>
+                        onValueChange={(itemValue) => {dispatch(changeToAccount(itemValue.toString()))}}>
                 {accounts ? accounts.map((account, index) => {
                        return <Picker.Item key={index} label={`${toAccount.account_type}...
                                     ${toAccount.account_id.substring(toAccount.account_id.length - 5)}

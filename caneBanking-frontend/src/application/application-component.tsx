@@ -1,13 +1,12 @@
-import  React, { useEffect, useState }  from 'react';
+import  React, { useState }  from 'react';
 import { View, TextInput,Text, Button} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeApplication, getUser } from '../store/actions';
+import { changeApplication } from '../store/actions';
 import { ApplicationState, UserState } from '../store/store';
 import  {Application} from './application';
 import applicationService from './application.service';
 import styles, { color } from '../../global-styles';
 import {v4 as uuid4} from 'uuid';
-import { Account } from '../account/account';
 
 
 interface ApplicationProp {
@@ -26,8 +25,6 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
         application.application_id = uuid4();
         application.firstname = user.firstname;
         application.lastname = user.lastname;
-        var date = new Date();
-        //application.applicationdate = date;
         application.applicationstatus = 'pending';
         application.customer_id = user.customer_id;
 
@@ -43,7 +40,7 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
                 <Text style={styles.boldText}>Create a bank account</Text>
             </View>
 
-             <TextInput
+            <TextInput
                 placeholder='Social Security Number'
                 secureTextEntry={true}
                 keyboardType = 'numeric'
@@ -53,7 +50,7 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
                     dispatch(changeApplication({ ...application, socialsecurity: value}))
                 }
                 value= {application.socialsecurity || ''}
-                />
+            />
 
             <TextInput
                 placeholder='Checking / Savings / Credit'
@@ -62,7 +59,7 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
                     dispatch(changeApplication({ ...application, accounttype: value}))
                 }
                 value={application.accounttype || ''}
-                />
+            />
 
 
             <TextInput
