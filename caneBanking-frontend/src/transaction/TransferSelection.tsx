@@ -16,7 +16,7 @@ function TransferSelection({navigation}: Deposit) {
     return (
         <View >
             <Text style={[style.screenHeader, style.screen]}>Transfer to.</Text>
-            {accounts.length >= 2 ?
+            {accounts && accounts.length >= 2 ?
             <Button onPress={()=> {
                 getTransferSelection('Own');
                 navigation.navigate('OwnTransfer')
