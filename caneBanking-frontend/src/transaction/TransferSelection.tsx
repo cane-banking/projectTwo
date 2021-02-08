@@ -14,20 +14,19 @@ function TransferSelection({navigation}: Deposit) {
     const accounts = useSelector((state: CaneBankingState) => state.accounts);
 
     return (
-        <View>
+        <View >
             <Text style={[style.screenHeader, style.screen]}>Transfer to.</Text>
-            {accounts.length >= 2 ?
+            {accounts && accounts.length >= 2 ?
             <Button onPress={()=> {
                 getTransferSelection('Own');
                 navigation.navigate('OwnTransfer')
                 return;
-            }} title='Own Account'/> : ''}
-
+            }} title='Own Account' color={color.lightBlue}/> : ''}
             <Button onPress={()=> {
                 getTransferSelection('Other');
                 navigation.navigate('OtherTransfer')
                 return;
-            }} title='Cane Banking User'/>
+            }} title='Cane Banking User' color={color.lightBlue}/>
         </View>
     );
 }

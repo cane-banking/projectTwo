@@ -9,6 +9,7 @@ import { Picker } from '@react-native-picker/picker';
 import {v4 as uuidv4} from 'uuid';
 import addTransactionService from './addTransaction.service';
 import getAccountService from '../account/getAccount.service';
+import styles from '../../global-styles';
 
 
 interface Deposit {
@@ -59,8 +60,9 @@ function submitTransfer(){
     navigation.navigate('Accounts');
 }
     return (
-        <View>
-            <Text>FROM</Text>
+        <View style={styles.screen}>
+            <Text style={style.screenHeader}>Transfer Funds.</Text>
+            <Text style={style.label}>FROM</Text>
             <Picker style={{width:'100%', padding: 10}}
                         selectedValue={account.account_id}
                         onValueChange={(itemValue, itemIndex) => {dispatch(changeAccount(itemValue.toString()))}}>
@@ -70,10 +72,10 @@ function submitTransfer(){
                                         $(${account.balance})`} value={account.account_id}/>
                     }): <Picker.Item label='No accounts available'></Picker.Item>}
                  </Picker>
-                 <Text>TO</Text>
+                 <Text style={style.label}>TO</Text>
             <TextInput
-                placeholder=''
-                style={{fontSize: 55, color:color.lightBlue, borderBottomWidth: 1, borderBottomColor: color.darkGray, padding: 10, width: '80vw'}}
+                placeholder='enter account #'
+                style={{fontSize: 30, color:color.lightBlue, borderBottomWidth: 1, borderBottomColor: color.darkGray, padding: 10, width: '80vw'}}
                 keyboardType = 'default'
                 onChangeText={(value) => {
                     setAccount_Id(value)
@@ -83,7 +85,7 @@ function submitTransfer(){
                 value={accountId}
                 >
             </TextInput>
-            <Text style={style.label}>Amount</Text>
+            <Text style={style.label}>Enter Amount</Text>
             <View style={{flexDirection:'row'}}>
                 <Text style={{fontSize: 55, color:color.lightBlue, borderBottomWidth: 1, borderBottomColor: color.darkGray, padding: 10}}>$</Text>
                 <TextInput
@@ -97,7 +99,7 @@ function submitTransfer(){
                     >
                 </TextInput>
             </View>
-            {transferAmount > account.balance ? <Text style={style.label}>Insufficient Funds.</Text> : <Button onPress={submitTransfer} title='Submit'/>}
+            {transferAmount > account.balance ? <Text style={style.label}>Insufficient Funds.</Text> : <Button onPress={submitTransfer} title='Submit' color={color.lightBlue}/>}
         </View>
     );
 }

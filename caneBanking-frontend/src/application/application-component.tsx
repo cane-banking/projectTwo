@@ -37,9 +37,9 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
     return (
         <View style={styles.container}>
             <View style={styles.heading}>
-                <Text style={styles.boldText}>Create a bank account</Text>
+                <Text style={styles.screenHeader}>Open an account.</Text>
             </View>
-
+            <Text style={styles.label}>Enter details below</Text>
             <TextInput
                 placeholder='Social Security Number'
                 secureTextEntry={true}
@@ -82,12 +82,12 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
                     />
 
                 <View style={styles.create}>
-                    <Button onPress={submitCreateApplication} title='Create Account' color={color.lightBlue} />
+                    <Button onPress={submitCreateApplication} title='Submit' color={color.lightBlue} />
                 </View>
 
                 {click ? (
                     <View style={styles.heading}>
-                        <Text style={styles.boldText}>Thank you! Your request is being processed</Text>
+                        <Text style={styles.boldText}>Thank you! Your request is being processed.</Text>
                     </View>
                     ) : (null)}
 

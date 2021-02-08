@@ -50,7 +50,7 @@ function DepositCheck({navigation}: Deposit) {
         })
     }
     return (
-        <View style={[style.login, style.screen]}>
+        <View style={[style.screen]}>
             <Image source={require('../check/cameraIcon.png')}/>
             <Text style={style.screenHeader}>Enter deposit details.</Text>
             <View style={{borderBottomWidth: 1, borderBottomColor: color.darkGray}}>
