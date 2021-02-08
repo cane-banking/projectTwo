@@ -2,7 +2,7 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { enableScreens } from 'react-native-screens';
 import Footer from "./Footer";
-import LoginComponent from "../user/login.component";
+import LoginComponent from "../user/Login.component";
 
 enableScreens();
 

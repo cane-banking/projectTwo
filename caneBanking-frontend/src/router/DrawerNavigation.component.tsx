@@ -1,11 +1,8 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { enableScreens } from 'react-native-screens';
 import { ApplicationStack, DepositCheckStack,TransferStack, loginStackNavigator} from "./MainStackNavigator.component";
-import LoginComponent from "../user/login.component";
+import LoginComponent from "../user/Login.component";
 import Logout from "../user/logout.component";
-
-enableScreens();
 
 const Drawer = createDrawerNavigator();
 

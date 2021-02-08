@@ -15,7 +15,7 @@ interface Deposit {
     navigation: any;
 }
 
-function OwnTransfer({navigation}: Deposit) {
+function OtherTransfer({navigation}: Deposit) {
     const transaction = useSelector((state: CaneBankingState) => state.transaction);
     const user = useSelector((state: CaneBankingState) => state.user);
     const accounts = useSelector((state: CaneBankingState) => state.accounts);
@@ -95,4 +95,4 @@ function submitTransfer(){
     );
 }
 
-export default OwnTransfer;
+export default OtherTransfer;

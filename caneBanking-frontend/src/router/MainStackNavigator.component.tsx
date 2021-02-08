@@ -2,7 +2,7 @@ import React from "react";
 import Icon from 'react-native-vector-icons/Ionicons';
 import { createStackNavigator } from "@react-navigation/stack";
 import Accounts from '../account/accounts.component';
-import LoginComponent from '../user/login.component';
+import LoginComponent from '../user/Login.component';
 import SignUpComponent from '../user/signup.component';
 import { enableScreens } from 'react-native-screens';
 import CreateApplication from "../application/application-component";

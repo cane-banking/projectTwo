@@ -14,8 +14,6 @@ interface ApplicationProp {
 }
 
 export function CreateApplication(this: any, {navigation}: ApplicationProp) {
-    const [click, setClick] = useState(false)
-
     const application = useSelector((state: ApplicationState) => state.application);
     const dispatch = useDispatch();
     const userSelector = (state: UserState) => state.user;
@@ -84,13 +82,6 @@ export function CreateApplication(this: any, {navigation}: ApplicationProp) {
                 <View style={styles.create}>
                     <Button onPress={submitCreateApplication} title='Create Account' color={color.lightBlue} />
                 </View>
-
-                {click ? (
-                    <View style={styles.heading}>
-                        <Text style={styles.boldText}>Thank you! Your request is being processed</Text>
-                    </View>
-                    ) : (null)}
-
         </View>
     );
 }

@@ -1,4 +1,4 @@
-import  React, { SyntheticEvent, useEffect }  from 'react';
+import  React, { useEffect }  from 'react';
 import { View, TextInput, Button, Text, TouchableHighlight, Image } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import style, {color} from '../../global-styles';

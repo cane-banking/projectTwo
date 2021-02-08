@@ -8,7 +8,7 @@ import {changeAccount, getAccounts} from '../store/actions';
 import { CaneBankingState, UserState } from '../store/store';
 import AccountService from './account.service';
 import styles from '../../global-styles';
-import { Card, Divider, Icon } from 'react-native-elements';
+import { Card, Divider } from 'react-native-elements';
 
 
 interface AccountProp {

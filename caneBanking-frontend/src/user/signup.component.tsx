@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, Alert, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, Button, Alert} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser} from '../store/actions';
 import { UserState } from '../store/store';

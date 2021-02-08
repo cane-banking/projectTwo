@@ -1,7 +1,7 @@
 import  React from 'react';
 import { View, Button, Text} from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import style, {color} from '../../global-styles';
+import {  useSelector } from 'react-redux';
+import style from '../../global-styles';
 import { getTransferSelection } from '../store/actions';
 import { CaneBankingState } from '../store/store';
 
