@@ -13,6 +13,7 @@ import TransferSelection from "../transaction/TransferSelection";
 import OwnTransfer from "../transaction/OwnTransfer";
 import OtherTransfer from "../transaction/OtherTransfer";
 import Logout from "../user/logout.component";
+import { color } from "../../global-styles";
 
 
 enableScreens();
@@ -29,23 +30,29 @@ const loginStackNavigator = ({navigation}:MenuProp) => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Login" component={LoginComponent}
-      options={{title:'Cane Banking',
+      options={{title:'CANE Banking',
         headerStyle: {
           backgroundColor: '#63D4FF',
         },
         headerTitleStyle: {
           fontWeight: 'bold',
+          fontSize: 40,
+          color: color.darkGray
+
         },
         headerTitleAlign:'center'
         }} />
 
       <Stack.Screen name="Accounts" component={Accounts}
-        options={{title:'Cane Banking',
+        options={{title:'CANE Banking',
         headerStyle: {
           backgroundColor: '#63D4FF',
         },
         headerTitleStyle: {
           fontWeight: 'bold',
+          fontSize: 40,
+          color: color.darkGray
+
         },
         headerTitleAlign:'center',
         headerRight:() => (
@@ -54,12 +61,15 @@ const loginStackNavigator = ({navigation}:MenuProp) => {
         }}/>
 
 <Stack.Screen name="Transaction History" component={TransactionHistory}
-        options={{title:'Cane Banking',
+        options={{title:'CANE Banking',
         headerStyle: {
           backgroundColor: '#63D4FF',
         },
         headerTitleStyle: {
           fontWeight: 'bold',
+          fontSize: 40,
+          color: color.darkGray
+
         },
         headerTitleAlign:'center',
         headerRight:() => (
@@ -68,12 +78,15 @@ const loginStackNavigator = ({navigation}:MenuProp) => {
         }}/>
 
   <Stack.Screen name="Admin" component={Admin}
-        options={{title:'Cane Banking',
+        options={{title:'CANE Banking',
         headerStyle: {
           backgroundColor: '#63D4FF',
         },
         headerTitleStyle: {
           fontWeight: 'bold',
+          fontSize: 40,
+          color: color.darkGray
+
         },
         headerTitleAlign:'center',
         headerRight:() => (
@@ -83,7 +96,7 @@ const loginStackNavigator = ({navigation}:MenuProp) => {
 
 
       <Stack.Screen name="Register" component={SignUpComponent}
-       options={{title:'Cane Banking',
+       options={{title:'CANE Banking',
        headerStyle: {
          backgroundColor: '#63D4FF',
        },
@@ -104,12 +117,15 @@ const registerAccountStack=({navigation}:MenuProp) =>{
   return(
     <Stack.Navigator>
       <Stack.Screen name="Register" component={SignUpComponent}
-        options={{title:'Cane Banking',
+        options={{title:'CANE Banking',
         headerStyle: {
           backgroundColor: '#63D4FF',
         },
         headerTitleStyle: {
           fontWeight: 'bold',
+          fontSize: 40,
+          color: color.darkGray
+
         },
         headerTitleAlign:'center',
         headerRight:() => (
@@ -125,12 +141,15 @@ const ApplicationStack=({navigation}:MenuProp) =>{
   return(
     <Stack.Navigator>
       <Stack.Screen name="Application" component={CreateApplication}
-        options={{title:'Cane Banking',
+        options={{title:'CANE Banking',
         headerStyle: {
           backgroundColor: '#63D4FF',
         },
         headerTitleStyle: {
           fontWeight: 'bold',
+          fontSize: 40,
+          color: color.darkGray
+
         },
         headerTitleAlign:'center',
         headerRight:() => (
@@ -146,12 +165,15 @@ const LogoutStack=({navigation}:MenuProp) =>{
   return(
     <Stack.Navigator>
       <Stack.Screen name="Logout" component={Logout}
-        options={{title:'Cane Banking',
+        options={{title:'CANE Banking',
         headerStyle: {
           backgroundColor: '#63D4FF',
         },
         headerTitleStyle: {
           fontWeight: 'bold',
+          fontSize: 40,
+          color: color.darkGray
+
         },
         headerTitleAlign:'center',
         headerRight:() => (
@@ -168,12 +190,15 @@ const TransactionStack=({navigation}:MenuProp) =>{
   return(
     <Stack.Navigator>
       <Stack.Screen name="Transaction History" component={TransactionHistory}
-        options={{title:'Cane Banking',
+        options={{title:'CANE Banking',
         headerStyle: {
           backgroundColor: '#63D4FF',
         },
         headerTitleStyle: {
           fontWeight: 'bold',
+          fontSize: 40,
+          color: color.darkGray
+
         },
         headerTitleAlign:'center',
         headerRight:() => (
@@ -189,12 +214,15 @@ const DepositCheckStack=({navigation}:MenuProp) =>{
   return(
     <Stack.Navigator>
       <Stack.Screen name="Deposit Check" component={DepositCheck}
-        options={{title:'Cane Banking',
+        options={{title:'CANE Banking',
         headerStyle: {
           backgroundColor: '#63D4FF',
         },
         headerTitleStyle: {
           fontWeight: 'bold',
+          fontSize: 40,
+          color: color.darkGray
+
         },
         headerTitleAlign:'center',
         headerRight:() => (
@@ -210,12 +238,15 @@ const OtherTransferStack=({navigation}:MenuProp) =>{
   return(
     <Stack.Navigator>
       <Stack.Screen name="OtherTransfer" component={OtherTransfer}
-        options={{title:'Cane Banking',
+        options={{title:'CANE Banking',
         headerStyle: {
           backgroundColor: '#63D4FF',
         },
         headerTitleStyle: {
           fontWeight: 'bold',
+          fontSize: 40,
+          color: color.darkGray
+
         },
         headerTitleAlign:'center',
         headerRight:() => (
@@ -231,12 +262,15 @@ const AccountStack=({navigation}:MenuProp) =>{
   return(
     <Stack.Navigator>
         <Stack.Screen name="Accounts" component={Accounts}
-        options={{title:'Cane Banking',
+        options={{title:'CANE Banking',
         headerStyle: {
           backgroundColor: '#63D4FF',
         },
         headerTitleStyle: {
           fontWeight: 'bold',
+          fontSize: 40,
+          color: color.darkGray
+
         },
         headerTitleAlign:'center',
         headerRight:() => (
@@ -251,12 +285,15 @@ const TransferStack=({navigation}:MenuProp) =>{
   return(
     <Stack.Navigator>
       <Stack.Screen name="Transfer" component={TransferSelection}
-        options={{title:'Cane Banking',
+        options={{title:'CANE Banking',
         headerStyle: {
           backgroundColor: '#63D4FF',
         },
         headerTitleStyle: {
           fontWeight: 'bold',
+          fontSize: 40,
+          color: color.darkGray
+
         },
         headerTitleAlign:'center',
         headerRight:() => (
@@ -265,12 +302,15 @@ const TransferStack=({navigation}:MenuProp) =>{
         }}/>
 
       <Stack.Screen name="OwnTransfer" component={OwnTransfer}
-        options={{title:'Cane Banking',
+        options={{title:'CANE Banking',
         headerStyle: {
           backgroundColor: '#63D4FF',
         },
         headerTitleStyle: {
           fontWeight: 'bold',
+          fontSize: 40,
+          color: color.darkGray
+
         },
         headerTitleAlign:'center',
         headerRight:() => (
@@ -279,12 +319,15 @@ const TransferStack=({navigation}:MenuProp) =>{
         }}/>
 
       <Stack.Screen name="OtherTransfer" component={OtherTransfer}
-        options={{title:'Cane Banking',
+        options={{title:'CANE Banking',
         headerStyle: {
           backgroundColor: '#63D4FF',
         },
         headerTitleStyle: {
           fontWeight: 'bold',
+          fontSize: 40,
+          color: color.darkGray
+
         },
         headerTitleAlign:'center',
         headerRight:() => (

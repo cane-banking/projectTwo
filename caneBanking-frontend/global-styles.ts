@@ -45,11 +45,12 @@ const styles = StyleSheet.create({
     input: {
         color: 'black',
         backgroundColor: '#c4c4c4',
-        borderRadius: 20,
+        borderRadius: 10,
         marginTop: 12,
         marginBottom: 12,
         height: 35,
         width: 250,
+        padding: 15
     },
     login: {
         backgroundColor: '#f5feff',
@@ -112,16 +113,18 @@ const styles = StyleSheet.create({
         fontSize: 12
     },
     card: {
-        backgroundColor: '#63D4FF',
-        borderWidth: 0,
-        borderRadius: 20
+        backgroundColor: color.white,
+        borderWidth: 3,
+        borderRadius: 20,
+        borderColor: color.lightGray,
+        color: color.lightBlue
     },
     apptitle: {
         fontFamily: 'Helvetica',
         fontWeight: 'bold',
         fontSize: 24,
         textTransform: 'capitalize',
-        color: '#fff',
+        color: color.lightBlue,
         marginBottom: 10
     },
     applicant: {
@@ -129,6 +132,20 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 18,
         color: '#756262'
+    },
+    transaction: {
+        fontSize: 21,
+        color: color.darkGray
+    },
+    transactioncard: {
+        backgroundColor: color.white,
+        borderWidth: 0,
+        borderRadius: 20,
+        borderColor: color.lightGray,
+        color: color.lightBlue
+    },
+    xlabel: {
+
     }
 });
 

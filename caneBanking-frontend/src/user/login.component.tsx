@@ -66,9 +66,9 @@ function LoginComponent({ navigation }: LoginProp) {
                 style={{width: 325, height: 261, marginBottom: 20}}
                 source={require('./undraw_Savings_re_eq4w (2).svg')}
             />
-            <Text style={style.boldText}>Don't have an account?</Text>
+            <Text style={style.boldText}>New Customer?</Text>
             <View style={style.create}>
-                <Button onPress={createAccount} title='Create Account' color='#63D4FF' />
+                <Button onPress={createAccount} title='Sign Up' color='#63D4FF' />
             </View>
         </View>
     );

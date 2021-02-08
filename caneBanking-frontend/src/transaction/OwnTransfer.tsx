@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 import  AccountService  from '../account/account.service';
 import { Picker } from '@react-native-picker/picker';
 import addTransactionService from './addTransaction.service';
+import styles from '../../global-styles';
 
 
 interface Deposit {
@@ -57,7 +58,29 @@ function submitTransfer(){
     navigation.navigate('Accounts');
 }
     return (
-        <View>
+        <View style={styles.screen}>
+            <Text style={style.screenHeader}>Transfer Funds.</Text>
+            <Text style={style.label}>FROM</Text>
+            <Picker style={{width:'100%', padding: 10}}
+                        selectedValue={fromAccount.account_id}
+                        onValueChange={(itemValue) => {dispatch(changeFromAccount(itemValue.toString()))}}>
+                {accounts ? accounts.map((account, index) => {
+                       return <Picker.Item key={index} label={`${account.account_type}...
+                       ${account.account_id.substring(account.account_id.length - 5)}
+                       $(${account.balance})`} value={account.account_id}/>
+                }): <Picker.Item label='No accounts available'></Picker.Item>}
+                 </Picker>
+                 <Text style={style.label}>TO</Text>
+            <Picker style={{width:'100%', padding: 10}}
+                        selectedValue={toAccount.account_id}
+                        onValueChange={(itemValue) => {dispatch(changeToAccount(itemValue.toString()))}}>
+                {accounts ? accounts.map((account, index) => {
+                       return <Picker.Item key={index} label={`${account.account_type}...
+                       ${account.account_id.substring(account.account_id.length - 5)}
+                       $(${account.balance})`} value={account.account_id}/>
+                }): <Picker.Item label='No accounts available'></Picker.Item>}
+            </Picker>
+            <Text style={style.label}>Enter Amount</Text>
             <View style={{flexDirection:'row'}}>
                 <Text style={{fontSize: 55, color:color.lightBlue, borderBottomWidth: 1, borderBottomColor: color.darkGray, padding: 10}}>$</Text>
                 <TextInput
@@ -71,27 +94,7 @@ function submitTransfer(){
                     >
             </TextInput>
             </View>
-            <Text>FROM</Text>
-            <Picker style={{width:'100%', padding: 10}}
-                        selectedValue={fromAccount.account_id}
-                        onValueChange={(itemValue) => {dispatch(changeFromAccount(itemValue.toString()))}}>
-                {accounts ? accounts.map((account, index) => {
-                       return <Picker.Item key={index} label={`${account.account_type}...
-                                    ${account.account_id.substring(account.account_id.length - 5)}
-                                    $(${account.balance})`} value={account.account_id}/>
-                }): <Picker.Item label='No accounts available'></Picker.Item>}
-                 </Picker>
-                 <Text>TO</Text>
-            <Picker style={{width:'100%', padding: 10}}
-                        selectedValue={toAccount.account_id}
-                        onValueChange={(itemValue) => {dispatch(changeToAccount(itemValue.toString()))}}>
-                {accounts ? accounts.map((account, index) => {
-                       return <Picker.Item key={index} label={`${account.account_type}...
-                                    ${account.account_id.substring(account.account_id.length - 5)}
-                                    $(${account.balance})`} value={account.account_id}/>
-                }): <Picker.Item label='No accounts available'></Picker.Item>}
-            </Picker>
-            {transferAmount > fromAccount.balance ? <Text>Insufficient Funds.</Text> : <Button onPress={submitTransfer} title='Submit'/>}
+            {transferAmount > fromAccount.balance ? <Text>Insufficient Funds.</Text> : <Button onPress={submitTransfer} title='Submit' color={color.lightBlue}/>}
         </View>
     );
 }
