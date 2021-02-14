@@ -1,6 +1,5 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import  {loginStackNavigator,registerAccountStack,LogoutStack}  from "./MainStackNavigator.component";
 import { enableScreens } from 'react-native-screens';
 import Footer from "./Footer";
 import LoginComponent from "../user/login.component";
@@ -15,15 +14,6 @@ const HomeTabNavigatorComponent = () => {
     <Tab.Navigator>
       <Tab.Screen name="Login" component={LoginComponent} />
       <Tab.Screen name="© Cane Industries, LLC" component={Footer} />
-    </Tab.Navigator>
-  );
-};
-
-const AccountTabNavigatorComponent = () => {
-  return (
-    <Tab.Navigator>
-      <Tab.Screen name="Logout" component={LogoutStack} />
-      <Tab.Screen name="Register" component={registerAccountStack} />
     </Tab.Navigator>
   );
 };

@@ -1,15 +1,12 @@
-import  React, { useState, Component, useEffect }  from 'react';
-import { View, TextInput,Text, Button,StyleSheet, FlatList} from 'react-native';
+import  React, { useEffect }  from 'react';
+import { View,Text, FlatList} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTransaction } from '../store/actions';
-import { CaneBankingState, UserState } from '../store/store';
-import  {Transaction} from './transaction';
+import { CaneBankingState} from '../store/store';
 import transactionService from './transaction.service';
-import { color } from '../helpers/colorScheme';
-import { RouteProp, useNavigation } from '@react-navigation/native';
-import { TouchableHighlight } from 'react-native';
-import { Card, Divider, Icon } from 'react-native-elements';
-import styles from '../../global-styles';
+import { Card, Divider} from 'react-native-elements';
+import styles, { color } from '../../global-styles';
+import { getDate } from '../helpers/date';
 
 
 interface TransactionProp {
@@ -17,52 +14,48 @@ interface TransactionProp {
 }
 
 export function TransactionHistory(props: TransactionProp) {
-    //change to transactions to return an ARRAY of transaction. Action needs to be changed.
-    const transactions = useSelector((state: CaneBankingState) => state.transactions); //getting transaction from state
+    const transactions = useSelector((state: CaneBankingState) => state.transactions);
     const account = useSelector((state: CaneBankingState) => state.account);
-    const accounts = useSelector((state: CaneBankingState) => state.accounts);
     const user = useSelector((state: CaneBankingState) => state.user);
     const dispatch = useDispatch();
-    console.log('account',account);
-    console.log('accounts',accounts);
+
     useEffect (() => {
     transactionService.getTransactions(account.account_id).then((transactions) => {
-    console.log('transactions',transactions);
-    dispatch(getTransaction(transactions));
+        dispatch(getTransaction(transactions));
     })
-},[user])
+    },[user])
 
     return (
           <View style={styles.container}>
+              <View style={styles.heading}>
+                  <Text style={styles.boldText}>{account.account_type} {account.account_id.substring(account.account_id.length - 5)}</Text>
+                  <Text style={{fontSize: 55, color: color.lightBlue}}>${account.balance}</Text>
+                  <Text>Available balance as of {getDate()}</Text>
+              </View>
             {transactions.length ? (
               <>
-                <View style={styles.heading}>
-                  <Text style={styles.boldText}>Transaction History</Text>
-                </View>
                 <FlatList
                   keyExtractor={(item) => item.transaction_id}
                   data={transactions}
                   renderItem={({ item }) =>(
                 <>
-
-                <Card containerStyle={styles.card}>
+                <Card>
                   <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
                     <View style={{flexDirection:'column', justifyContent:'space-between', alignItems:'center'}}>
-                      <Text style={styles.applicant}>Transaction Date: {item.time_stamp}</Text>
+                      <Text style={[styles.transaction, {fontWeight: 'bold', color: color.darkGray}]}>{item.vendor}</Text>
                     </View>
                   </View>
-                  <Divider style={{backgroundColor: '#dfe6e9', marginVertical:20}} />
                   <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
                     <View style={{flexDirection:'column', justifyContent:'space-between', alignItems:'center'}}>
-                      <Text style={styles.applicant}>Transaction Vendor: {item.vendor}</Text>
+                      <Text style={styles.transaction}>${item.transaction_amt}</Text>
                     </View>
                   </View>
-                  <Divider style={{backgroundColor: '#dfe6e9', marginVertical:20}} />
                   <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
                     <View style={{flexDirection:'column', justifyContent:'space-between', alignItems:'center'}}>
-                      <Text style={styles.applicant}>Transaction Amount: ${item.transaction_amt}</Text>
+                      <Text style={styles.transaction}>{item.time_stamp}</Text>
                     </View>
                   </View>
+                  <Divider style={{backgroundColor: color.darkGray, marginVertical:20}} />
                 </Card>
                 </>
                 )}
@@ -71,7 +64,7 @@ export function TransactionHistory(props: TransactionProp) {
               ) :  (
               <View>
                 <View style={styles.heading}>
-                  <Text style={styles.boldText}>Welcome {user.firstname}, You have not made any transaction yet.</Text>
+                  <Text style={styles.boldText}>You have not made any transactions.</Text>
                 </View>
               </View>
             )}

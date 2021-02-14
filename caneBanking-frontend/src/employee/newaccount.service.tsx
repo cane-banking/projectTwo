@@ -4,10 +4,8 @@ import { Account } from '../account/account';
 class SignUpService {
     private URI: string;
     constructor() {
-        // URL of the express server
         this.URI = 'https://r87dt7cl8f.execute-api.us-west-2.amazonaws.com/default/addAccount';
     }
-
 
     addAccount(a: Account): Promise<Account> {
         return axios.post(this.URI, a).then(result => result.data).catch(err => err);

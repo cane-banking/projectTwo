@@ -1,12 +1,10 @@
-import {SnapshotViewIOSComponent, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 
-
-// Importing using require because there is no @types
 const { create } = require('react-native-pixel-perfect');
 const designResolution = {
     width: 1125,
     height: 2436
-} // what we're designing for
+}
 const perfectSize = create(designResolution);
 
 export const color = {
@@ -47,20 +45,20 @@ const styles = StyleSheet.create({
     input: {
         color: 'black',
         backgroundColor: '#c4c4c4',
-        borderRadius: 20,
+        borderRadius: 10,
         marginTop: 12,
         marginBottom: 12,
         height: 35,
         width: 250,
+        padding: 15
     },
     login: {
         backgroundColor: '#f5feff',
         marginBottom: 60,
-        justifyContent: 'center', 
+        justifyContent: 'center',
         alignItems:'center'
     },
     logo: {
-        // perfectSize is only going to call when the app is first loaded in the device.
         width: perfectSize(840),
         height: perfectSize(840)
     },
@@ -115,16 +113,18 @@ const styles = StyleSheet.create({
         fontSize: 12
     },
     card: {
-        backgroundColor: '#63D4FF',
-        borderWidth: 0,
-        borderRadius: 20
+        backgroundColor: color.white,
+        borderWidth: 3,
+        borderRadius: 20,
+        borderColor: color.lightGray,
+        color: color.lightBlue
     },
     apptitle: {
         fontFamily: 'Helvetica',
         fontWeight: 'bold',
         fontSize: 24,
         textTransform: 'capitalize',
-        color: '#fff',
+        color: color.lightBlue,
         marginBottom: 10
     },
     applicant: {
@@ -132,6 +132,20 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 18,
         color: '#756262'
+    },
+    transaction: {
+        fontSize: 21,
+        color: color.darkGray
+    },
+    transactioncard: {
+        backgroundColor: color.white,
+        borderWidth: 0,
+        borderRadius: 20,
+        borderColor: color.lightGray,
+        color: color.lightBlue
+    },
+    xlabel: {
+
     }
 });
 

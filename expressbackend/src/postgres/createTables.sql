@@ -1,6 +1,3 @@
--- import dotenv from 'dotenv';
--- dotenv.config();
-
 drop table accounts ;
 drop table customer;
 drop table transactions;
@@ -33,7 +30,6 @@ CREATE TABLE transactions(
 	customer_id int
 )
 
---firstName and lastName should be not null
 create table applications(
 application_id UUID ,
 socialSecurity int not null,
@@ -46,7 +42,7 @@ dateofBirth date,
 applicationStatus text,
 customer_id int
 )
---firstName and lastName should be not null
+
 create table checks (
 check_id uuid,
 customer_id int,

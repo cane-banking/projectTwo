@@ -37,10 +37,6 @@ export enum TransactionActions {
     TransferSelection= 'GET_TRANSFER_SELECTION'
 }
 
-//export enum TransactionActions {
-//    GetTransactions = 'GET_TRANSACTIONS'
-//}
-
 export interface AppAction {
     type: string;
     payload: any;
@@ -70,11 +66,6 @@ export interface TransactionAction<T> extends AppAction {
     type: TransactionActions;
     payload: T;
 }
-
-//export interface TransactionAction<T> extends AppAction {
-//    type: TransactionActions;
-//    payload: T;
-//}
 
 export function getUser(user: User): UserAction<User> {
     const action: UserAction<User> = {
@@ -164,7 +155,6 @@ export function changeFromAccount(account_id: string) : AccountAction<string> {
 }
 
 export function changeToAccount(account_id: string) : AccountAction<string> {
-    console.log('im getting hit');
     const action: AccountAction<string> = {
         type: AccountActions.ChangeToAccount,
         payload: account_id

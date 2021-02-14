@@ -6,7 +6,6 @@ interface MyEvent {
 
 export async function handler(event: MyEvent){
     let app_id = event.body;
-    console.log(event)
     const client = new Client();
     await client.connect();
     const query = `UPDATE applications SET applicationstatus = 'approved' WHERE application_id = $1`;
@@ -20,8 +19,6 @@ export async function handler(event: MyEvent){
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Methods": "PUT, OPTIONS"
         }};
-
-
     }else {
         client.end();
         return {statusCode: 404, headers:{
@@ -31,4 +28,4 @@ export async function handler(event: MyEvent){
             "Access-Control-Allow-Methods": "PUT, OPTIONS"
         }};
     }
-} 
+}
