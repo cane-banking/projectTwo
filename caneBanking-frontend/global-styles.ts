@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: color.background,
-        fontSize: '18px',
+//        fontSize: '18px',
+          fontSize: 18,
         fontFamily: 'poppins'
     },
     screen: {
